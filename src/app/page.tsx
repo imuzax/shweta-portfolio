@@ -1,195 +1,256 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, Sparkles, Award, Briefcase, Clock } from "lucide-react";
+import { Star, MapPin, Mail, Link as LinkIcon, Diamond, Layout, Palette, Megaphone } from "lucide-react";
 
 export default function Home() {
-  const [dateTime, setDateTime] = useState<string>("");
-
-  useEffect(() => {
-    const updateDateTime = () => {
-      const now = new Date();
-      const options: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'long', year: 'numeric' };
-      const dateStr = now.toLocaleDateString('en-US', options);
-      const timeStr = now.toLocaleTimeString('en-US');
-      setDateTime(`${dateStr} • ${timeStr}`);
-    };
-
-    updateDateTime();
-    const interval = setInterval(updateDateTime, 1000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <div className="min-h-screen bg-[var(--ivory)] overflow-hidden">
+    <div className="bg-[#fcf9f8] text-[#1b1c1c] font-sans antialiased selection:bg-[#c9a96e] selection:text-[#543d0c]">
+      
       {/* ─── Hero Section ─── */}
-      <section className="relative min-h-[92vh] flex items-center pt-16 pb-12">
-        <div className="container mx-auto px-6 md:px-12 relative z-10 grid lg:grid-cols-12 gap-12 items-center">
-          
-          {/* Left Text Column */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="lg:col-span-7 flex flex-col items-start"
-          >
-            {/* Live Date Time Widget */}
-            {dateTime && (
-              <motion.div 
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--ivory-deep)] border border-[rgba(201,169,110,0.3)] mb-6 text-xs font-semibold text-[var(--gold-dark)] tracking-wider uppercase shadow-sm"
-              >
-                <Clock size={14} className="text-[var(--gold)] animate-pulse" />
-                <span>{dateTime}</span>
-              </motion.div>
-            )}
-
-            <div className="gold-line mb-6" />
-
-            <p className="section-label mb-3 text-xs md:text-sm tracking-[0.25em] text-[var(--gold)] font-medium uppercase">
-              Welcome to My Official Portfolio
-            </p>
-
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold leading-[1.15] mb-6 text-[var(--charcoal)]">
-              Shweta Jadhav <br />
-              <span className="italic font-normal text-[var(--gold)]">Graphic Designer</span>
+      <section className="min-h-[85vh] flex items-center px-6 md:px-16 max-w-[1200px] mx-auto py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center w-full">
+          <div className="max-w-2xl space-y-6">
+            <h1 className="text-4xl md:text-6xl font-serif font-bold text-[#1b1c1c] tracking-tight">
+              Shweta Jadhav
             </h1>
-
-            <h2 className="text-xl md:text-2xl font-serif text-[var(--charcoal-mid)] mb-6 font-medium leading-snug max-w-xl">
-              "Design makes anything when you call myself"
+            <h2 className="text-2xl md:text-3xl font-serif text-[#745a27] font-semibold">
+              Graphic Designer & Visual Storyteller
             </h2>
-
-            <p className="text-base md:text-lg text-[var(--charcoal-soft)] mb-10 max-w-xl leading-relaxed font-light">
-              Professional <strong className="font-semibold text-[var(--charcoal)]">Graphic Designer since 2021</strong>. 
-              Specializing in progressive brand identities, logo design, standee graphics, banners, and comprehensive visual storytelling for ambitious brands.
+            <p className="text-lg text-[#5f5e59] max-w-xl font-normal leading-relaxed">
+              Crafting timeless brand identities and compelling visual narratives for luxury and lifestyle brands. Transforming complex ideas into elegant, engaging designs.
             </p>
-
-            {/* CTAs */}
-            <div className="flex flex-wrap gap-4 items-center">
-              <Link href="/work" className="btn-primary shadow-lg shadow-[rgba(201,169,110,0.2)]">
-                Explore Portfolio
+            <div className="flex flex-wrap gap-4 pt-4">
+              <Link href="/work" className="px-8 py-3 rounded-full bg-[#c9a96e] text-[#543d0c] font-semibold text-sm hover:bg-[#745a27] hover:text-white transition-colors">
+                View My Work
               </Link>
-              <Link href="/about" className="btn-outline">
-                About Me
+              <Link href="/about" className="px-8 py-3 rounded-full border border-[#c9a96e] text-[#745a27] font-semibold text-sm hover:bg-[#c9a96e]/10 transition-colors">
+                Download Resume
               </Link>
             </div>
+          </div>
 
-            {/* Stats badges */}
-            <div className="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-[rgba(201,169,110,0.2)] w-full max-w-lg">
-              <div>
-                <p className="text-2xl md:text-3xl font-serif font-bold text-[var(--gold-dark)]">47+</p>
-                <p className="text-xs text-[var(--text-muted)] tracking-wider uppercase mt-1">Design Projects</p>
-              </div>
-              <div>
-                <p className="text-2xl md:text-3xl font-serif font-bold text-[var(--gold-dark)]">2021</p>
-                <p className="text-xs text-[var(--text-muted)] tracking-wider uppercase mt-1">Designing Since</p>
-              </div>
-              <div>
-                <p className="text-2xl md:text-3xl font-serif font-bold text-[var(--gold-dark)]">100%</p>
-                <p className="text-xs text-[var(--text-muted)] tracking-wider uppercase mt-1">Client Satisfaction</p>
-              </div>
+          <div className="relative h-[500px] w-full hidden lg:block">
+            <div className="glass-panel soft-shadow absolute inset-0 rounded-2xl flex items-center justify-center overflow-hidden border border-[#c9a96e]/20">
+              <div 
+                className="w-full h-full bg-cover bg-center opacity-90 mix-blend-multiply"
+                style={{
+                  backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuAzZt7nAgSmsTqsFmCAx2vE-8H9pVGNuNHLnwE8Y1hsdGSAgrj0PosIk9OS2B3PERovStp0iyVYOWBmBcY6E13UfRnagK4Dm9hqYt7AvqlUodNuKy8dnBlDPMmfvHC7MO1Rz2ZbAG3NrqQcJir5JPaXDXsTvem_tkXosyYd3sWaftPQVVOhZL6qgK8P8azxLeP9YlIToTiStshkVd7OOkBgHZ-FbuOMIO8P-4RlYtlzpkvHdMkw4Wvh')"
+                }}
+              />
             </div>
-          </motion.div>
-
-          {/* Right Image Column */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, x: 40 }}
-            animate={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{ duration: 0.9, delay: 0.1, ease: "easeOut" }}
-            className="lg:col-span-5 relative"
-          >
-            <div className="relative mx-auto max-w-md lg:max-w-none">
-              {/* Outer decorative frame */}
-              <div className="absolute -inset-4 rounded-2xl border-2 border-[var(--gold)] opacity-30 transform translate-x-3 translate-y-3 pointer-events-none" />
-
-              {/* Main Image Container */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-white border border-[rgba(201,169,110,0.3)] group">
-                <img
-                  src="/images/home/shweta-about-image.png"
-                  alt="Shweta Jadhav - Graphic Designer"
-                  className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
-                />
-                
-                {/* Floating badge */}
-                <div className="absolute bottom-6 left-6 right-6 bg-[rgba(255,255,255,0.92)] backdrop-blur-md p-4 rounded-xl border border-[rgba(201,169,110,0.3)] shadow-lg flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-[var(--gold-light)] flex items-center justify-center text-[var(--gold-dark)]">
-                    <Sparkles size={20} />
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold text-[var(--charcoal)] uppercase tracking-wider">Visual Artist</p>
-                    <p className="text-xs text-[var(--text-muted)]">Based in Pune, Maharashtra</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
+          </div>
         </div>
       </section>
 
-      {/* ─── Featured Services Snippet ─── */}
-      <section className="py-24 bg-[var(--charcoal)] text-[var(--ivory)] relative">
-        <div className="container mx-auto px-6 md:px-12">
-          
-          <div className="text-center mb-16 max-w-2xl mx-auto">
-            <p className="section-label mb-3 text-[var(--gold)] uppercase tracking-[0.2em] text-xs font-semibold">Specializations</p>
-            <h2 className="text-3xl md:text-4xl font-serif text-[var(--ivory)] mb-4">What I Craft For Brands</h2>
-            <p className="text-[var(--text-muted)] text-sm md:text-base leading-relaxed">
-              Transforming creative ideas into high-impact graphic design collateral that elevates businesses.
-            </p>
+      {/* ─── About Snippet ─── */}
+      <section className="px-6 md:px-16 max-w-[1200px] mx-auto py-16" id="about">
+        <div className="flex flex-col items-center text-center space-y-6 max-w-3xl mx-auto">
+          <span className="text-xs font-semibold text-[#745a27] uppercase tracking-widest">
+            About Me
+          </span>
+          <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-[#c9a96e] p-1 mt-2 mb-2">
+            <img
+              className="w-full h-full rounded-full object-cover"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0dQO_Kc9oTJ_fHuekamhPPwAYrhfBntZNeUkEt_QXC4xysNRK6K522coopAQ4ZGvP_s6me2I2sO4Ws3mLL2OT6DUNXwmv0gJhYFzufOoIQkEyXzksFYpQ8H45y-9U_kfsEvF6H7q3FSwbxX-Dq7ArMw1v0QfCco7mZGjBWtejrRtBNWokggHnI1pCg5oepHXsZH7QcOy6X5PvvuqeL6i2PTKtG_-JA91kxwZ8h649q7ru9hRJI_cL"
+              alt="Shweta Jadhav Portrait"
+            />
           </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { title: "Logo Design", desc: "Creating unique, memorable brand marks tailored to your brand identity." },
-              { title: "Expo Invites", desc: "Elegant & creative invitation graphics for expos, summits, and grand events." },
-              { title: "Standee Design", desc: "High-visibility promotional standees designed to capture attention in physical spaces." },
-              { title: "Banners & Flex", desc: "Impactful outdoor and indoor advertising banners for promotional campaigns." },
-              { title: "News Paper Ads", desc: "Print-ready, precision-aligned newspaper advertisement graphics." },
-              { title: "Branding & Flat Design", desc: "Modern flat vector art and complete visual guidelines." }
-            ].map((service, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.08 }}
-                className="bg-[rgba(255,255,255,0.03)] border border-[rgba(201,169,110,0.15)] p-8 rounded-xl hover:border-[var(--gold)] hover:bg-[rgba(201,169,110,0.05)] transition-all duration-300 group"
-              >
-                <div className="w-12 h-12 rounded-lg bg-[rgba(201,169,110,0.1)] flex items-center justify-center text-[var(--gold)] mb-6 group-hover:bg-[var(--gold)] group-hover:text-[var(--charcoal)] transition-colors duration-300">
-                  <Briefcase size={22} />
-                </div>
-                <h3 className="text-xl font-serif mb-3 text-[var(--gold-light)]">{service.title}</h3>
-                <p className="text-[var(--text-muted)] text-sm leading-relaxed">{service.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="mt-16 text-center">
-            <Link href="/work" className="inline-flex items-center gap-2 text-[var(--gold)] hover:text-[var(--gold-light)] uppercase tracking-wider text-xs font-semibold border-b border-[var(--gold)] pb-1 transition-all">
-              View All 47 Projects <ArrowRight size={16} />
-            </Link>
-          </div>
-
-        </div>
-      </section>
-
-      {/* ─── CTA Section ─── */}
-      <section className="py-24 bg-[var(--ivory-deep)] relative">
-        <div className="container mx-auto px-6 text-center max-w-3xl">
-          <div className="gold-line mx-auto mb-6" />
-          <h2 className="text-3xl md:text-5xl font-serif text-[var(--charcoal)] mb-6">Let's Create Something Extraordinary</h2>
-          <p className="text-base md:text-lg text-[var(--charcoal-soft)] mb-10 leading-relaxed font-light">
-            Have a project in mind or looking for a professional graphic designer? I am available for freelance design contracts and full-time collaborations.
+          <p className="text-lg text-[#5f5e59] leading-relaxed font-light">
+            With over a decade of experience navigating the intersection of art and strategy, I specialize in translating brand essence into visual masterpieces. Based in the vibrant city of Pune, my approach blends soft minimalism with refined details, ensuring every project not only looks exquisite but performs flawlessly. I believe in the power of negative space, the poetry of typography, and the enduring impact of thoughtful design. My goal is to elevate your brand's narrative through meticulous craftsmanship.
           </p>
-          <Link href="/contact" className="btn-primary shadow-xl shadow-[rgba(201,169,110,0.25)]">
-            Get In Touch
+          <div className="w-full pt-12 border-t border-[#e4e2e1] mt-8">
+            <p className="text-xs text-[#5f5e59] mb-6 uppercase tracking-wider font-medium">
+              Trusted by local brands
+            </p>
+            <div className="flex flex-wrap justify-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500 text-xl font-serif text-[#1b1c1c]">
+              <span>Logo 1</span>
+              <span>Logo 2</span>
+              <span>Logo 3</span>
+              <span>Logo 4</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Featured Projects ─── */}
+      <section className="px-6 md:px-16 max-w-[1200px] mx-auto py-16" id="work">
+        <div className="mb-12">
+          <span className="text-xs font-semibold text-[#745a27] uppercase tracking-widest">
+            Selected Projects
+          </span>
+          <h3 className="text-3xl md:text-4xl font-serif font-bold text-[#1b1c1c] mt-2">
+            Curated Masterpieces
+          </h3>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+          {/* Card 1 */}
+          <div className="group cursor-pointer bg-white border border-[#F0EDE6] rounded-xl p-3 soft-shadow hover-gold-glow transition-all duration-300">
+            <div className="aspect-[4/3] bg-[#e4e2e1] rounded-lg overflow-hidden relative">
+              <img
+                className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmUBHqM8XlLLIi5-RwP_ek7xzZVrpMY6t718afq4WIIvV8e1Oy8Hw6ukBNo5UssDaNKRREguHj4HBKBfgW9o6ys5gLuKOKcTacqTJdxGFX61kgczqgEU3hLwr8uIPxgEUMeXJU1Gi0RAgWM95Y_MNwDjiYdOjJZE_89fQFrtXehNB8_leLzbWzK6ng-VL9g_QFp0dsHNr04OCXRewC0V29TO0Qm8fIJPqc40wepLKxzQuJqOjkKLNK"
+                alt="Aura Skincare"
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+            </div>
+            <div className="mt-4 px-2">
+              <h4 className="text-2xl font-serif font-bold text-[#1b1c1c]">Aura Skincare</h4>
+              <p className="text-sm text-[#5f5e59] mt-1">Brand Identity & Packaging</p>
+            </div>
+          </div>
+
+          {/* Card 2 */}
+          <div className="group cursor-pointer bg-white border border-[#F0EDE6] rounded-xl p-3 soft-shadow hover-gold-glow transition-all duration-300 lg:translate-y-8">
+            <div className="aspect-[4/3] bg-[#e4e2e1] rounded-lg overflow-hidden relative">
+              <img
+                className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAU8BFZPl2b4woFqkJjWWOAdl_WS8H4IasP-yGo6wvUXs524GVShCGBK-f3iHjjUsm-U8LZRNYmHmKmnI4qqPV03r2Ct4CVKItYrp0KrMzyI6TS_ge9iHedUcYXmTYvcDRjvGliYqkKqyT9DhTnWIRckJhiUwwM8qIJZk4X9Py1KguoGzqsrt9xgp1sNHdHTYdWc7FNtBN0j1oAQTP7M1b7Hba1fDsyZAXz-dBn7KYKgyqqVDel2ADT"
+                alt="Maison Journal"
+              />
+            </div>
+            <div className="mt-4 px-2">
+              <h4 className="text-2xl font-serif font-bold text-[#1b1c1c]">Maison Journal</h4>
+              <p className="text-sm text-[#5f5e59] mt-1">UI/UX Design</p>
+            </div>
+          </div>
+
+          {/* Card 3 */}
+          <div className="group cursor-pointer bg-white border border-[#F0EDE6] rounded-xl p-3 soft-shadow hover-gold-glow transition-all duration-300">
+            <div className="aspect-[4/3] bg-[#e4e2e1] rounded-lg overflow-hidden relative">
+              <img
+                className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCn96-RmifngTIUXPf7yZGv2Z_qCL9hcLhZAiA9Rnx6DPsZUeXP5ADM63wY4irv1O4Rx4EyegPL80TOPV8dKH2d0B1tJOHV-YVa8abj363TzZW1DUJ59PRXLnjd2sDsTpYKLEhXfj7ZZEFxro19H4WiZRuKc6O4WhsZ5Uq7ZDjYw7yOcVcJ3O7F1RdezT1z2M-TWq0ITww_CIVu06S4goEd3tQ1EPMgVJhVtxjmNYkYI4TxqJraEgEj"
+                alt="Lumina Roasters"
+              />
+            </div>
+            <div className="mt-4 px-2">
+              <h4 className="text-2xl font-serif font-bold text-[#1b1c1c]">Lumina Roasters</h4>
+              <p className="text-sm text-[#5f5e59] mt-1">Packaging Design</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div className="text-center mt-16">
+          <Link href="/work" className="px-8 py-3 rounded-full border border-[#c9a96e] text-[#745a27] font-semibold text-sm hover:bg-[#c9a96e]/10 transition-colors inline-block">
+            Explore All Work
           </Link>
         </div>
       </section>
+
+      {/* ─── Services Overview ─── */}
+      <section className="px-6 md:px-16 max-w-[1200px] mx-auto py-16" id="services">
+        <div className="text-center mb-16">
+          <span className="text-xs font-semibold text-[#745a27] uppercase tracking-widest">
+            Expertise
+          </span>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          
+          <div className="flex flex-col items-center text-center p-6 rounded-2xl hover:bg-white hover:soft-shadow transition-all duration-300 border border-transparent hover:border-[#F0EDE6]">
+            <Diamond className="w-10 h-10 text-[#c9a96e] mb-4 stroke-1" />
+            <h4 className="text-xl font-serif font-semibold text-[#1b1c1c] mb-2">Brand Identity</h4>
+            <p className="text-sm text-[#5f5e59]">Crafting cohesive visual systems that tell your unique story.</p>
+          </div>
+
+          <div className="flex flex-col items-center text-center p-6 rounded-2xl hover:bg-white hover:soft-shadow transition-all duration-300 border border-transparent hover:border-[#F0EDE6]">
+            <Layout className="w-10 h-10 text-[#c9a96e] mb-4 stroke-1" />
+            <h4 className="text-xl font-serif font-semibold text-[#1b1c1c] mb-2">UI/UX Design</h4>
+            <p className="text-sm text-[#5f5e59]">Designing intuitive and beautiful digital experiences.</p>
+          </div>
+
+          <div className="flex flex-col items-center text-center p-6 rounded-2xl hover:bg-white hover:soft-shadow transition-all duration-300 border border-transparent hover:border-[#F0EDE6]">
+            <Palette className="w-10 h-10 text-[#c9a96e] mb-4 stroke-1" />
+            <h4 className="text-xl font-serif font-semibold text-[#1b1c1c] mb-2">Illustration</h4>
+            <p className="text-sm text-[#5f5e59]">Bespoke artwork to add character and depth to your brand.</p>
+          </div>
+
+          <div className="flex flex-col items-center text-center p-6 rounded-2xl hover:bg-white hover:soft-shadow transition-all duration-300 border border-transparent hover:border-[#F0EDE6]">
+            <Megaphone className="w-10 h-10 text-[#c9a96e] mb-4 stroke-1" />
+            <h4 className="text-xl font-serif font-semibold text-[#1b1c1c] mb-2">Social Media</h4>
+            <p className="text-sm text-[#5f5e59]">Curated visual content for a commanding online presence.</p>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ─── Testimonials ─── */}
+      <section className="bg-[#f6f3f2] py-20 px-6 md:px-16 my-16">
+        <div className="max-w-4xl mx-auto text-center relative">
+          <div className="flex justify-center gap-1 mb-6 text-[#c9a96e]">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} size={18} fill="#c9a96e" />
+            ))}
+          </div>
+          <h4 className="text-2xl md:text-3xl font-serif italic text-[#1b1c1c] mb-8 leading-snug">
+            "Shweta has an incredible eye for detail. She didn't just design a logo; she captured the very soul of our boutique. The level of elegance and professionalism she brought to the table is unmatched."
+          </h4>
+          <p className="text-xs font-semibold text-[#745a27] uppercase tracking-wider">
+            Elena R., Founder of Aura Skincare
+          </p>
+        </div>
+      </section>
+
+      {/* ─── Contact CTA ─── */}
+      <section className="px-6 md:px-16 max-w-[1200px] mx-auto py-16" id="contact">
+        <div className="glass-panel rounded-3xl p-8 md:p-16 soft-shadow border border-[#c9a96e]/20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            
+            <div className="order-2 lg:order-1">
+              <form className="space-y-6">
+                <div>
+                  <input
+                    className="w-full bg-transparent border-0 border-b border-[#F0EDE6] text-[#1b1c1c] py-3 px-0 focus:outline-none focus:border-[#c9a96e] transition-colors placeholder:text-[#5f5e59]/60 text-sm"
+                    placeholder="Your Name"
+                    type="text"
+                  />
+                </div>
+                <div>
+                  <input
+                    className="w-full bg-transparent border-0 border-b border-[#F0EDE6] text-[#1b1c1c] py-3 px-0 focus:outline-none focus:border-[#c9a96e] transition-colors placeholder:text-[#5f5e59]/60 text-sm"
+                    placeholder="Email Address"
+                    type="email"
+                  />
+                </div>
+                <div>
+                  <textarea
+                    className="w-full bg-transparent border-0 border-b border-[#F0EDE6] text-[#1b1c1c] py-3 px-0 focus:outline-none focus:border-[#c9a96e] transition-colors resize-none placeholder:text-[#5f5e59]/60 text-sm"
+                    placeholder="Tell me about your project..."
+                    rows={3}
+                  />
+                </div>
+                <button
+                  className="w-full md:w-auto px-8 py-3 rounded-full bg-[#1b1c1c] text-white font-semibold text-xs tracking-wider uppercase hover:bg-[#745a27] transition-colors"
+                  type="button"
+                >
+                  Send Inquiry
+                </button>
+              </form>
+            </div>
+
+            <div className="order-1 lg:order-2 space-y-6">
+              <h3 className="text-3xl font-serif font-bold text-[#1b1c1c]">
+                Let's create something beautiful together.
+              </h3>
+              <p className="text-sm text-[#5f5e59]">
+                Currently accepting new projects for Q4 2024. Reach out to discuss how we can elevate your brand's visual narrative.
+              </p>
+              <div className="flex items-start gap-4 pt-4 border-t border-[#e4e2e1]">
+                <MapPin className="text-[#c9a96e] mt-1" size={20} />
+                <div>
+                  <p className="text-xs font-semibold uppercase text-[#1b1c1c]">Studio Location</p>
+                  <p className="text-sm text-[#5f5e59]">Pune, Maharashtra, India</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 }
