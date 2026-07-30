@@ -429,60 +429,72 @@ function InteractiveCardStackHero() {
 
       {/* 3D Stacked Cards Canvas */}
       <div className="relative flex-1 w-full flex items-center justify-center">
-        <div className="relative w-full max-w-md h-[88%]">
-          {cards.slice(0, 3).map((card, index) => {
-            // Calculate 3D stacking styles
-            const scale = 1 - index * 0.06;
-            const translateY = index * 16;
-            const opacity = 1 - index * 0.25;
-            const zIndex = 30 - index;
+        <div className="relative w-full max-w-md h-[88%] flex items-center justify-center">
+          <AnimatePresence mode="popLayout">
+            {cards.slice(0, 3).map((card, index) => {
+              // Calculate 3D stacking & fan-out rotations
+              const scale = 1 - index * 0.05;
+              const translateY = index * 14;
+              const rotate = index === 0 ? 0 : index === 1 ? -4 : 4;
+              const opacity = 1 - index * 0.2;
+              const zIndex = 30 - index;
 
-            return (
-              <motion.div
-                key={card.id}
-                layout
-                onClick={index === 0 ? handleNext : undefined}
-                initial={{ scale: 0.9, opacity: 0, y: 30 }}
-                animate={{ scale, opacity, y: translateY }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
-                style={{ zIndex }}
-                className={`absolute inset-0 rounded-2xl overflow-hidden shadow-2xl border border-[#c9a96e]/30 bg-white group ${
-                  index === 0 ? "cursor-pointer hover:shadow-gold-glow" : "pointer-events-none"
-                }`}
-              >
-                {/* Image Container */}
-                <div className="w-full h-full relative overflow-hidden bg-[#121212]">
-                  <img
-                    src={card.image}
-                    alt={card.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
+              return (
+                <motion.div
+                  key={card.id}
+                  layout
+                  onClick={index === 0 ? handleNext : undefined}
+                  initial={{ scale: 0.85, opacity: 0, y: 40, rotate: index % 2 === 0 ? 6 : -6 }}
+                  animate={{ scale, opacity, y: translateY, rotate }}
+                  exit={{ scale: 0.95, opacity: 0, x: 120, rotate: 12 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 240,
+                    damping: 22,
+                    mass: 0.8
+                  }}
+                  style={{ zIndex }}
+                  className={`absolute inset-0 rounded-2xl overflow-hidden shadow-2xl border transition-all duration-300 ${
+                    index === 0
+                      ? "border-[#c9a96e] shadow-[0_20px_50px_rgba(201,169,110,0.25)] cursor-pointer bg-white"
+                      : "border-[#c9a96e]/20 bg-white/95 pointer-events-none"
+                  }`}
+                >
+                  {/* Image Container */}
+                  <div className="w-full h-full relative overflow-hidden bg-[#121212]">
+                    <img
+                      src={card.image}
+                      alt={card.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
 
-                  {/* Top Glass Category Tag */}
-                  <div className="absolute top-4 left-4 bg-black/80 backdrop-blur-md text-[#c9a96e] text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-white/20 shadow-md">
-                    {card.tag}
-                  </div>
-
-                  {/* Bottom Glass Project Details */}
-                  <div className="absolute bottom-4 left-4 right-4 bg-gradient-to-r from-black/90 via-black/85 to-black/40 backdrop-blur-md p-3.5 rounded-xl border border-white/15 text-white flex items-center justify-between">
-                    <div>
-                      <span className="text-[9px] font-mono text-[#c9a96e] uppercase tracking-wider block">
-                        {card.category}
-                      </span>
-                      <h3 className="text-sm md:text-base font-serif font-bold text-white mt-0.5 truncate max-w-[200px] sm:max-w-none">
-                        {card.title}
-                      </h3>
+                    {/* Top Glass Category Tag */}
+                    <div className="absolute top-4 left-4 bg-black/80 backdrop-blur-md text-[#c9a96e] text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-white/20 shadow-md flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#c9a96e]" />
+                      <span>{card.tag}</span>
                     </div>
-                    {index === 0 && (
-                      <span className="text-[10px] font-semibold text-[#c9a96e] bg-white/10 px-2.5 py-1 rounded-full border border-white/10">
-                        Click Next →
-                      </span>
-                    )}
+
+                    {/* Bottom Glass Project Details */}
+                    <div className="absolute bottom-4 left-4 right-4 bg-gradient-to-r from-black/95 via-black/85 to-black/40 backdrop-blur-md p-3.5 rounded-xl border border-white/15 text-white flex items-center justify-between shadow-2xl">
+                      <div>
+                        <span className="text-[9px] font-mono text-[#c9a96e] uppercase tracking-wider block">
+                          {card.category}
+                        </span>
+                        <h3 className="text-sm md:text-base font-serif font-bold text-white mt-0.5 truncate max-w-[200px] sm:max-w-none">
+                          {card.title}
+                        </h3>
+                      </div>
+                      {index === 0 && (
+                        <span className="text-[10px] font-semibold text-[#543d0c] bg-[#c9a96e] px-3 py-1 rounded-full shadow-md font-serif">
+                          Next →
+                        </span>
+                      )}
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            );
-          })}
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
         </div>
       </div>
 
