@@ -30,13 +30,101 @@ export default function Home() {
             </div>
           </div>
 
+          {/* ─── Creative Graphic Designer Studio Monitor Mockup ─── */}
           <div className="relative h-[500px] w-full hidden lg:block">
-            <div className="glass-panel soft-shadow absolute inset-0 rounded-2xl flex items-center justify-center overflow-hidden border border-[#c9a96e]/20 p-2 bg-white">
-              <img 
-                src="/images/home/shweta-about-image.png"
-                alt="Shweta Jadhav - Graphic Designer"
-                className="w-full h-full object-cover rounded-xl"
-              />
+            <div className="glass-panel soft-shadow absolute inset-0 rounded-2xl overflow-hidden border border-[#c9a96e]/30 bg-[#1b1c1c] text-white flex flex-col shadow-2xl">
+              
+              {/* Studio Window Header */}
+              <div className="h-10 bg-[#252525] border-b border-white/10 px-4 flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
+                  <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
+                  <div className="w-3 h-3 rounded-full bg-[#27c93f]" />
+                </div>
+                <div className="text-[11px] font-mono text-white/50 tracking-wider flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#c9a96e] animate-ping" />
+                  <span>Adobe Illustrator • Shweta_Brand_Identity.ai (400%)</span>
+                </div>
+                <div className="text-[10px] bg-[#c9a96e]/20 text-[#c9a96e] px-2 py-0.5 rounded font-mono">
+                  Vector Mode
+                </div>
+              </div>
+
+              {/* Design Canvas Workspace Body */}
+              <div className="flex-1 relative bg-[#121212] overflow-hidden flex items-center justify-center p-6">
+                
+                {/* Background Grid Pattern */}
+                <div 
+                  className="absolute inset-0 opacity-20 pointer-events-none"
+                  style={{
+                    backgroundImage: "radial-gradient(#c9a96e 1px, transparent 1px)",
+                    backgroundSize: "24px 24px"
+                  }}
+                />
+
+                {/* Left Tool Bar */}
+                <div className="absolute left-4 top-1/2 -translate-y-1/2 bg-[#252525]/90 backdrop-blur-md p-2 rounded-xl border border-white/10 flex flex-col gap-3 text-white/70 shadow-lg z-20">
+                  <div className="p-2 rounded-lg bg-[#c9a96e] text-[#543d0c] shadow-md">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
+                  </div>
+                  <div className="p-2 rounded-lg hover:bg-white/10 cursor-pointer">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                  </div>
+                  <div className="p-2 rounded-lg hover:bg-white/10 cursor-pointer">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-23" /></svg>
+                  </div>
+                  <div className="p-2 rounded-lg hover:bg-white/10 cursor-pointer">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 4a2 2 0 114 0v1a2 2 0 01-2 2h-1.586l1.293 1.293a1 1 0 01-1.414 1.414L10 8.414V10a2 2 0 01-2 2H7a2 2 0 01-2-2V9a2 2 0 012-2h1.586L7.293 5.707a1 1 0 011.414-1.414L10 5.586V4z" /></svg>
+                  </div>
+                </div>
+
+                {/* Animated Creative Graphic Vector Art Element */}
+                <div className="relative z-10 w-full h-full flex items-center justify-center">
+                  
+                  {/* Golden Ratio Guide Circles */}
+                  <div className="absolute w-72 h-72 rounded-full border border-[#c9a96e]/30 animate-[spin_20s_linear_infinite]" />
+                  <div className="absolute w-52 h-52 rounded-full border border-dashed border-[#c9a96e]/40 animate-[spin_15s_linear_infinite_reverse]" />
+                  <div className="absolute w-36 h-36 rounded-full border border-[#c9a96e]/50" />
+
+                  {/* Dynamic Glowing Brand Symbol SVG */}
+                  <svg className="w-48 h-48 text-[#c9a96e] drop-shadow-[0_0_25px_rgba(201,169,110,0.5)]" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M100 20 L160 60 L160 140 L100 180 L40 140 L40 60 Z" stroke="#c9a96e" strokeWidth="2" strokeDasharray="6 6" />
+                    <path d="M100 35 L145 65 L145 135 L100 165 L55 135 L55 65 Z" stroke="#e4c285" strokeWidth="3" />
+                    <circle cx="100" cy="100" r="30" stroke="#c9a96e" strokeWidth="2" fill="rgba(201,169,110,0.15)" />
+                    <path d="M70 100 Q100 50 130 100 Q100 150 70 100Z" fill="url(#goldGradient)" />
+                    <defs>
+                      <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#c9a96e" />
+                        <stop offset="100%" stopColor="#745a27" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+
+                  {/* Floating Pen Tool Anchor Handle */}
+                  <div className="absolute top-1/4 right-1/4 bg-[#c9a96e] text-[#543d0c] px-3 py-1 rounded-full text-[10px] font-bold shadow-lg flex items-center gap-1.5 animate-bounce">
+                    <span className="w-2 h-2 rounded-full bg-[#543d0c]" />
+                    <span>Anchor Point (Bezier)</span>
+                  </div>
+
+                  {/* Floating Color Swatches */}
+                  <div className="absolute bottom-6 right-6 bg-[#252525]/90 backdrop-blur-md p-3 rounded-xl border border-white/10 flex gap-2 shadow-xl">
+                    <div className="w-6 h-6 rounded-md bg-[#fcf9f8] border border-white/20" title="Ivory" />
+                    <div className="w-6 h-6 rounded-md bg-[#c9a96e]" title="Champagne Gold" />
+                    <div className="w-6 h-6 rounded-md bg-[#745a27]" title="Gold Dark" />
+                    <div className="w-6 h-6 rounded-md bg-[#1b1c1c]" title="Charcoal" />
+                  </div>
+
+                </div>
+
+              </div>
+
+              {/* Studio Status Bar */}
+              <div className="h-8 bg-[#252525] border-t border-white/10 px-4 flex items-center justify-between text-[10px] text-white/60">
+                <span>Layers: 12 Active</span>
+                <span className="text-[#c9a96e]">✦ Precision Graphic Engine Active</span>
+                <span>Render: 60 FPS</span>
+              </div>
+
             </div>
           </div>
         </div>
@@ -48,12 +136,13 @@ export default function Home() {
           <span className="text-xs font-semibold text-[#745a27] uppercase tracking-widest">
             About Me
           </span>
-          <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-[#c9a96e] p-1 mt-2 mb-2 shadow-md">
-            <img
-              className="w-full h-full rounded-full object-cover"
-              src="/images/home/shweta-about-image.png"
-              alt="Shweta Jadhav Portrait"
-            />
+          
+          {/* Creative Graphic Designer Artist Badge */}
+          <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-[#c9a96e] p-2 mt-2 mb-2 shadow-xl bg-gradient-to-br from-[#1b1c1c] to-[#303030] flex items-center justify-center text-[#c9a96e] group hover:scale-105 transition-transform">
+            <div className="w-full h-full rounded-full border border-dashed border-[#c9a96e]/50 flex flex-col items-center justify-center p-2 text-center">
+              <span className="text-2xl md:text-3xl font-serif font-bold tracking-wider text-[#c9a96e]">SJ</span>
+              <span className="text-[9px] uppercase tracking-widest text-white/70 mt-0.5">Design Studio</span>
+            </div>
           </div>
           <p className="text-lg text-[#5f5e59] leading-relaxed font-light">
             With years of professional design experience navigating art and strategy, I specialize in translating brand essence into visual masterpieces. Based in Pune, India, my design approach blends modern minimalism with refined details, ensuring every project—from logo branding to large-scale expo graphics—performs flawlessly.
