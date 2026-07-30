@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import LayoutWrapper from "@/components/LayoutWrapper";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Shweta Jadhav | Graphic Designer & Visual Storyteller",
@@ -22,9 +23,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <LayoutWrapper>
-          {children}
-        </LayoutWrapper>
+        <Navbar />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );
