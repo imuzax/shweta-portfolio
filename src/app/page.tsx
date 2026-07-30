@@ -319,27 +319,32 @@ export default function Home() {
   );
 }
 
-// ─── PURE LUXURY 3D GRAPHIC DESIGNER STUDIO WATCH (Experience Dial & Digital Clock Below) ───
+// ─── PURE LUXURY 3D GRAPHIC DESIGNER STUDIO WATCH (Automatic Sweep & Clean Digital Time Below) ───
 function GraphicDesigner3DWatch() {
   const [time, setTime] = useState<Date | null>(null);
+  const [ms, setMs] = useState<number>(0);
 
-  // Real-time ticking clock update
+  // 60FPS Continuous Automatic Watch Sweep Timer
   useEffect(() => {
-    setTime(new Date());
-    const timer = setInterval(() => {
-      setTime(new Date());
-    }, 1000);
-    return () => clearInterval(timer);
+    let animFrameId: number;
+    const updateTime = () => {
+      const now = new Date();
+      setTime(now);
+      setMs(now.getMilliseconds());
+      animFrameId = requestAnimationFrame(updateTime);
+    };
+    animFrameId = requestAnimationFrame(updateTime);
+    return () => cancelAnimationFrame(animFrameId);
   }, []);
 
-  // Clock Hand Angle Calculations
+  // Clock Hand Angle Calculations (Automatic mechanical watch sweep second hand!)
   const hours = time ? time.getHours() : 0;
   const minutes = time ? time.getMinutes() : 0;
   const seconds = time ? time.getSeconds() : 0;
 
   const hourAngle = (hours % 12 + minutes / 60) * 30;
   const minuteAngle = (minutes + seconds / 60) * 6;
-  const secondAngle = seconds * 6;
+  const secondAngle = (seconds + ms / 1000) * 6; // Continuous smooth 60fps automatic watch sweep!
 
   // Format digital string for clock BELOW the watch
   const digitalTimeStr = time
@@ -351,13 +356,13 @@ function GraphicDesigner3DWatch() {
     : "31 JUL 2026";
 
   return (
-    <div className="relative h-[480px] sm:h-[520px] md:h-[560px] w-full mt-8 lg:mt-0 flex flex-col items-center justify-between">
+    <div className="relative h-[440px] sm:h-[480px] md:h-[510px] w-full mt-4 lg:mt-0 flex flex-col items-center justify-center space-y-3">
       
       {/* Background Subtle Radial Glow */}
       <div className="absolute inset-0 bg-gradient-to-tr from-[#c9a96e]/15 via-transparent to-[#745a27]/10 rounded-full blur-3xl pointer-events-none" />
 
       {/* Main 3D Watch Face */}
-      <div className="relative w-64 h-64 sm:w-76 sm:h-76 md:w-88 md:h-88 rounded-full border-8 border-[#c9a96e] bg-[#111111] shadow-[0_25px_60px_rgba(201,169,110,0.3)] flex items-center justify-center p-3">
+      <div className="relative w-64 h-64 sm:w-76 sm:h-76 md:w-84 md:h-84 rounded-full border-8 border-[#c9a96e] bg-[#111111] shadow-[0_25px_60px_rgba(201,169,110,0.3)] flex items-center justify-center p-3">
         
         {/* Outer Watch Bezel Angle Graduation Lines */}
         <div className="absolute inset-2 rounded-full border border-white/10 flex items-center justify-center pointer-events-none">
@@ -413,7 +418,7 @@ function GraphicDesigner3DWatch() {
               EXPERIENCE TIMER
             </span>
             <span className="text-xs sm:text-sm font-serif font-extrabold text-white block mt-0.5">
-              3 Yrs 2 Mos <span className="text-amber-400 font-mono text-[11px] animate-pulse">({seconds}s)</span>
+              3 Yrs 2 Mos <span className="text-amber-400 font-mono text-[11px] font-bold">({seconds}s)</span>
             </span>
           </div>
 
@@ -433,7 +438,7 @@ function GraphicDesigner3DWatch() {
             <div className="w-1 h-24 sm:h-28 bg-gradient-to-t from-white to-white rounded-full shadow-lg -translate-y-12 sm:-translate-y-14 border border-black/40" />
           </div>
 
-          {/* LIVE SECOND HAND */}
+          {/* LIVE AUTOMATIC SWEEP SECOND HAND */}
           <div
             className="absolute w-full h-full flex justify-center items-center pointer-events-none"
             style={{ transform: `rotate(${secondAngle}deg)` }}
@@ -449,18 +454,18 @@ function GraphicDesigner3DWatch() {
 
       </div>
 
-      {/* REAL-TIME DIGITAL CLOCK DISPLAY (BELOW THE WATCH) */}
-      <div className="w-full max-w-xs bg-white/90 backdrop-blur-md p-3 rounded-2xl border border-[#c9a96e]/30 shadow-lg text-center mt-3">
-        <div className="flex items-center justify-center gap-2 mb-1">
+      {/* CLEAN BORDERLESS DIGITAL TIME DISPLAY (BELOW THE WATCH, MOVED UP & NO CONTAINER) */}
+      <div className="w-full text-center space-y-0.5 z-10 pt-1">
+        <div className="flex items-center justify-center gap-1.5">
           <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
           <span className="text-[10px] font-mono uppercase tracking-widest text-[#745a27] font-bold">
             LIVE CURRENT LOCAL TIME
           </span>
         </div>
-        <div className="text-base sm:text-lg font-mono font-extrabold text-[#1b1c1c]">
+        <div className="text-xl sm:text-2xl font-mono font-extrabold text-[#1b1c1c] tracking-wider">
           {digitalTimeStr}
         </div>
-        <div className="text-[10px] font-mono text-[#5f5e59] uppercase tracking-wider mt-0.5">
+        <div className="text-[10px] font-mono text-[#5f5e59] uppercase tracking-widest">
           {dateStr} • PUNE STUDIO
         </div>
       </div>
