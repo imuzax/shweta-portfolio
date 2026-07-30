@@ -1,26 +1,43 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
 
-// Dummy data based on the old portfolio structure
-const projects = [
-  { id: 1, title: "Slack Brand Refresh", category: "Branding", image: "/images/portfolio/slack.jpg" },
-  { id: 2, title: "Minimalist UI Kit", category: "UI/UX", image: "/images/portfolio/ui-kit.jpg" },
-  { id: 3, title: "Abstract Vectors", category: "Illustration", image: "/images/portfolio/flat1.jpg" },
-  { id: 4, title: "Coffee Packaging", category: "Packaging", image: "/images/portfolio/pack1.jpg" },
-  { id: 5, title: "Tech Startup Logo", category: "Logo", image: "/images/portfolio/logo1.jpg" },
-  { id: 6, title: "Social Media Campaign", category: "Social Media", image: "/images/portfolio/social1.jpg" },
-  { id: 7, title: "Fashion Lookbook", category: "Print", image: "/images/portfolio/print1.jpg" },
-  { id: 8, title: "Organic Skincare", category: "Branding", image: "/images/portfolio/brand2.jpg" },
+// Dummy data based on the old portfolio structure (Fallback)
+const fallbackProjects = [
+  { id: "1", title: "Slack Brand Refresh", category: "Branding", heroImage: "/images/portfolio/slack.jpg" },
+  { id: "2", title: "Minimalist UI Kit", category: "UI/UX", heroImage: "/images/portfolio/ui-kit.jpg" },
+  { id: "3", title: "Abstract Vectors", category: "Illustration", heroImage: "/images/portfolio/flat1.jpg" },
+  { id: "4", title: "Coffee Packaging", category: "Packaging", heroImage: "/images/portfolio/pack1.jpg" },
+  { id: "5", title: "Tech Startup Logo", category: "Logo", heroImage: "/images/portfolio/logo1.jpg" },
+  { id: "6", title: "Social Media Campaign", category: "Social Media", heroImage: "/images/portfolio/social1.jpg" },
+  { id: "7", title: "Fashion Lookbook", category: "Print", heroImage: "/images/portfolio/print1.jpg" },
+  { id: "8", title: "Organic Skincare", category: "Branding", heroImage: "/images/portfolio/brand2.jpg" },
 ];
 
 const categories = ["All", "Branding", "UI/UX", "Illustration", "Logo", "Packaging", "Print", "Social Media"];
 
 export default function Work() {
   const [filter, setFilter] = useState("All");
+  const [projects, setProjects] = useState<any[]>(fallbackProjects);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("/api/projects")
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.success && res.data && res.data.length > 0) {
+          setProjects(res.data);
+        }
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+      });
+  }, []);
 
   const filteredProjects = filter === "All" 
     ? projects 

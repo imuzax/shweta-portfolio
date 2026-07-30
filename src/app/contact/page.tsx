@@ -7,13 +7,34 @@ import { useState } from "react";
 export default function Contact() {
   const [status, setStatus] = useState<"idle" | "sending" | "success">("idle");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("sending");
-    // Simulate sending
-    setTimeout(() => {
-      setStatus("success");
-    }, 1500);
+    
+    try {
+      const formData = new FormData(e.target as HTMLFormElement);
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.get("name"),
+          email: formData.get("email"),
+          message: formData.get("message"),
+        }),
+      });
+
+      if (res.ok) {
+        setStatus("success");
+        (e.target as HTMLFormElement).reset();
+      } else {
+        setStatus("idle");
+        alert("Failed to send message. Please try again.");
+      }
+    } catch (err) {
+      console.error(err);
+      setStatus("idle");
+      alert("An error occurred.");
+    }
   };
 
   return (
@@ -64,6 +85,7 @@ export default function Contact() {
                   <input 
                     type="text" 
                     id="name" 
+                    name="name"
                     required
                     className="w-full px-4 py-3 bg-[var(--ivory)] border border-transparent focus:border-[var(--gold)] rounded-md outline-none transition-colors text-sm"
                     placeholder="Jane Doe"
@@ -73,7 +95,8 @@ export default function Contact() {
                   <label htmlFor="email" className="block text-xs font-bold text-[var(--text-muted)] uppercase tracking-wider mb-2">Mail Address</label>
                   <input 
                     type="email" 
-                    id="email" 
+                    id="email"
+                    name="email" 
                     required
                     className="w-full px-4 py-3 bg-[var(--ivory)] border border-transparent focus:border-[var(--gold)] rounded-md outline-none transition-colors text-sm"
                     placeholder="jane@example.com"
@@ -83,6 +106,7 @@ export default function Contact() {
                   <label htmlFor="message" className="block text-xs font-bold text-[var(--text-muted)] uppercase tracking-wider mb-2">Your Message</label>
                   <textarea 
                     id="message" 
+                    name="message"
                     required
                     rows={5}
                     className="w-full px-4 py-3 bg-[var(--ivory)] border border-transparent focus:border-[var(--gold)] rounded-md outline-none transition-colors text-sm resize-none"
