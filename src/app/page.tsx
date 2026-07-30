@@ -58,16 +58,38 @@ export default function Home() {
           <p className="text-lg text-[#5f5e59] leading-relaxed font-light">
             With years of professional design experience navigating art and strategy, I specialize in translating brand essence into visual masterpieces. Based in Pune, India, my design approach blends modern minimalism with refined details, ensuring every project—from logo branding to large-scale expo graphics—performs flawlessly.
           </p>
-          <div className="w-full pt-12 border-t border-[#e4e2e1] mt-8">
-            <p className="text-xs text-[#5f5e59] mb-6 uppercase tracking-wider font-medium">
-              Featured Design Specializations
+          <div className="w-full pt-12 border-t border-[#e4e2e1] mt-8 overflow-hidden">
+            <p className="text-xs text-[#745a27] mb-6 uppercase tracking-[0.25em] font-semibold">
+              FEATURED CLIENT LOGOS & BRAND COLLABORATIONS
             </p>
-            <div className="flex flex-wrap justify-center gap-6 md:gap-12 text-sm md:text-base font-serif font-bold text-[#745a27]">
-              <span className="px-4 py-2 bg-[#f6f3f2] rounded-full border border-[#c9a96e]/20">Logo Design</span>
-              <span className="px-4 py-2 bg-[#f6f3f2] rounded-full border border-[#c9a96e]/20">Expo Invites</span>
-              <span className="px-4 py-2 bg-[#f6f3f2] rounded-full border border-[#c9a96e]/20">Standee Design</span>
-              <span className="px-4 py-2 bg-[#f6f3f2] rounded-full border border-[#c9a96e]/20">Campaign Banners</span>
-              <span className="px-4 py-2 bg-[#f6f3f2] rounded-full border border-[#c9a96e]/20">News Paper Ads</span>
+            {/* Advanced Infinite Marquee Tag for Dummy Brand Logos */}
+            <div className="relative overflow-hidden w-full py-4">
+              <div className="animate-marquee flex items-center gap-12 whitespace-nowrap">
+                {[
+                  { name: "Aura Luxury", cat: "Logo Design" },
+                  { name: "Pari Enterprises", cat: "Expo Invite" },
+                  { name: "Skyline Media", cat: "Standee Banner" },
+                  { name: "Maison Journal", cat: "Campaign Banner" },
+                  { name: "Nexus Events", cat: "News Paper Ad" },
+                  { name: "Lumina Studio", cat: "Branding" },
+                  { name: "Aura Luxury", cat: "Logo Design" },
+                  { name: "Pari Enterprises", cat: "Expo Invite" },
+                  { name: "Skyline Media", cat: "Standee Banner" },
+                  { name: "Maison Journal", cat: "Campaign Banner" },
+                  { name: "Nexus Events", cat: "News Paper Ad" },
+                  { name: "Lumina Studio", cat: "Branding" }
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-3 px-6 py-3 rounded-xl bg-white border border-[#c9a96e]/30 shadow-sm hover:border-[#745a27] transition-all cursor-pointer">
+                    <div className="w-8 h-8 rounded-full bg-[#c9a96e] flex items-center justify-center text-[#543d0c] font-serif font-bold text-xs">
+                      {item.name[0]}
+                    </div>
+                    <div className="text-left">
+                      <span className="block text-xs font-serif font-bold text-[#1b1c1c]">{item.name}</span>
+                      <span className="block text-[10px] text-[#5f5e59]">{item.cat}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -94,7 +116,7 @@ export default function Home() {
                 src="/images/portfolio/2019-01_BrandRefresh_slack-brand-refresh_header-1.png"
                 alt="Brand Identity & Refresh"
               />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[rgba(27,28,28,0.95)] via-[rgba(27,28,28,0.4)] to-transparent opacity-0 group-hover:opacity-100 transition-colors duration-300" />
             </div>
             <div className="mt-4 px-2">
               <h4 className="text-2xl font-serif font-bold text-[#1b1c1c]">Brand Identity & Refresh</h4>
