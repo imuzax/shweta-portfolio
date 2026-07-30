@@ -384,10 +384,10 @@ function GraphicDesigner3DWatch() {
           <div className="absolute w-44 h-44 sm:w-52 sm:h-52 rounded-full border border-dashed border-white/15 animate-[spin_40s_linear_infinite]" />
           <div className="absolute w-28 h-28 sm:w-36 sm:h-36 rounded-full border border-white/10" />
 
-          {/* 12 O'CLOCK: SHWETA STUDIO BRAND MARK */}
+          {/* 12 O'CLOCK: SHWETA JADHAV BRAND MARK */}
           <div className="absolute top-5 flex flex-col items-center">
             <span className="text-[10px] font-serif font-extrabold tracking-widest text-[#c9a96e] uppercase">
-              SHWETA STUDIO
+              SHWETA JADHAV
             </span>
           </div>
 

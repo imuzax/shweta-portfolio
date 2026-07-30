@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import CustomMouseCursor from "@/components/CustomMouseCursor";
 
 export const metadata: Metadata = {
   title: "Shweta Jadhav | Graphic Designer & Visual Storyteller",
@@ -23,6 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <CustomMouseCursor />
         <Navbar />
         <main>{children}</main>
         <Footer />
