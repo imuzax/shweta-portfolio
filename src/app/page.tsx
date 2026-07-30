@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { Star, MapPin, Mail, Link as LinkIcon, Diamond, Layout, Palette, Megaphone } from "lucide-react";
 
@@ -30,103 +32,8 @@ export default function Home() {
             </div>
           </div>
 
-          {/* ─── Creative Graphic Designer Studio Monitor Mockup ─── */}
-          <div className="relative h-[500px] w-full hidden lg:block">
-            <div className="glass-panel soft-shadow absolute inset-0 rounded-2xl overflow-hidden border border-[#c9a96e]/30 bg-[#1b1c1c] text-white flex flex-col shadow-2xl">
-              
-              {/* Studio Window Header */}
-              <div className="h-10 bg-[#252525] border-b border-white/10 px-4 flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
-                  <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
-                  <div className="w-3 h-3 rounded-full bg-[#27c93f]" />
-                </div>
-                <div className="text-[11px] font-mono text-white/50 tracking-wider flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#c9a96e] animate-ping" />
-                  <span>Adobe Illustrator • Shweta_Brand_Identity.ai (400%)</span>
-                </div>
-                <div className="text-[10px] bg-[#c9a96e]/20 text-[#c9a96e] px-2 py-0.5 rounded font-mono">
-                  Vector Mode
-                </div>
-              </div>
-
-              {/* Design Canvas Workspace Body */}
-              <div className="flex-1 relative bg-[#121212] overflow-hidden flex items-center justify-center p-6">
-                
-                {/* Background Grid Pattern */}
-                <div 
-                  className="absolute inset-0 opacity-20 pointer-events-none"
-                  style={{
-                    backgroundImage: "radial-gradient(#c9a96e 1px, transparent 1px)",
-                    backgroundSize: "24px 24px"
-                  }}
-                />
-
-                {/* Left Tool Bar */}
-                <div className="absolute left-4 top-1/2 -translate-y-1/2 bg-[#252525]/90 backdrop-blur-md p-2 rounded-xl border border-white/10 flex flex-col gap-3 text-white/70 shadow-lg z-20">
-                  <div className="p-2 rounded-lg bg-[#c9a96e] text-[#543d0c] shadow-md">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
-                  </div>
-                  <div className="p-2 rounded-lg hover:bg-white/10 cursor-pointer">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-                  </div>
-                  <div className="p-2 rounded-lg hover:bg-white/10 cursor-pointer">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-23" /></svg>
-                  </div>
-                  <div className="p-2 rounded-lg hover:bg-white/10 cursor-pointer">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 4a2 2 0 114 0v1a2 2 0 01-2 2h-1.586l1.293 1.293a1 1 0 01-1.414 1.414L10 8.414V10a2 2 0 01-2 2H7a2 2 0 01-2-2V9a2 2 0 012-2h1.586L7.293 5.707a1 1 0 011.414-1.414L10 5.586V4z" /></svg>
-                  </div>
-                </div>
-
-                {/* Animated Creative Graphic Vector Art Element */}
-                <div className="relative z-10 w-full h-full flex items-center justify-center">
-                  
-                  {/* Golden Ratio Guide Circles */}
-                  <div className="absolute w-72 h-72 rounded-full border border-[#c9a96e]/30 animate-[spin_20s_linear_infinite]" />
-                  <div className="absolute w-52 h-52 rounded-full border border-dashed border-[#c9a96e]/40 animate-[spin_15s_linear_infinite_reverse]" />
-                  <div className="absolute w-36 h-36 rounded-full border border-[#c9a96e]/50" />
-
-                  {/* Dynamic Glowing Brand Symbol SVG */}
-                  <svg className="w-48 h-48 text-[#c9a96e] drop-shadow-[0_0_25px_rgba(201,169,110,0.5)]" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M100 20 L160 60 L160 140 L100 180 L40 140 L40 60 Z" stroke="#c9a96e" strokeWidth="2" strokeDasharray="6 6" />
-                    <path d="M100 35 L145 65 L145 135 L100 165 L55 135 L55 65 Z" stroke="#e4c285" strokeWidth="3" />
-                    <circle cx="100" cy="100" r="30" stroke="#c9a96e" strokeWidth="2" fill="rgba(201,169,110,0.15)" />
-                    <path d="M70 100 Q100 50 130 100 Q100 150 70 100Z" fill="url(#goldGradient)" />
-                    <defs>
-                      <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#c9a96e" />
-                        <stop offset="100%" stopColor="#745a27" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-
-                  {/* Floating Pen Tool Anchor Handle */}
-                  <div className="absolute top-1/4 right-1/4 bg-[#c9a96e] text-[#543d0c] px-3 py-1 rounded-full text-[10px] font-bold shadow-lg flex items-center gap-1.5 animate-bounce">
-                    <span className="w-2 h-2 rounded-full bg-[#543d0c]" />
-                    <span>Anchor Point (Bezier)</span>
-                  </div>
-
-                  {/* Floating Color Swatches */}
-                  <div className="absolute bottom-6 right-6 bg-[#252525]/90 backdrop-blur-md p-3 rounded-xl border border-white/10 flex gap-2 shadow-xl">
-                    <div className="w-6 h-6 rounded-md bg-[#fcf9f8] border border-white/20" title="Ivory" />
-                    <div className="w-6 h-6 rounded-md bg-[#c9a96e]" title="Champagne Gold" />
-                    <div className="w-6 h-6 rounded-md bg-[#745a27]" title="Gold Dark" />
-                    <div className="w-6 h-6 rounded-md bg-[#1b1c1c]" title="Charcoal" />
-                  </div>
-
-                </div>
-
-              </div>
-
-              {/* Studio Status Bar */}
-              <div className="h-8 bg-[#252525] border-t border-white/10 px-4 flex items-center justify-between text-[10px] text-white/60">
-                <span>Layers: 12 Active</span>
-                <span className="text-[#c9a96e]">✦ Precision Graphic Engine Active</span>
-                <span>Render: 60 FPS</span>
-              </div>
-
-            </div>
-          </div>
+          {/* ─── INTERACTIVE LUXURY GRAPHIC DESIGN ART STUDIO CANVAS ─── */}
+          <HeroGraphicStudio />
         </div>
       </section>
 
@@ -408,6 +315,258 @@ export default function Home() {
         </div>
       </section>
 
+    </div>
+  );
+}
+
+// ─── INTERACTIVE WARM LUXURY GRAPHIC DESIGN ART STUDIO CANVAS ───
+function HeroGraphicStudio() {
+  const [activePreset, setActivePreset] = useState<"logo" | "expo" | "typo">("logo");
+  const [activeTheme, setActiveTheme] = useState<"gold" | "rose" | "emerald">("gold");
+  const [activeTool, setActiveTool] = useState<"pen" | "layers" | "grid">("pen");
+
+  // Color theme definitions
+  const themes = {
+    gold: {
+      bg: "bg-[#fcf9f8]",
+      border: "border-[#c9a96e]/40",
+      primary: "#c9a96e",
+      secondary: "#745a27",
+      dark: "#1b1c1c",
+      accent: "#e4c285",
+      badge: "bg-[#c9a96e] text-[#543d0c]"
+    },
+    rose: {
+      bg: "bg-[#fdf8f8]",
+      border: "border-[#e0a9a9]/40",
+      primary: "#d48b8b",
+      secondary: "#8c4a4a",
+      dark: "#2b1c1c",
+      accent: "#f5c6c6",
+      badge: "bg-[#d48b8b] text-white"
+    },
+    emerald: {
+      bg: "bg-[#f6fbf8]",
+      border: "border-[#96c4a8]/40",
+      primary: "#6fa885",
+      secondary: "#386b4d",
+      dark: "#16281e",
+      accent: "#b2dec2",
+      badge: "bg-[#6fa885] text-white"
+    }
+  };
+
+  const currentTheme = themes[activeTheme];
+
+  return (
+    <div className="relative h-[520px] w-full hidden lg:block">
+      <div className={`glass-panel soft-shadow absolute inset-0 rounded-2xl overflow-hidden border ${currentTheme.border} bg-white flex flex-col shadow-2xl transition-colors duration-500`}>
+        
+        {/* Studio Canvas Header Toolbar */}
+        <div className="h-12 bg-[#f6f3f2] border-b border-[#e4e2e1] px-4 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#c9a96e]" />
+            <span className="text-xs font-serif font-bold text-[#1b1c1c]">SJ Design Studio</span>
+            <span className="text-[10px] text-[#5f5e59] bg-white px-2 py-0.5 rounded-full border border-[#e4e2e1]">
+              Live Interactive Studio
+            </span>
+          </div>
+
+          {/* Interactive Preset Buttons (Clickable!) */}
+          <div className="flex items-center gap-1 bg-white p-1 rounded-full border border-[#e4e2e1] shadow-sm">
+            <button
+              onClick={() => setActivePreset("logo")}
+              className={`px-3 py-1 rounded-full text-[11px] font-semibold transition-all ${
+                activePreset === "logo" ? "bg-[#c9a96e] text-[#543d0c] shadow" : "text-[#5f5e59] hover:text-[#1b1c1c]"
+              }`}
+            >
+              Logo Crest
+            </button>
+            <button
+              onClick={() => setActivePreset("expo")}
+              className={`px-3 py-1 rounded-full text-[11px] font-semibold transition-all ${
+                activePreset === "expo" ? "bg-[#c9a96e] text-[#543d0c] shadow" : "text-[#5f5e59] hover:text-[#1b1c1c]"
+              }`}
+            >
+              Expo Banner
+            </button>
+            <button
+              onClick={() => setActivePreset("typo")}
+              className={`px-3 py-1 rounded-full text-[11px] font-semibold transition-all ${
+                activePreset === "typo" ? "bg-[#c9a96e] text-[#543d0c] shadow" : "text-[#5f5e59] hover:text-[#1b1c1c]"
+              }`}
+            >
+              Typography
+            </button>
+          </div>
+
+          {/* Color Palette Switcher (Clickable!) */}
+          <div className="flex items-center gap-1.5">
+            <span className="text-[10px] uppercase tracking-wider text-[#5f5e59] font-medium mr-1">Palette:</span>
+            <button
+              onClick={() => setActiveTheme("gold")}
+              className={`w-5 h-5 rounded-full bg-[#c9a96e] border-2 ${activeTheme === "gold" ? "border-[#1b1c1c] scale-110" : "border-transparent"}`}
+              title="Champagne Gold"
+            />
+            <button
+              onClick={() => setActiveTheme("rose")}
+              className={`w-5 h-5 rounded-full bg-[#d48b8b] border-2 ${activeTheme === "rose" ? "border-[#1b1c1c] scale-110" : "border-transparent"}`}
+              title="Rose Velvet"
+            />
+            <button
+              onClick={() => setActiveTheme("emerald")}
+              className={`w-5 h-5 rounded-full bg-[#6fa885] border-2 ${activeTheme === "emerald" ? "border-[#1b1c1c] scale-110" : "border-transparent"}`}
+              title="Royal Emerald"
+            />
+          </div>
+        </div>
+
+        {/* Canvas Body */}
+        <div className={`flex-1 relative ${currentTheme.bg} overflow-hidden flex items-center justify-center p-6 transition-colors duration-500`}>
+          
+          {/* Subtle Grid Lines (Toggled by Grid Tool) */}
+          {activeTool === "grid" && (
+            <div 
+              className="absolute inset-0 opacity-20 pointer-events-none transition-opacity duration-300"
+              style={{
+                backgroundImage: `radial-gradient(${currentTheme.primary} 1.5px, transparent 1.5px)`,
+                backgroundSize: "20px 20px"
+              }}
+            />
+          )}
+
+          {/* Left Interactive Tool Dock */}
+          <div className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-md p-2 rounded-xl border border-[#e4e2e1] flex flex-col gap-2 shadow-lg z-20">
+            <button
+              onClick={() => setActiveTool("pen")}
+              className={`p-2 rounded-lg transition-all ${
+                activeTool === "pen" ? currentTheme.badge : "hover:bg-[#f6f3f2] text-[#5f5e59]"
+              }`}
+              title="Bezier Vector Tool"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
+            </button>
+            <button
+              onClick={() => setActiveTool("grid")}
+              className={`p-2 rounded-lg transition-all ${
+                activeTool === "grid" ? currentTheme.badge : "hover:bg-[#f6f3f2] text-[#5f5e59]"
+              }`}
+              title="Golden Ratio Grid Overlay"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+            </button>
+            <button
+              onClick={() => setActiveTool("layers")}
+              className={`p-2 rounded-lg transition-all ${
+                activeTool === "layers" ? currentTheme.badge : "hover:bg-[#f6f3f2] text-[#5f5e59]"
+              }`}
+              title="Layer Inspector Panel"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
+            </button>
+          </div>
+
+          {/* Main Vector Art Canvas */}
+          <div className="relative z-10 w-full h-full flex items-center justify-center">
+            
+            {/* Animated Golden Compass Rings */}
+            <div className="absolute w-72 h-72 rounded-full border border-dashed border-opacity-30 animate-[spin_25s_linear_infinite]" style={{ borderColor: currentTheme.primary }} />
+            <div className="absolute w-52 h-52 rounded-full border border-opacity-40" style={{ borderColor: currentTheme.primary }} />
+
+            {/* ARTWORK PRESET 1: LOGO CREST */}
+            {activePreset === "logo" && (
+              <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="flex flex-col items-center">
+                <svg className="w-48 h-48 drop-shadow-xl" viewBox="0 0 200 200" fill="none">
+                  <path d="M100 20 L160 60 L160 140 L100 180 L40 140 L40 60 Z" stroke={currentTheme.primary} strokeWidth="2" strokeDasharray="4 4" />
+                  <circle cx="100" cy="100" r="45" stroke={currentTheme.secondary} strokeWidth="3" fill="rgba(201,169,110,0.08)" />
+                  <path d="M75 100 C75 70, 125 70, 125 100 C125 130, 75 130, 75 100" stroke={currentTheme.primary} strokeWidth="4" />
+                  <circle cx="100" cy="100" r="8" fill={currentTheme.secondary} />
+                </svg>
+                <span className="text-xs font-serif font-bold uppercase tracking-[0.2em] mt-2" style={{ color: currentTheme.dark }}>
+                  Shweta Identity Crest
+                </span>
+              </motion.div>
+            )}
+
+            {/* ARTWORK PRESET 2: EXPO STANDEE */}
+            {activePreset === "expo" && (
+              <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="flex flex-col items-center">
+                <div className="w-44 h-64 rounded-xl bg-white border border-[#c9a96e]/30 shadow-2xl p-4 flex flex-col justify-between items-center text-center">
+                  <div className="w-8 h-8 rounded-full border flex items-center justify-center font-serif font-bold text-xs" style={{ borderColor: currentTheme.primary, color: currentTheme.secondary }}>
+                    EX
+                  </div>
+                  <div className="space-y-1">
+                    <span className="text-xs font-serif font-bold block" style={{ color: currentTheme.dark }}>
+                      GRAND EXPO 2026
+                    </span>
+                    <span className="text-[9px] uppercase tracking-wider block text-[#5f5e59]">
+                      Luxury Standee Graphic
+                    </span>
+                  </div>
+                  <div className="w-full h-1.5 rounded-full" style={{ backgroundColor: currentTheme.primary }} />
+                </div>
+              </motion.div>
+            )}
+
+            {/* ARTWORK PRESET 3: TYPOGRAPHY */}
+            {activePreset === "typo" && (
+              <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="text-center space-y-2">
+                <span className="text-5xl md:text-6xl font-serif font-bold block italic" style={{ color: currentTheme.secondary }}>
+                  Elegance
+                </span>
+                <span className="text-xs uppercase tracking-[0.3em] font-semibold block text-[#5f5e59]">
+                  Minimal & Timeless Aesthetics
+                </span>
+              </motion.div>
+            )}
+
+            {/* Interactive Pen Tool Handle (Toggled by Pen Tool) */}
+            {activeTool === "pen" && (
+              <div className="absolute top-1/4 right-1/4 bg-[#c9a96e] text-[#543d0c] px-3 py-1 rounded-full text-[10px] font-bold shadow-lg flex items-center gap-1.5 animate-bounce">
+                <span className="w-2 h-2 rounded-full bg-[#543d0c]" />
+                <span>Bezier Vector Active</span>
+              </div>
+            )}
+
+            {/* Layer Inspector Panel (Toggled by Layer Tool) */}
+            {activeTool === "layers" && (
+              <div className="absolute right-4 top-4 bg-white/95 backdrop-blur-md p-3 rounded-xl border border-[#e4e2e1] shadow-xl text-xs space-y-2 w-44 z-20">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#745a27] block border-b pb-1">
+                  Active Artwork Layers
+                </span>
+                <div className="space-y-1 text-[11px] text-[#1b1c1c]">
+                  <div className="flex justify-between items-center bg-[#f6f3f2] p-1.5 rounded">
+                    <span>✦ Logo Crest Vector</span>
+                    <span className="text-[9px] text-[#c9a96e]">Visible</span>
+                  </div>
+                  <div className="flex justify-between items-center p-1.5">
+                    <span>✦ Golden Compass</span>
+                    <span className="text-[9px] text-[#5f5e59]">Active</span>
+                  </div>
+                  <div className="flex justify-between items-center p-1.5">
+                    <span>✦ Typography Layer</span>
+                    <span className="text-[9px] text-[#5f5e59]">Locked</span>
+                  </div>
+                </div>
+              </div>
+            )}
+
+          </div>
+
+        </div>
+
+        {/* Studio Canvas Footer */}
+        <div className="h-9 bg-[#f6f3f2] border-t border-[#e4e2e1] px-4 flex items-center justify-between text-[11px] text-[#5f5e59]">
+          <span className="flex items-center gap-1 font-medium">
+            <span className="w-2 h-2 rounded-full bg-emerald-500" />
+            Interactive Studio Mode: Active
+          </span>
+          <span className="text-[#745a27] font-semibold">
+            Click Preset Tabs & Color Swatches to Customize Canvas Live
+          </span>
+        </div>
+
+      </div>
     </div>
   );
 }
