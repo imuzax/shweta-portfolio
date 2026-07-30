@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { Mail, Phone, MapPin, Send, CheckCircle, ChevronDown } from "lucide-react";
 
@@ -90,81 +90,144 @@ export default function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
-                  <input 
-                    type="email" 
-                    id="email" 
-                    required
-                    className="w-full px-4 py-3 bg-[var(--ivory)] border border-transparent focus:border-[var(--gold)] rounded-md outline-none transition-colors text-sm"
-                    placeholder="jane@example.com"
-                  />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)] mb-2">Your Name</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. Rahul Sharma"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      className="w-full bg-[var(--ivory)] border border-[rgba(201,169,110,0.3)] rounded-lg px-4 py-3 text-sm focus:border-[var(--gold)] focus:outline-none"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)] mb-2">Email Address</label>
+                    <input
+                      type="email"
+                      required
+                      placeholder="name@company.com"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      className="w-full bg-[var(--ivory)] border border-[rgba(201,169,110,0.3)] rounded-lg px-4 py-3 text-sm focus:border-[var(--gold)] focus:outline-none"
+                    />
+                  </div>
                 </div>
+
                 <div>
-                  <label htmlFor="message" className="block text-xs font-bold text-[var(--text-muted)] uppercase tracking-wider mb-2">Your Message</label>
-                  <textarea 
-                    id="message" 
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)] mb-2">Project Type</label>
+                  <select
+                    value={formData.projectType}
+                    onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
+                    className="w-full bg-[var(--ivory)] border border-[rgba(201,169,110,0.3)] rounded-lg px-4 py-3 text-sm focus:border-[var(--gold)] focus:outline-none"
+                  >
+                    <option value="">Select a Category</option>
+                    <option value="Logo Design">Logo Design</option>
+                    <option value="Expo Invite">Expo Invite</option>
+                    <option value="Standee Design">Standee Design</option>
+                    <option value="Banners">Banners & Flex</option>
+                    <option value="News Paper">News Paper Ad</option>
+                    <option value="Other">Other Inquiry</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)] mb-2">Message</label>
+                  <textarea
                     required
-                    rows={5}
-                    className="w-full px-4 py-3 bg-[var(--ivory)] border border-transparent focus:border-[var(--gold)] rounded-md outline-none transition-colors text-sm resize-none"
-                    placeholder="Tell me about your project..."
+                    rows={4}
+                    placeholder="Tell me about your project or design requirements..."
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    className="w-full bg-[var(--ivory)] border border-[rgba(201,169,110,0.3)] rounded-lg px-4 py-3 text-sm focus:border-[var(--gold)] focus:outline-none resize-none"
                   />
                 </div>
-                <button 
-                  type="submit" 
-                  disabled={status === "sending"}
-                  className="btn-primary w-full justify-center mt-2 disabled:opacity-70"
+
+                <button
+                  type="submit"
+                  disabled={status === "loading"}
+                  className="btn-primary w-full py-3.5 text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg"
                 >
-                  {status === "sending" ? "Sending..." : "Send Message"}
+                  {status === "loading" ? "Sending..." : <>Send Message <Send size={16} /></>}
                 </button>
               </form>
             )}
-          </motion.div>
+          </div>
 
-          {/* ─── Contact Info ─── */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-10"
-          >
-            <div>
-              <h3 className="text-3xl font-serif mb-6">Contact Information</h3>
-              <p className="text-[var(--charcoal-soft)] mb-8 leading-relaxed">
-                I am currently open for full-time roles and freelance projects. Feel free to contact me via email or phone.
-              </p>
-            </div>
-
-            <div className="space-y-6">
-              {[
-                { icon: <Mail className="text-[var(--gold)]" />, title: "Email", info: "Shwetanjadhav2018@gmail.com", href: "mailto:Shwetanjadhav2018@gmail.com" },
-                { icon: <Phone className="text-[var(--gold)]" />, title: "Phone", info: "+91 93070 81860", href: "tel:+919307081860" },
-                { icon: <MapPin className="text-[var(--gold)]" />, title: "Location", info: "Pune, Maharashtra, India", href: null }
-              ].map((item, idx) => (
-                <div key={idx} className="flex items-start gap-5 p-5 bg-white rounded-lg border border-[rgba(201,169,110,0.1)]">
-                  <div className="p-3 bg-[var(--ivory-deep)] rounded-full">
-                    {item.icon}
+          {/* Info Card */}
+          <div className="lg:col-span-5 space-y-8">
+            <div className="bg-white p-8 rounded-2xl border border-[rgba(201,169,110,0.3)] shadow-xl">
+              <h3 className="text-xl font-serif font-bold text-[var(--gold-dark)] mb-6">Contact Information</h3>
+              <div className="space-y-6">
+                
+                <a href="mailto:Shwetanjadhav2018@gmail.com" className="flex items-start gap-4 group">
+                  <div className="w-10 h-10 rounded-full bg-[var(--ivory-deep)] flex items-center justify-center text-[var(--gold-dark)] group-hover:bg-[var(--gold)] group-hover:text-white transition-colors">
+                    <Mail size={18} />
                   </div>
                   <div>
-                    <h4 className="text-sm uppercase tracking-wider font-bold text-[var(--charcoal)] mb-1">{item.title}</h4>
-                    {item.href ? (
-                      <a href={item.href} className="text-[var(--text-muted)] hover:text-[var(--gold-dark)] transition-colors">
-                        {item.info}
-                      </a>
-                    ) : (
-                      <span className="text-[var(--text-muted)]">{item.info}</span>
-                    )}
+                    <p className="text-xs uppercase tracking-wider text-[var(--text-muted)] font-semibold">Email</p>
+                    <p className="text-sm font-medium text-[var(--charcoal)]">Shwetanjadhav2018@gmail.com</p>
+                  </div>
+                </a>
+
+                <a href="tel:+919307081860" className="flex items-start gap-4 group">
+                  <div className="w-10 h-10 rounded-full bg-[var(--ivory-deep)] flex items-center justify-center text-[var(--gold-dark)] group-hover:bg-[var(--gold)] group-hover:text-white transition-colors">
+                    <Phone size={18} />
+                  </div>
+                  <div>
+                    <p className="text-xs uppercase tracking-wider text-[var(--text-muted)] font-semibold">Phone</p>
+                    <p className="text-sm font-medium text-[var(--charcoal)]">+91 93070 81860</p>
+                  </div>
+                </a>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-[var(--ivory-deep)] flex items-center justify-center text-[var(--gold-dark)]">
+                    <MapPin size={18} />
+                  </div>
+                  <div>
+                    <p className="text-xs uppercase tracking-wider text-[var(--text-muted)] font-semibold">Location</p>
+                    <p className="text-sm font-medium text-[var(--charcoal)]">Pune, Maharashtra, India</p>
                   </div>
                 </div>
-              ))}
-            </div>
-            
-            {/* Map Placeholder */}
-            <div className="w-full h-48 bg-[var(--ivory)] rounded-xl border border-[rgba(201,169,110,0.2)] overflow-hidden relative grayscale hover:grayscale-0 transition-all duration-500">
-               <div className="absolute inset-0 flex items-center justify-center text-[var(--text-muted)] text-sm uppercase tracking-widest font-semibold">
-                 Pune Map View
-               </div>
+
+              </div>
             </div>
 
-          </motion.div>
+            {/* Studio Map Image */}
+            <div className="rounded-2xl overflow-hidden shadow-lg border border-[rgba(201,169,110,0.3)] h-44">
+              <img
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2yXiNyGmO8_rXhs9NXggrRvEqXCLpV5pTLrNUHuaJJvWU10jFkByW9zj9a0TdCrAMVYIPO2nCvKWZKQXWV0b1D7ag8S-C0KZZErDgXK7kDB6U8RqqsWUACXY9QlbGobyWW8XS-fgb2E_DPVXm0TXnb4HLl4qlQypXXgpyvgcG2_RrxwPNP_oDy0JLs9i174o295T9Uh2VftnvWx77EKg1FZbkftlBM_dDec_IH_bDxUB8dQeF9Kk3"
+                alt="Pune Studio Map"
+                className="w-full h-full object-cover grayscale opacity-90"
+              />
+            </div>
+          </div>
+
+        </div>
+
+        {/* FAQ Section */}
+        <div className="bg-white p-8 md:p-12 rounded-2xl border border-[rgba(201,169,110,0.3)] shadow-xl">
+          <h2 className="text-2xl font-serif font-bold text-[var(--gold-dark)] mb-8 text-center">Frequently Asked Questions</h2>
+          <div className="space-y-4 max-w-3xl mx-auto">
+            {faqs.map((faq, idx) => (
+              <div key={idx} className="border border-[rgba(201,169,110,0.2)] rounded-xl overflow-hidden">
+                <button
+                  onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
+                  className="w-full p-5 text-left font-bold text-sm text-[var(--charcoal)] flex justify-between items-center bg-[var(--ivory)] hover:bg-[var(--ivory-deep)] transition-colors"
+                >
+                  <span>{faq.q}</span>
+                  <ChevronDown size={18} className={`transform transition-transform ${openFaq === idx ? "rotate-180 text-[var(--gold)]" : "text-[var(--text-muted)]"}`} />
+                </button>
+                {openFaq === idx && (
+                  <div className="p-5 text-xs text-[var(--charcoal-soft)] leading-relaxed border-t border-[rgba(201,169,110,0.15)] bg-white">
+                    {faq.a}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
 
       </div>
