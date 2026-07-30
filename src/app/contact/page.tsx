@@ -96,7 +96,7 @@ export default function Contact() {
                     <input
                       type="text"
                       required
-                      placeholder="e.g. Rahul Sharma"
+                      placeholder="e.g. Acme Brand Co. / Client"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       className="w-full bg-[var(--ivory)] border border-[rgba(201,169,110,0.3)] rounded-lg px-4 py-3 text-sm focus:border-[var(--gold)] focus:outline-none"
@@ -117,19 +117,19 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)] mb-2">Project Type</label>
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)] mb-2">Project Category</label>
                   <select
                     value={formData.projectType}
                     onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
-                    className="w-full bg-[var(--ivory)] border border-[rgba(201,169,110,0.3)] rounded-lg px-4 py-3 text-sm focus:border-[var(--gold)] focus:outline-none"
+                    className="w-full bg-[#fcfaf7] border border-[#c9a96e]/40 rounded-xl px-4 py-3.5 text-sm font-medium text-[#1b1c1c] focus:border-[#c9a96e] focus:ring-2 focus:ring-[#c9a96e]/20 focus:outline-none transition-all shadow-sm cursor-pointer"
                   >
-                    <option value="">Select a Category</option>
-                    <option value="Logo Design">Logo Design</option>
-                    <option value="Expo Invite">Expo Invite</option>
-                    <option value="Standee Design">Standee Design</option>
-                    <option value="Banners">Banners & Flex</option>
-                    <option value="News Paper">News Paper Ad</option>
-                    <option value="Other">Other Inquiry</option>
+                    <option value="">✦ Select Design Category ✦</option>
+                    <option value="Logo Design">Brand Identity & Logo Design</option>
+                    <option value="Brochure Design">Brochure & Print Layout</option>
+                    <option value="Standee Design">Standee & Expo Banner</option>
+                    <option value="Banners">Social Media & Campaign Banner</option>
+                    <option value="News Paper">News Paper & Magazine Ad</option>
+                    <option value="Other">Other Custom Inquiry</option>
                   </select>
                 </div>
 
@@ -188,18 +188,18 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-xs uppercase tracking-wider text-[var(--text-muted)] font-semibold">Location</p>
-                    <p className="text-sm font-medium text-[var(--charcoal)]">Pune, Maharashtra, India</p>
+                    <p className="text-sm font-medium text-[var(--charcoal)]">Bhekrai Nagar, Hadapsar, Pune, India</p>
                   </div>
                 </div>
 
               </div>
             </div>
 
-            {/* Real Interactive Google Maps Embed for Pune */}
+            {/* Real Interactive Google Maps Embed centered on Hadapsar / Bhekrai Nagar */}
             <div className="rounded-2xl overflow-hidden shadow-lg border border-[rgba(201,169,110,0.4)] h-56 relative">
               <iframe
-                title="Pune Maharashtra Location Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15131.932822453582!2d73.8567437!3d18.5204303!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf2e67461101%3A0x828d43bf9d9ee343!2sPune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                title="Bhekrai Nagar Hadapsar Pune Location Map"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15135.25301826048!2d73.9312154!3d18.4913214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2e9ffdd4c79db%3A0x6b77943d04f141bf!2sBhekrai%20Nagar%2C%20Hadapsar%2C%20Pune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
