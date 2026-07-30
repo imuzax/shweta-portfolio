@@ -48,8 +48,8 @@ export default function About() {
             <div className="absolute inset-0 bg-[var(--gold)] opacity-15 rounded-2xl -translate-x-4 translate-y-4" />
             <div className="relative z-10 rounded-2xl overflow-hidden shadow-xl border border-[rgba(201,169,110,0.3)] bg-white">
               <img
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVES86beZeajQ4Rq4mYys_SwUzlytYRXEEIpcK4Pv1kl-r4ylGwICSm0OVV371nrNM6R9bL6V9iCfpItKiEE8NanAOuVnIW7kqD0vab0MsTCbYw2kozIyehLjEiQhMrhiYP1QKncg1OnAl5c2zVRtXHafkyIDuCuBbQPJ89yPyFL23JqkN9UmgSAqAw775dsPh8NExiQrw_TAlJ__NO0uLbPSnk_VFcByYfaIdz411fwvXxCW_cYyo"
-                alt="Shweta Jadhav - Profile"
+                src="/images/home/shweta-working-about.png"
+                alt="Shweta Jadhav - Graphic Designer at Work"
                 className="w-full h-[540px] object-cover"
               />
             </div>

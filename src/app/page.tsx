@@ -305,7 +305,7 @@ export default function Home() {
               <div className="flex items-start gap-4 pt-4 border-t border-[#e4e2e1]">
                 <MapPin className="text-[#c9a96e] mt-1" size={20} />
                 <div>
-                  <p className="text-xs font-semibold uppercase text-[#1b1c1c]">Studio Location</p>
+                  <p className="text-xs font-semibold uppercase text-[#1b1c1c]">Remote Location</p>
                   <p className="text-sm text-[#5f5e59]">Pune, Maharashtra, India</p>
                 </div>
               </div>
@@ -469,7 +469,7 @@ function GraphicDesigner3DWatch() {
           {digitalTimeStr}
         </div>
         <div className="text-[10px] font-mono text-[#5f5e59] uppercase tracking-widest">
-          {dateStr} • PUNE STUDIO
+          {dateStr} • REMOTE LOCATION
         </div>
       </div>
 
