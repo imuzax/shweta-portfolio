@@ -384,41 +384,44 @@ function GraphicDesigner3DWatch() {
           <div className="absolute w-44 h-44 sm:w-52 sm:h-52 rounded-full border border-dashed border-white/15 animate-[spin_40s_linear_infinite]" />
           <div className="absolute w-28 h-28 sm:w-36 sm:h-36 rounded-full border border-white/10" />
 
-          {/* 12 O'CLOCK: DESIGN EXPERIENCE HEADER */}
-          <div className="absolute top-6 flex flex-col items-center">
-            <span className="text-[9px] font-mono font-bold tracking-widest text-[#c9a96e] uppercase">
-              DESIGN EXPERIENCE
+          {/* 12 O'CLOCK: SHWETA STUDIO BRAND MARK */}
+          <div className="absolute top-5 flex flex-col items-center">
+            <span className="text-[10px] font-serif font-extrabold tracking-widest text-[#c9a96e] uppercase">
+              SHWETA STUDIO
             </span>
           </div>
 
           {/* 3 O'CLOCK: 3 YEARS MARK */}
           <div className="absolute right-4 flex flex-col items-center">
-            <span className="text-[10px] font-mono font-bold text-amber-300 bg-white/10 px-2 py-0.5 rounded border border-white/15">
+            <span className="text-[9px] font-mono font-bold text-amber-300 bg-[#c9a96e]/15 px-2 py-0.5 rounded-full border border-[#c9a96e]/30 shadow">
               3 YEARS
             </span>
           </div>
 
           {/* 6 O'CLOCK: 2 MONTHS MARK */}
-          <div className="absolute bottom-6 flex flex-col items-center">
-            <span className="text-[10px] font-mono font-bold text-amber-300 bg-white/10 px-2 py-0.5 rounded border border-white/15">
+          <div className="absolute bottom-5 flex flex-col items-center">
+            <span className="text-[9px] font-mono font-bold text-amber-300 bg-[#c9a96e]/15 px-2 py-0.5 rounded-full border border-[#c9a96e]/30 shadow">
               2 MONTHS
             </span>
           </div>
 
-          {/* 9 O'CLOCK: 300 DPI PRESS MARK */}
+          {/* 9 O'CLOCK: 47+ CREATIONS MARK */}
           <div className="absolute left-4 flex flex-col items-center">
-            <span className="text-[10px] font-mono font-bold text-[#c9a96e] bg-white/10 px-2 py-0.5 rounded border border-white/15">
-              300 DPI
+            <span className="text-[9px] font-mono font-bold text-[#c9a96e] bg-[#c9a96e]/15 px-2 py-0.5 rounded-full border border-[#c9a96e]/30 shadow">
+              47+ WORKS
             </span>
           </div>
 
-          {/* CENTER EXPERIENCE TIMING SUB-DIAL */}
-          <div className="absolute bottom-16 bg-black/85 backdrop-blur-md px-3.5 py-1.5 rounded-xl border border-[#c9a96e]/30 text-center shadow-lg">
-            <span className="text-[9px] font-mono uppercase tracking-widest text-[#c9a96e] block font-bold">
-              EXPERIENCE TIMER
+          {/* CIRCULAR LUXURY CHRONOGRAPH EXPERIENCE SUB-GAUGE */}
+          <div className="absolute bottom-12 w-24 h-24 sm:w-28 sm:h-28 rounded-full border border-[#c9a96e]/40 bg-black/70 backdrop-blur-md flex flex-col items-center justify-center p-1 shadow-xl">
+            <span className="text-[7px] font-mono tracking-widest uppercase text-[#c9a96e] font-bold block">
+              CAREER EXP
             </span>
-            <span className="text-xs sm:text-sm font-serif font-extrabold text-white block mt-0.5">
-              3 Yrs 2 Mos <span className="text-amber-400 font-mono text-[11px] font-bold">({seconds}s)</span>
+            <span className="text-[10px] sm:text-xs font-serif font-extrabold text-white block mt-0.5 tracking-wide">
+              3Yrs 2Mos
+            </span>
+            <span className="text-[7px] font-mono text-amber-400 font-bold block mt-0.5">
+              ✦ ACTIVE ✦
             </span>
           </div>
 
