@@ -319,7 +319,7 @@ export default function Home() {
   );
 }
 
-// ─── PURE LUXURY 3D GRAPHIC DESIGNER STUDIO WATCH (Experience Dial & Digital Clock Below) ───
+// ─── CASCADING WATERFALL DIGITAL CLOCK HERO (Digits drop in from top, exit out bottom) ───
 function GraphicDesigner3DWatch() {
   const [time, setTime] = useState<Date | null>(null);
 
@@ -332,137 +332,118 @@ function GraphicDesigner3DWatch() {
     return () => clearInterval(timer);
   }, []);
 
-  // Clock Hand Angle Calculations
-  const hours = time ? time.getHours() : 0;
-  const minutes = time ? time.getMinutes() : 0;
-  const seconds = time ? time.getSeconds() : 0;
+  const hoursStr = time
+    ? time.toLocaleTimeString("en-US", { hour: "2-digit", hour12: true }).split(":")[0]
+    : "12";
 
-  const hourAngle = (hours % 12 + minutes / 60) * 30;
-  const minuteAngle = (minutes + seconds / 60) * 6;
-  const secondAngle = seconds * 6;
+  const minutesStr = time
+    ? String(time.getMinutes()).padStart(2, "0")
+    : "00";
 
-  // Format digital string for clock BELOW the watch
-  const digitalTimeStr = time
-    ? time.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", second: "2-digit" })
-    : "12:00:00 AM";
+  const secondsStr = time
+    ? String(time.getSeconds()).padStart(2, "0")
+    : "00";
+
+  const amPmStr = time
+    ? time.toLocaleTimeString("en-US", { hour12: true }).slice(-2)
+    : "AM";
 
   const dateStr = time
     ? time.toLocaleDateString("en-US", { day: "2-digit", month: "short", year: "numeric" }).toUpperCase()
     : "31 JUL 2026";
 
   return (
-    <div className="relative h-[480px] sm:h-[520px] md:h-[560px] w-full mt-8 lg:mt-0 flex flex-col items-center justify-between">
+    <div className="relative h-[440px] sm:h-[480px] md:h-[520px] w-full mt-8 lg:mt-0 flex items-center justify-center">
       
-      {/* Background Subtle Radial Glow */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-[#c9a96e]/15 via-transparent to-[#745a27]/10 rounded-full blur-3xl pointer-events-none" />
+      {/* Outer Soft Ambient Gold Glow */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-[#c9a96e]/20 via-transparent to-[#745a27]/10 rounded-3xl blur-3xl pointer-events-none" />
 
-      {/* Main 3D Watch Face */}
-      <div className="relative w-64 h-64 sm:w-76 sm:h-76 md:w-88 md:h-88 rounded-full border-8 border-[#c9a96e] bg-[#111111] shadow-[0_25px_60px_rgba(201,169,110,0.3)] flex items-center justify-center p-3">
+      {/* Main Glassmorphism Waterfall Clock Card */}
+      <div className="glass-panel soft-shadow relative w-full max-w-md p-6 sm:p-8 rounded-3xl border border-[#c9a96e]/30 bg-white/90 backdrop-blur-xl flex flex-col items-center justify-between shadow-2xl space-y-6">
         
-        {/* Outer Watch Bezel Angle Graduation Lines */}
-        <div className="absolute inset-2 rounded-full border border-white/10 flex items-center justify-center pointer-events-none">
-          {[...Array(12)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-full h-full flex justify-center py-1"
-              style={{ transform: `rotate(${i * 30}deg)` }}
-            >
-              <div className="w-1 h-3 bg-white/30 rounded-full" />
-            </div>
-          ))}
-        </div>
-
-        {/* Watch Face Center Dial */}
-        <div className="relative w-full h-full rounded-full border border-white/15 bg-gradient-to-b from-white/5 to-transparent flex items-center justify-center overflow-hidden">
-          
-          {/* Vector Compass Radial Circles */}
-          <div className="absolute w-44 h-44 sm:w-52 sm:h-52 rounded-full border border-dashed border-white/15 animate-[spin_40s_linear_infinite]" />
-          <div className="absolute w-28 h-28 sm:w-36 sm:h-36 rounded-full border border-white/10" />
-
-          {/* 12 O'CLOCK: DESIGN EXPERIENCE HEADER */}
-          <div className="absolute top-6 flex flex-col items-center">
-            <span className="text-[9px] font-mono font-bold tracking-widest text-[#c9a96e] uppercase">
-              DESIGN EXPERIENCE
-            </span>
-          </div>
-
-          {/* 3 O'CLOCK: 3 YEARS MARK */}
-          <div className="absolute right-4 flex flex-col items-center">
-            <span className="text-[10px] font-mono font-bold text-amber-300 bg-white/10 px-2 py-0.5 rounded border border-white/15">
-              3 YEARS
-            </span>
-          </div>
-
-          {/* 6 O'CLOCK: 2 MONTHS MARK */}
-          <div className="absolute bottom-6 flex flex-col items-center">
-            <span className="text-[10px] font-mono font-bold text-amber-300 bg-white/10 px-2 py-0.5 rounded border border-white/15">
-              2 MONTHS
-            </span>
-          </div>
-
-          {/* 9 O'CLOCK: 300 DPI PRESS MARK */}
-          <div className="absolute left-4 flex flex-col items-center">
-            <span className="text-[10px] font-mono font-bold text-[#c9a96e] bg-white/10 px-2 py-0.5 rounded border border-white/15">
-              300 DPI
-            </span>
-          </div>
-
-          {/* CENTER EXPERIENCE TIMING SUB-DIAL */}
-          <div className="absolute bottom-16 bg-black/85 backdrop-blur-md px-3.5 py-1.5 rounded-xl border border-[#c9a96e]/30 text-center shadow-lg">
-            <span className="text-[9px] font-mono uppercase tracking-widest text-[#c9a96e] block font-bold">
-              EXPERIENCE TIMER
-            </span>
-            <span className="text-xs sm:text-sm font-serif font-extrabold text-white block mt-0.5">
-              3 Yrs 2 Mos <span className="text-amber-400 font-mono text-[11px] animate-pulse">({seconds}s)</span>
-            </span>
-          </div>
-
-          {/* LIVE HOUR HAND */}
-          <div
-            className="absolute w-full h-full flex justify-center items-center pointer-events-none"
-            style={{ transform: `rotate(${hourAngle}deg)` }}
-          >
-            <div className="w-1.5 h-16 sm:h-20 bg-gradient-to-t from-white to-[#c9a96e] rounded-full shadow-lg -translate-y-8 sm:-translate-y-10 border border-black/40" />
-          </div>
-
-          {/* LIVE MINUTE HAND */}
-          <div
-            className="absolute w-full h-full flex justify-center items-center pointer-events-none"
-            style={{ transform: `rotate(${minuteAngle}deg)` }}
-          >
-            <div className="w-1 h-24 sm:h-28 bg-gradient-to-t from-white to-white rounded-full shadow-lg -translate-y-12 sm:-translate-y-14 border border-black/40" />
-          </div>
-
-          {/* LIVE SECOND HAND */}
-          <div
-            className="absolute w-full h-full flex justify-center items-center pointer-events-none"
-            style={{ transform: `rotate(${secondAngle}deg)` }}
-          >
-            <div className="w-0.5 h-28 sm:h-32 bg-[#d4af37] rounded-full shadow-md -translate-y-14 sm:-translate-y-16" />
-            <div className="w-2 h-2 rounded-full bg-[#d4af37] absolute -translate-y-14 sm:-translate-y-16" />
-          </div>
-
-          {/* CENTER WATCH CROWN PIN */}
-          <div className="w-4 h-4 rounded-full bg-[#c9a96e] border-2 border-white shadow-xl z-20" />
-
-        </div>
-
-      </div>
-
-      {/* REAL-TIME DIGITAL CLOCK DISPLAY (BELOW THE WATCH) */}
-      <div className="w-full max-w-xs bg-white/90 backdrop-blur-md p-3 rounded-2xl border border-[#c9a96e]/30 shadow-lg text-center mt-3">
-        <div className="flex items-center justify-center gap-2 mb-1">
-          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-          <span className="text-[10px] font-mono uppercase tracking-widest text-[#745a27] font-bold">
-            LIVE CURRENT LOCAL TIME
+        {/* Top Live Studio Badge */}
+        <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-[#f6f3f2] border border-[#e4e2e1]">
+          <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping" />
+          <span className="text-[10px] font-mono font-bold tracking-widest text-[#745a27] uppercase">
+            LIVE STUDIO TIME ENGINE
           </span>
         </div>
-        <div className="text-base sm:text-lg font-mono font-extrabold text-[#1b1c1c]">
-          {digitalTimeStr}
+
+        {/* CASCADING WATERFALL DIGITAL CLOCK DISPLAY */}
+        <div className="flex items-center justify-center gap-1 sm:gap-2 text-3xl sm:text-4xl md:text-5xl font-mono font-extrabold text-[#1b1c1c] my-2 select-none">
+          
+          {/* HOURS DIGIT COLUMN (Top -> Bottom Waterfall) */}
+          <div className="relative h-14 sm:h-16 w-12 sm:w-16 overflow-hidden bg-[#1b1c1c] text-[#c9a96e] rounded-xl flex items-center justify-center border border-[#c9a96e]/30 shadow-inner">
+            <AnimatePresence mode="popLayout">
+              <motion.span
+                key={hoursStr}
+                initial={{ y: -45, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: 45, opacity: 0 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                className="absolute"
+              >
+                {hoursStr}
+              </motion.span>
+            </AnimatePresence>
+          </div>
+
+          <span className="text-[#c9a96e] animate-pulse">:</span>
+
+          {/* MINUTES DIGIT COLUMN (Top -> Bottom Waterfall) */}
+          <div className="relative h-14 sm:h-16 w-12 sm:w-16 overflow-hidden bg-[#1b1c1c] text-white rounded-xl flex items-center justify-center border border-white/20 shadow-inner">
+            <AnimatePresence mode="popLayout">
+              <motion.span
+                key={minutesStr}
+                initial={{ y: -45, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: 45, opacity: 0 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                className="absolute"
+              >
+                {minutesStr}
+              </motion.span>
+            </AnimatePresence>
+          </div>
+
+          <span className="text-[#c9a96e] animate-pulse">:</span>
+
+          {/* SECONDS DIGIT COLUMN (Top -> Bottom Waterfall) */}
+          <div className="relative h-14 sm:h-16 w-12 sm:w-16 overflow-hidden bg-[#1b1c1c] text-amber-300 rounded-xl flex items-center justify-center border border-amber-400/40 shadow-inner">
+            <AnimatePresence mode="popLayout">
+              <motion.span
+                key={secondsStr}
+                initial={{ y: -45, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: 45, opacity: 0 }}
+                transition={{ duration: 0.35, ease: "easeOut" }}
+                className="absolute"
+              >
+                {secondsStr}
+              </motion.span>
+            </AnimatePresence>
+          </div>
+
+          {/* AM / PM INDICATOR */}
+          <span className="text-xs sm:text-sm font-bold text-[#745a27] bg-[#f6f3f2] px-2 py-1 rounded-md border border-[#e4e2e1] ml-1">
+            {amPmStr}
+          </span>
+
         </div>
-        <div className="text-[10px] font-mono text-[#5f5e59] uppercase tracking-wider mt-0.5">
-          {dateStr} • PUNE STUDIO
+
+        {/* BOTTOM SHWETA DESIGN EXPERIENCE PILL */}
+        <div className="w-full bg-[#1b1c1c] text-white p-4 rounded-2xl border border-[#c9a96e]/30 shadow-lg text-center space-y-1">
+          <span className="text-[9px] font-mono uppercase tracking-widest text-[#c9a96e] block font-bold">
+            SHWETA GRAPHIC DESIGN MASTERY
+          </span>
+          <div className="text-sm sm:text-base font-serif font-extrabold text-white flex items-center justify-center gap-2">
+            <span>3 YEARS • 2 MONTHS EXPERIENCE</span>
+          </div>
+          <span className="text-[9px] font-mono text-white/50 block">
+            {dateStr} • PUNE STUDIO
+          </span>
         </div>
+
       </div>
 
     </div>
