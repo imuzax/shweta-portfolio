@@ -3,28 +3,52 @@
 @import "tailwindcss";
 
 :root {
-  --ivory: #FCFAF7;
-  --ivory-deep: #F5F0E8;
-  --gold: #C9A96E;
-  --gold-light: #E2C9A0;
-  --gold-dark: #745A27;
-  --charcoal: #1A1714;
-  --charcoal-mid: #2D2824;
-  --charcoal-soft: #4A453F;
-  --text-muted: #8A7D6E;
-  --glass-bg: rgba(252, 250, 247, 0.7);
+  --ivory: #fcf9f8;
+  --ivory-deep: #f6f3f2;
+  --gold: #c9a96e;
+  --gold-light: #e4c285;
+  --gold-dark: #745a27;
+  --charcoal: #1b1c1c;
+  --charcoal-mid: #303030;
+  --charcoal-soft: #4d463a;
+  --text-muted: #7f7668;
+  --glass-bg: rgba(255, 255, 255, 0.8);
   --glass-border: rgba(201, 169, 110, 0.2);
 }
 
 *, *::before, *::after {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+}
+
+body {
+  background-color: var(--ivory);
+  color: var(--charcoal);
+  font-family: 'Inter', sans-serif;
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(201, 169, 110, 0.2);
+}
+
+.soft-shadow {
+  box-shadow: 0 4px 20px rgba(43, 43, 43, 0.04);
+}
+
+.hover-gold-glow {
+  transition: all 0.3s ease;
+}
+
+.hover-gold-glow:hover {
+  box-shadow: 0 8px 30px rgba(201, 169, 110, 0.2);
+  border-color: var(--gold);
 }
 
 body {
