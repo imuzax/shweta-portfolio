@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Linkedin, Figma, Github, Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 
 const footerLinks = [
   { href: "/", label: "Home" },
@@ -119,9 +119,21 @@ export default function Footer() {
             </p>
             <div style={{ display: "flex", gap: "1rem" }}>
               {[
-                { href: "https://www.behance.net/shwetajadhav11", icon: <Figma size={18} />, id: "footer-behance" },
-                { href: "https://www.linkedin.com", icon: <Linkedin size={18} />, id: "footer-linkedin" },
-                { href: "https://github.com", icon: <Github size={18} />, id: "footer-github" },
+                { 
+                  href: "https://www.behance.net/shwetajadhav11", 
+                  icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4H10C13 4 14 6 14 9C14 11 13 12 11 12.5C13 13 15 14 15 17C15 20 13 22 9 22H4V4Z"/><path d="M4 12H10"/><path d="M19 8H21"/><path d="M17 12V22"/><path d="M22 12V22"/><path d="M17 17H22"/></svg>, 
+                  id: "footer-behance" 
+                },
+                { 
+                  href: "https://www.linkedin.com", 
+                  icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>, 
+                  id: "footer-linkedin" 
+                },
+                { 
+                  href: "https://github.com", 
+                  icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>, 
+                  id: "footer-github" 
+                },
               ].map((s) => (
                 <a
                   key={s.id}
