@@ -319,7 +319,7 @@ export default function Home() {
   );
 }
 
-// ─── PURE LUXURY 3D GRAPHIC DESIGNER STUDIO WATCH (Live Real-Time Clock) ───
+// ─── PURE LUXURY 3D GRAPHIC DESIGNER STUDIO WATCH (Experience Dial & Digital Clock Below) ───
 function GraphicDesigner3DWatch() {
   const [time, setTime] = useState<Date | null>(null);
 
@@ -341,7 +341,7 @@ function GraphicDesigner3DWatch() {
   const minuteAngle = (minutes + seconds / 60) * 6;
   const secondAngle = seconds * 6;
 
-  // Format digital string
+  // Format digital string for clock BELOW the watch
   const digitalTimeStr = time
     ? time.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", second: "2-digit" })
     : "12:00:00 AM";
@@ -351,13 +351,13 @@ function GraphicDesigner3DWatch() {
     : "31 JUL 2026";
 
   return (
-    <div className="relative h-[440px] sm:h-[480px] md:h-[520px] w-full mt-8 lg:mt-0 flex items-center justify-center">
+    <div className="relative h-[480px] sm:h-[520px] md:h-[560px] w-full mt-8 lg:mt-0 flex flex-col items-center justify-between">
       
       {/* Background Subtle Radial Glow */}
       <div className="absolute inset-0 bg-gradient-to-tr from-[#c9a96e]/15 via-transparent to-[#745a27]/10 rounded-full blur-3xl pointer-events-none" />
 
       {/* Main 3D Watch Face */}
-      <div className="relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full border-8 border-[#c9a96e] bg-[#111111] shadow-[0_25px_60px_rgba(201,169,110,0.3)] flex items-center justify-center p-3">
+      <div className="relative w-64 h-64 sm:w-76 sm:h-76 md:w-88 md:h-88 rounded-full border-8 border-[#c9a96e] bg-[#111111] shadow-[0_25px_60px_rgba(201,169,110,0.3)] flex items-center justify-center p-3">
         
         {/* Outer Watch Bezel Angle Graduation Lines */}
         <div className="absolute inset-2 rounded-full border border-white/10 flex items-center justify-center pointer-events-none">
@@ -379,53 +379,41 @@ function GraphicDesigner3DWatch() {
           <div className="absolute w-44 h-44 sm:w-52 sm:h-52 rounded-full border border-dashed border-white/15 animate-[spin_40s_linear_infinite]" />
           <div className="absolute w-28 h-28 sm:w-36 sm:h-36 rounded-full border border-white/10" />
 
-          {/* 12 O'CLOCK: SJ LOGO MONOGRAM CREST */}
+          {/* 12 O'CLOCK: DESIGN EXPERIENCE HEADER */}
           <div className="absolute top-6 flex flex-col items-center">
-            <div className="w-8 h-8 rounded-full border border-[#c9a96e] bg-[#c9a96e]/10 flex items-center justify-center font-serif font-bold text-xs text-[#c9a96e]">
-              SJ
-            </div>
-            <span className="text-[8px] font-mono tracking-widest text-white/50 uppercase mt-0.5">
-              STUDIO 2026
+            <span className="text-[9px] font-mono font-bold tracking-widest text-[#c9a96e] uppercase">
+              DESIGN EXPERIENCE
             </span>
           </div>
 
-          {/* 3 O'CLOCK: 300 DPI PRESS MARK */}
-          <div className="absolute right-5 flex flex-col items-center">
-            <span className="text-[10px] font-mono font-bold text-[#c9a96e] bg-white/10 px-2 py-0.5 rounded border border-white/10">
+          {/* 3 O'CLOCK: 3 YEARS MARK */}
+          <div className="absolute right-4 flex flex-col items-center">
+            <span className="text-[10px] font-mono font-bold text-amber-300 bg-white/10 px-2 py-0.5 rounded border border-white/15">
+              3 YEARS
+            </span>
+          </div>
+
+          {/* 6 O'CLOCK: 2 MONTHS MARK */}
+          <div className="absolute bottom-6 flex flex-col items-center">
+            <span className="text-[10px] font-mono font-bold text-amber-300 bg-white/10 px-2 py-0.5 rounded border border-white/15">
+              2 MONTHS
+            </span>
+          </div>
+
+          {/* 9 O'CLOCK: 300 DPI PRESS MARK */}
+          <div className="absolute left-4 flex flex-col items-center">
+            <span className="text-[10px] font-mono font-bold text-[#c9a96e] bg-white/10 px-2 py-0.5 rounded border border-white/15">
               300 DPI
             </span>
           </div>
 
-          {/* 6 O'CLOCK: CMYK COLOR PALETTE SWATCHES */}
-          <div className="absolute bottom-6 flex flex-col items-center space-y-1">
-            <div className="flex gap-1">
-              <div className="w-2.5 h-2.5 rounded-full bg-cyan-400" title="Cyan" />
-              <div className="w-2.5 h-2.5 rounded-full bg-fuchsia-500" title="Magenta" />
-              <div className="w-2.5 h-2.5 rounded-full bg-yellow-400" title="Yellow" />
-              <div className="w-2.5 h-2.5 rounded-full bg-black border border-white/40" title="Key Black" />
-            </div>
-            <span className="text-[8px] font-mono tracking-widest text-white/40 uppercase">
-              CMYK PRINT
+          {/* CENTER EXPERIENCE TIMING SUB-DIAL */}
+          <div className="absolute bottom-16 bg-black/85 backdrop-blur-md px-3.5 py-1.5 rounded-xl border border-[#c9a96e]/30 text-center shadow-lg">
+            <span className="text-[9px] font-mono uppercase tracking-widest text-[#c9a96e] block font-bold">
+              EXPERIENCE TIMER
             </span>
-          </div>
-
-          {/* 9 O'CLOCK: 10+ YRS EXPERIENCE EMBLEM */}
-          <div className="absolute left-5 flex flex-col items-center">
-            <span className="text-[10px] font-serif font-bold text-[#c9a96e]">
-              10+ YRS
-            </span>
-            <span className="text-[7px] font-mono text-white/40 uppercase">
-              MASTERY
-            </span>
-          </div>
-
-          {/* DIGITAL SUB-DIAL (CENTER DISPLAY) */}
-          <div className="absolute bottom-16 bg-black/80 backdrop-blur-md px-3 py-1 rounded-lg border border-white/15 text-center">
-            <span className="text-xs font-mono font-bold tracking-wider text-amber-300 block">
-              {digitalTimeStr}
-            </span>
-            <span className="text-[8px] font-mono text-white/60 tracking-widest block">
-              {dateStr}
+            <span className="text-xs sm:text-sm font-serif font-extrabold text-white block mt-0.5">
+              3 Yrs 2 Mos <span className="text-amber-400 font-mono text-[11px] animate-pulse">({seconds}s)</span>
             </span>
           </div>
 
@@ -459,6 +447,22 @@ function GraphicDesigner3DWatch() {
 
         </div>
 
+      </div>
+
+      {/* REAL-TIME DIGITAL CLOCK DISPLAY (BELOW THE WATCH) */}
+      <div className="w-full max-w-xs bg-white/90 backdrop-blur-md p-3 rounded-2xl border border-[#c9a96e]/30 shadow-lg text-center mt-3">
+        <div className="flex items-center justify-center gap-2 mb-1">
+          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+          <span className="text-[10px] font-mono uppercase tracking-widest text-[#745a27] font-bold">
+            LIVE CURRENT LOCAL TIME
+          </span>
+        </div>
+        <div className="text-base sm:text-lg font-mono font-extrabold text-[#1b1c1c]">
+          {digitalTimeStr}
+        </div>
+        <div className="text-[10px] font-mono text-[#5f5e59] uppercase tracking-wider mt-0.5">
+          {dateStr} • PUNE STUDIO
+        </div>
       </div>
 
     </div>
