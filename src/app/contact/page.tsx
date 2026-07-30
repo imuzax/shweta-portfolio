@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Mail, Phone, MapPin, Send, CheckCircle, ChevronDown } from "lucide-react";
+import CustomCategorySelect from "@/components/CustomCategorySelect";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -118,19 +119,10 @@ export default function Contact() {
 
                 <div>
                   <label className="block text-xs font-semibold uppercase tracking-wider text-[var(--text-muted)] mb-2">Project Category</label>
-                  <select
+                  <CustomCategorySelect
                     value={formData.projectType}
-                    onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
-                    className="w-full bg-[#fcfaf7] border border-[#c9a96e]/40 rounded-xl px-4 py-3.5 text-sm font-medium text-[#1b1c1c] focus:border-[#c9a96e] focus:ring-2 focus:ring-[#c9a96e]/20 focus:outline-none transition-all shadow-sm cursor-pointer"
-                  >
-                    <option value="">✦ Select Design Category ✦</option>
-                    <option value="Logo Design">Brand Identity & Logo Design</option>
-                    <option value="Brochure Design">Brochure & Print Layout</option>
-                    <option value="Standee Design">Standee & Expo Banner</option>
-                    <option value="Banners">Social Media & Campaign Banner</option>
-                    <option value="News Paper">News Paper & Magazine Ad</option>
-                    <option value="Other">Other Custom Inquiry</option>
-                  </select>
+                    onChange={(val) => setFormData({ ...formData, projectType: val })}
+                  />
                 </div>
 
                 <div>
