@@ -32,8 +32,8 @@ export default function Home() {
             </div>
           </div>
 
-          {/* ─── ULTRA-LUXURY INTERACTIVE PORTFOLIO GALLERY HERO SHOWCASE ─── */}
-          <UltraLuxuryPortfolioGalleryHero />
+          {/* ─── INTERACTIVE 3D CARD STACK CAROUSEL SHOWCASE (Shweta's 6 Top Real Projects) ─── */}
+          <InteractiveCardStackHero />
         </div>
       </section>
 
@@ -319,181 +319,190 @@ export default function Home() {
   );
 }
 
-// ─── ULTRA-LUXURY INTERACTIVE PORTFOLIO GALLERY HERO SHOWCASE ───
-function UltraLuxuryPortfolioGalleryHero() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [activeTab, setActiveTab] = useState<"all" | "branding" | "standee" | "newspaper">("all");
-
-  const heroItems = [
+// ─── INTERACTIVE 3D CARD STACK CAROUSEL SHOWCASE (Shweta's 6 Top Real Projects) ───
+function InteractiveCardStackHero() {
+  const [cards, setCards] = useState([
     {
       id: 1,
       title: "Slack Visual Brand Refresh",
-      category: "Branding & Visual System",
-      type: "branding",
+      category: "Brand Identity",
       image: "/images/portfolio/2019-01_BrandRefresh_slack-brand-refresh_header-1.png",
-      badge: "Brand Identity"
+      tag: "Branding System"
     },
     {
       id: 2,
-      title: "Custom Logo Mark & Identity",
-      category: "Logo Identity & Monogram",
-      type: "branding",
+      title: "Custom Premium Logo Identity",
+      category: "Logo Design",
       image: "/images/portfolio/Logos/L1.jpg",
-      badge: "Logo Design"
+      tag: "Logo Design"
     },
     {
       id: 3,
-      title: "Grand Exhibition Rollup Standee",
-      category: "Expo Graphics & Standee",
-      type: "standee",
-      image: "/images/portfolio/standee-designs/standee1.jpg",
-      badge: "Standee Banner"
+      title: "Grand Expo Event Invitation",
+      category: "Expo Invite",
+      image: "/images/portfolio/expo-invite/expo1.jpg",
+      tag: "Expo Card"
     },
     {
       id: 4,
-      title: "Daily Press Publication Ad",
-      category: "News Paper Print & Press Ad",
-      type: "newspaper",
+      title: "Promotional Rollup Standee",
+      category: "Standee Design",
+      image: "/images/portfolio/standee-designs/standee1.jpg",
+      tag: "Standee Graphics"
+    },
+    {
+      id: 5,
+      title: "Campaign Banners & Flex",
+      category: "Banners & Flex",
+      image: "/images/portfolio/banners/B2.jpg",
+      tag: "Outdoor Banners"
+    },
+    {
+      id: 6,
+      title: "News Paper Publication Ad",
+      category: "News Paper Ad",
       image: "/images/portfolio/news-paper/N1.png",
-      badge: "Press Ad"
+      tag: "Press Print Ad"
     }
-  ];
+  ]);
 
-  // Auto-rotate hero gallery cards every 3.5 seconds
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  // Auto-rotate card stack every 3.5 seconds
   useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % heroItems.length);
+    const interval = setInterval(() => {
+      handleNext();
     }, 3500);
-    return () => clearInterval(timer);
-  }, [heroItems.length]);
+    return () => clearInterval(interval);
+  }, []);
 
-  const currentItem = heroItems[activeIndex];
+  const handleNext = () => {
+    setCards((prevCards) => {
+      const newArray = [...prevCards];
+      const first = newArray.shift()!;
+      newArray.push(first);
+      return newArray;
+    });
+    setActiveIdx((prev) => (prev + 1) % 6);
+  };
+
+  const handlePrev = () => {
+    setCards((prevCards) => {
+      const newArray = [...prevCards];
+      const last = newArray.pop()!;
+      newArray.unshift(last);
+      return newArray;
+    });
+    setActiveIdx((prev) => (prev - 1 + 6) % 6);
+  };
 
   return (
-    <div className="relative h-[460px] sm:h-[500px] md:h-[540px] w-full mt-8 lg:mt-0">
+    <div className="relative h-[440px] sm:h-[480px] md:h-[520px] w-full mt-8 lg:mt-0 flex flex-col justify-between">
       
-      {/* Background Outer Soft Glow */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-[#c9a96e]/20 via-transparent to-[#745a27]/10 rounded-3xl blur-2xl pointer-events-none" />
-
-      {/* Main Glassmorphism Showcase Card */}
-      <div className="glass-panel soft-shadow absolute inset-0 rounded-3xl overflow-hidden border border-[#c9a96e]/30 bg-white/90 backdrop-blur-xl flex flex-col justify-between p-4 md:p-6 shadow-2xl">
-        
-        {/* Top Header & Category Tabs */}
-        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#e4e2e1] pb-3">
-          <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#c9a96e] animate-ping" />
-            <span className="text-xs font-serif font-bold text-[#1b1c1c] tracking-wider uppercase">
-              Curated Masterpieces
-            </span>
-          </div>
-
-          {/* Interactive Filter Pills */}
-          <div className="flex items-center gap-1 bg-[#f6f3f2] p-1 rounded-full border border-[#e4e2e1]">
-            <button
-              onClick={() => setActiveIndex(0)}
-              className={`px-3 py-1 rounded-full text-[10px] md:text-[11px] font-semibold transition-all ${
-                activeIndex === 0 ? "bg-[#c9a96e] text-[#543d0c] shadow" : "text-[#5f5e59] hover:text-[#1b1c1c]"
-              }`}
-            >
-              1. Brand System
-            </button>
-            <button
-              onClick={() => setActiveIndex(1)}
-              className={`px-3 py-1 rounded-full text-[10px] md:text-[11px] font-semibold transition-all ${
-                activeIndex === 1 ? "bg-[#c9a96e] text-[#543d0c] shadow" : "text-[#5f5e59] hover:text-[#1b1c1c]"
-              }`}
-            >
-              2. Logo Mark
-            </button>
-            <button
-              onClick={() => setActiveIndex(2)}
-              className={`px-3 py-1 rounded-full text-[10px] md:text-[11px] font-semibold transition-all ${
-                activeIndex === 2 ? "bg-[#c9a96e] text-[#543d0c] shadow" : "text-[#5f5e59] hover:text-[#1b1c1c]"
-              }`}
-            >
-              3. Standee
-            </button>
-            <button
-              onClick={() => setActiveIndex(3)}
-              className={`px-3 py-1 rounded-full text-[10px] md:text-[11px] font-semibold transition-all ${
-                activeIndex === 3 ? "bg-[#c9a96e] text-[#543d0c] shadow" : "text-[#5f5e59] hover:text-[#1b1c1c]"
-              }`}
-            >
-              4. Press Ad
-            </button>
-          </div>
+      {/* Top Controls Header Bar */}
+      <div className="flex items-center justify-between px-2 mb-2">
+        <div className="flex items-center gap-2">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#c9a96e] animate-ping" />
+          <span className="text-xs font-serif font-bold text-[#1b1c1c] tracking-widest uppercase">
+            3D Card Stack Showcase ({activeIdx + 1} / 6)
+          </span>
         </div>
 
-        {/* Center 3D Layered Artwork Showcase */}
-        <div className="relative flex-1 my-3 flex items-center justify-center overflow-hidden rounded-2xl bg-[#121212]">
-          
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentItem.id}
-              initial={{ opacity: 0, scale: 0.9, rotateY: 10 }}
-              animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-              exit={{ opacity: 0, scale: 0.9, rotateY: -10 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              className="relative w-full h-full group cursor-pointer"
-            >
-              <img
-                src={currentItem.image}
-                alt={currentItem.title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-
-              {/* Top Glass Badge */}
-              <div className="absolute top-4 left-4 bg-black/75 backdrop-blur-md text-[#c9a96e] text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full border border-white/20 shadow-lg flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#c9a96e]" />
-                <span>{currentItem.badge}</span>
-              </div>
-
-              {/* Bottom Info Banner Overlay */}
-              <div className="absolute bottom-4 left-4 right-4 bg-gradient-to-r from-black/90 via-black/80 to-transparent backdrop-blur-md p-4 rounded-xl border border-white/10 text-white flex items-center justify-between">
-                <div>
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-[#c9a96e] block">
-                    {currentItem.category}
-                  </span>
-                  <h3 className="text-base md:text-xl font-serif font-bold text-white mt-0.5">
-                    {currentItem.title}
-                  </h3>
-                </div>
-                <Link
-                  href="/work"
-                  className="px-4 py-2 rounded-full bg-[#c9a96e] text-[#543d0c] font-bold text-xs hover:bg-white transition-colors shadow-md hidden sm:inline-block"
-                >
-                  Explore Project
-                </Link>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-
+        {/* Prev / Next Navigation Arrows */}
+        <div className="flex items-center gap-2">
+          <button
+            onClick={handlePrev}
+            className="w-8 h-8 rounded-full bg-white border border-[#c9a96e]/30 shadow hover:bg-[#c9a96e] hover:text-[#543d0c] transition-colors flex items-center justify-center text-[#745a27] font-bold text-xs"
+            title="Previous Project"
+          >
+            ←
+          </button>
+          <button
+            onClick={handleNext}
+            className="w-8 h-8 rounded-full bg-white border border-[#c9a96e]/30 shadow hover:bg-[#c9a96e] hover:text-[#543d0c] transition-colors flex items-center justify-center text-[#745a27] font-bold text-xs"
+            title="Next Project"
+          >
+            →
+          </button>
         </div>
-
-        {/* Bottom Floating Metric Badges Bar */}
-        <div className="flex items-center justify-between text-xs text-[#5f5e59] pt-2 border-t border-[#e4e2e1]">
-          <div className="flex items-center gap-4 text-[11px] font-serif font-semibold text-[#745a27]">
-            <span>✦ 47+ Masterpieces</span>
-            <span className="hidden sm:inline">•</span>
-            <span className="hidden sm:inline">✦ 10+ Years Experience</span>
-            <span className="hidden sm:inline">•</span>
-            <span className="hidden sm:inline">✦ Pune Studio</span>
-          </div>
-
-          <div className="flex items-center gap-1.5">
-            {heroItems.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => setActiveIndex(idx)}
-                className={`h-2 rounded-full transition-all ${
-                  activeIndex === idx ? "w-6 bg-[#c9a96e]" : "w-2 bg-[#e4e2e1] hover:bg-[#c9a96e]/50"
-                }`}
-              />
-            ))}
-          </div>
-        </div>
-
       </div>
+
+      {/* 3D Stacked Cards Canvas */}
+      <div className="relative flex-1 w-full flex items-center justify-center">
+        <div className="relative w-full max-w-md h-[88%]">
+          {cards.slice(0, 3).map((card, index) => {
+            // Calculate 3D stacking styles
+            const scale = 1 - index * 0.06;
+            const translateY = index * 16;
+            const opacity = 1 - index * 0.25;
+            const zIndex = 30 - index;
+
+            return (
+              <motion.div
+                key={card.id}
+                layout
+                onClick={index === 0 ? handleNext : undefined}
+                initial={{ scale: 0.9, opacity: 0, y: 30 }}
+                animate={{ scale, opacity, y: translateY }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+                style={{ zIndex }}
+                className={`absolute inset-0 rounded-2xl overflow-hidden shadow-2xl border border-[#c9a96e]/30 bg-white group ${
+                  index === 0 ? "cursor-pointer hover:shadow-gold-glow" : "pointer-events-none"
+                }`}
+              >
+                {/* Image Container */}
+                <div className="w-full h-full relative overflow-hidden bg-[#121212]">
+                  <img
+                    src={card.image}
+                    alt={card.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+
+                  {/* Top Glass Category Tag */}
+                  <div className="absolute top-4 left-4 bg-black/80 backdrop-blur-md text-[#c9a96e] text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-white/20 shadow-md">
+                    {card.tag}
+                  </div>
+
+                  {/* Bottom Glass Project Details */}
+                  <div className="absolute bottom-4 left-4 right-4 bg-gradient-to-r from-black/90 via-black/85 to-black/40 backdrop-blur-md p-3.5 rounded-xl border border-white/15 text-white flex items-center justify-between">
+                    <div>
+                      <span className="text-[9px] font-mono text-[#c9a96e] uppercase tracking-wider block">
+                        {card.category}
+                      </span>
+                      <h3 className="text-sm md:text-base font-serif font-bold text-white mt-0.5 truncate max-w-[200px] sm:max-w-none">
+                        {card.title}
+                      </h3>
+                    </div>
+                    {index === 0 && (
+                      <span className="text-[10px] font-semibold text-[#c9a96e] bg-white/10 px-2.5 py-1 rounded-full border border-white/10">
+                        Click Next →
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Bottom Pagination Dots */}
+      <div className="flex items-center justify-center gap-2 pt-3 border-t border-[#e4e2e1]">
+        {[0, 1, 2, 3, 4, 5].map((i) => (
+          <button
+            key={i}
+            onClick={() => {
+              setActiveIdx(i);
+              handleNext();
+            }}
+            className={`h-2 rounded-full transition-all duration-300 ${
+              activeIdx === i ? "w-6 bg-[#c9a96e]" : "w-2 bg-[#e4e2e1] hover:bg-[#c9a96e]/50"
+            }`}
+            title={`Go to project ${i + 1}`}
+          />
+        ))}
+      </div>
+
     </div>
   );
 }
