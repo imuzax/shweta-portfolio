@@ -18,25 +18,24 @@ export default function Home() {
               Graphic Designer & Visual Storyteller
             </h2>
             <p className="text-lg text-[#5f5e59] max-w-xl font-normal leading-relaxed">
-              Crafting timeless brand identities and compelling visual narratives for luxury and lifestyle brands. Transforming complex ideas into elegant, engaging designs.
+              Crafting timeless brand identities, logo design, promotional standees, expo invites, and compelling visual narratives for luxury and commercial brands since 2021.
             </p>
             <div className="flex flex-wrap gap-4 pt-4">
               <Link href="/work" className="px-8 py-3 rounded-full bg-[#c9a96e] text-[#543d0c] font-semibold text-sm hover:bg-[#745a27] hover:text-white transition-colors">
                 View My Work
               </Link>
               <Link href="/about" className="px-8 py-3 rounded-full border border-[#c9a96e] text-[#745a27] font-semibold text-sm hover:bg-[#c9a96e]/10 transition-colors">
-                Download Resume
+                About Me
               </Link>
             </div>
           </div>
 
           <div className="relative h-[500px] w-full hidden lg:block">
-            <div className="glass-panel soft-shadow absolute inset-0 rounded-2xl flex items-center justify-center overflow-hidden border border-[#c9a96e]/20">
-              <div 
-                className="w-full h-full bg-cover bg-center opacity-90 mix-blend-multiply"
-                style={{
-                  backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuAzZt7nAgSmsTqsFmCAx2vE-8H9pVGNuNHLnwE8Y1hsdGSAgrj0PosIk9OS2B3PERovStp0iyVYOWBmBcY6E13UfRnagK4Dm9hqYt7AvqlUodNuKy8dnBlDPMmfvHC7MO1Rz2ZbAG3NrqQcJir5JPaXDXsTvem_tkXosyYd3sWaftPQVVOhZL6qgK8P8azxLeP9YlIToTiStshkVd7OOkBgHZ-FbuOMIO8P-4RlYtlzpkvHdMkw4Wvh')"
-                }}
+            <div className="glass-panel soft-shadow absolute inset-0 rounded-2xl flex items-center justify-center overflow-hidden border border-[#c9a96e]/20 p-2 bg-white">
+              <img 
+                src="/images/home/shweta-about-image.png"
+                alt="Shweta Jadhav - Graphic Designer"
+                className="w-full h-full object-cover rounded-xl"
               />
             </div>
           </div>
@@ -49,25 +48,26 @@ export default function Home() {
           <span className="text-xs font-semibold text-[#745a27] uppercase tracking-widest">
             About Me
           </span>
-          <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-[#c9a96e] p-1 mt-2 mb-2">
+          <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-[#c9a96e] p-1 mt-2 mb-2 shadow-md">
             <img
               className="w-full h-full rounded-full object-cover"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0dQO_Kc9oTJ_fHuekamhPPwAYrhfBntZNeUkEt_QXC4xysNRK6K522coopAQ4ZGvP_s6me2I2sO4Ws3mLL2OT6DUNXwmv0gJhYFzufOoIQkEyXzksFYpQ8H45y-9U_kfsEvF6H7q3FSwbxX-Dq7ArMw1v0QfCco7mZGjBWtejrRtBNWokggHnI1pCg5oepHXsZH7QcOy6X5PvvuqeL6i2PTKtG_-JA91kxwZ8h649q7ru9hRJI_cL"
+              src="/images/home/shweta-about-image.png"
               alt="Shweta Jadhav Portrait"
             />
           </div>
           <p className="text-lg text-[#5f5e59] leading-relaxed font-light">
-            With over a decade of experience navigating the intersection of art and strategy, I specialize in translating brand essence into visual masterpieces. Based in the vibrant city of Pune, my approach blends soft minimalism with refined details, ensuring every project not only looks exquisite but performs flawlessly. I believe in the power of negative space, the poetry of typography, and the enduring impact of thoughtful design. My goal is to elevate your brand's narrative through meticulous craftsmanship.
+            With years of professional design experience navigating art and strategy, I specialize in translating brand essence into visual masterpieces. Based in Pune, India, my design approach blends modern minimalism with refined details, ensuring every project—from logo branding to large-scale expo graphics—performs flawlessly.
           </p>
           <div className="w-full pt-12 border-t border-[#e4e2e1] mt-8">
             <p className="text-xs text-[#5f5e59] mb-6 uppercase tracking-wider font-medium">
-              Trusted by local brands
+              Featured Design Specializations
             </p>
-            <div className="flex flex-wrap justify-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500 text-xl font-serif text-[#1b1c1c]">
-              <span>Logo 1</span>
-              <span>Logo 2</span>
-              <span>Logo 3</span>
-              <span>Logo 4</span>
+            <div className="flex flex-wrap justify-center gap-6 md:gap-12 text-sm md:text-base font-serif font-bold text-[#745a27]">
+              <span className="px-4 py-2 bg-[#f6f3f2] rounded-full border border-[#c9a96e]/20">Logo Design</span>
+              <span className="px-4 py-2 bg-[#f6f3f2] rounded-full border border-[#c9a96e]/20">Expo Invites</span>
+              <span className="px-4 py-2 bg-[#f6f3f2] rounded-full border border-[#c9a96e]/20">Standee Design</span>
+              <span className="px-4 py-2 bg-[#f6f3f2] rounded-full border border-[#c9a96e]/20">Campaign Banners</span>
+              <span className="px-4 py-2 bg-[#f6f3f2] rounded-full border border-[#c9a96e]/20">News Paper Ads</span>
             </div>
           </div>
         </div>
@@ -77,66 +77,111 @@ export default function Home() {
       <section className="px-6 md:px-16 max-w-[1200px] mx-auto py-16" id="work">
         <div className="mb-12">
           <span className="text-xs font-semibold text-[#745a27] uppercase tracking-widest">
-            Selected Projects
+            Selected Portfolio Works
           </span>
           <h3 className="text-3xl md:text-4xl font-serif font-bold text-[#1b1c1c] mt-2">
-            Curated Masterpieces
+            Curated Design Showcase
           </h3>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           
           {/* Card 1 */}
-          <div className="group cursor-pointer bg-white border border-[#F0EDE6] rounded-xl p-3 soft-shadow hover-gold-glow transition-all duration-300">
+          <Link href="/work" className="group cursor-pointer bg-white border border-[#F0EDE6] rounded-xl p-3 soft-shadow hover-gold-glow transition-all duration-300">
             <div className="aspect-[4/3] bg-[#e4e2e1] rounded-lg overflow-hidden relative">
               <img
                 className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmUBHqM8XlLLIi5-RwP_ek7xzZVrpMY6t718afq4WIIvV8e1Oy8Hw6ukBNo5UssDaNKRREguHj4HBKBfgW9o6ys5gLuKOKcTacqTJdxGFX61kgczqgEU3hLwr8uIPxgEUMeXJU1Gi0RAgWM95Y_MNwDjiYdOjJZE_89fQFrtXehNB8_leLzbWzK6ng-VL9g_QFp0dsHNr04OCXRewC0V29TO0Qm8fIJPqc40wepLKxzQuJqOjkKLNK"
-                alt="Aura Skincare"
+                src="/images/portfolio/2019-01_BrandRefresh_slack-brand-refresh_header-1.png"
+                alt="Brand Identity & Refresh"
               />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
             </div>
             <div className="mt-4 px-2">
-              <h4 className="text-2xl font-serif font-bold text-[#1b1c1c]">Aura Skincare</h4>
-              <p className="text-sm text-[#5f5e59] mt-1">Brand Identity & Packaging</p>
+              <h4 className="text-2xl font-serif font-bold text-[#1b1c1c]">Brand Identity & Refresh</h4>
+              <p className="text-sm text-[#5f5e59] mt-1">Branding & Visual System</p>
             </div>
-          </div>
+          </Link>
 
           {/* Card 2 */}
-          <div className="group cursor-pointer bg-white border border-[#F0EDE6] rounded-xl p-3 soft-shadow hover-gold-glow transition-all duration-300 lg:translate-y-8">
+          <Link href="/work" className="group cursor-pointer bg-white border border-[#F0EDE6] rounded-xl p-3 soft-shadow hover-gold-glow transition-all duration-300 lg:translate-y-8">
             <div className="aspect-[4/3] bg-[#e4e2e1] rounded-lg overflow-hidden relative">
               <img
                 className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAU8BFZPl2b4woFqkJjWWOAdl_WS8H4IasP-yGo6wvUXs524GVShCGBK-f3iHjjUsm-U8LZRNYmHmKmnI4qqPV03r2Ct4CVKItYrp0KrMzyI6TS_ge9iHedUcYXmTYvcDRjvGliYqkKqyT9DhTnWIRckJhiUwwM8qIJZk4X9Py1KguoGzqsrt9xgp1sNHdHTYdWc7FNtBN0j1oAQTP7M1b7Hba1fDsyZAXz-dBn7KYKgyqqVDel2ADT"
-                alt="Maison Journal"
+                src="/images/portfolio/Logos/L1.jpg"
+                alt="Premium Logo Identity"
               />
             </div>
             <div className="mt-4 px-2">
-              <h4 className="text-2xl font-serif font-bold text-[#1b1c1c]">Maison Journal</h4>
-              <p className="text-sm text-[#5f5e59] mt-1">UI/UX Design</p>
+              <h4 className="text-2xl font-serif font-bold text-[#1b1c1c]">Custom Logo Identity</h4>
+              <p className="text-sm text-[#5f5e59] mt-1">Logo Design</p>
             </div>
-          </div>
+          </Link>
 
           {/* Card 3 */}
-          <div className="group cursor-pointer bg-white border border-[#F0EDE6] rounded-xl p-3 soft-shadow hover-gold-glow transition-all duration-300">
+          <Link href="/work" className="group cursor-pointer bg-white border border-[#F0EDE6] rounded-xl p-3 soft-shadow hover-gold-glow transition-all duration-300">
             <div className="aspect-[4/3] bg-[#e4e2e1] rounded-lg overflow-hidden relative">
               <img
                 className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCn96-RmifngTIUXPf7yZGv2Z_qCL9hcLhZAiA9Rnx6DPsZUeXP5ADM63wY4irv1O4Rx4EyegPL80TOPV8dKH2d0B1tJOHV-YVa8abj363TzZW1DUJ59PRXLnjd2sDsTpYKLEhXfj7ZZEFxro19H4WiZRuKc6O4WhsZ5Uq7ZDjYw7yOcVcJ3O7F1RdezT1z2M-TWq0ITww_CIVu06S4goEd3tQ1EPMgVJhVtxjmNYkYI4TxqJraEgEj"
-                alt="Lumina Roasters"
+                src="/images/portfolio/expo-invite/expo1.jpg"
+                alt="Expo & Event Invitation"
               />
             </div>
             <div className="mt-4 px-2">
-              <h4 className="text-2xl font-serif font-bold text-[#1b1c1c]">Lumina Roasters</h4>
-              <p className="text-sm text-[#5f5e59] mt-1">Packaging Design</p>
+              <h4 className="text-2xl font-serif font-bold text-[#1b1c1c]">Expo & Event Invitation</h4>
+              <p className="text-sm text-[#5f5e59] mt-1">Expo Invite Design</p>
             </div>
-          </div>
+          </Link>
+
+          {/* Card 4 */}
+          <Link href="/work" className="group cursor-pointer bg-white border border-[#F0EDE6] rounded-xl p-3 soft-shadow hover-gold-glow transition-all duration-300">
+            <div className="aspect-[4/3] bg-[#e4e2e1] rounded-lg overflow-hidden relative">
+              <img
+                className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                src="/images/portfolio/standee-designs/standee1.jpg"
+                alt="Promotional Standee Banner"
+              />
+            </div>
+            <div className="mt-4 px-2">
+              <h4 className="text-2xl font-serif font-bold text-[#1b1c1c]">Promotional Rollup Standee</h4>
+              <p className="text-sm text-[#5f5e59] mt-1">Standee Design</p>
+            </div>
+          </Link>
+
+          {/* Card 5 */}
+          <Link href="/work" className="group cursor-pointer bg-white border border-[#F0EDE6] rounded-xl p-3 soft-shadow hover-gold-glow transition-all duration-300 lg:translate-y-8">
+            <div className="aspect-[4/3] bg-[#e4e2e1] rounded-lg overflow-hidden relative">
+              <img
+                className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                src="/images/portfolio/banners/B2.jpg"
+                alt="Flex & Campaign Banners"
+              />
+            </div>
+            <div className="mt-4 px-2">
+              <h4 className="text-2xl font-serif font-bold text-[#1b1c1c]">Campaign Banners & Flex</h4>
+              <p className="text-sm text-[#5f5e59] mt-1">Banners Design</p>
+            </div>
+          </Link>
+
+          {/* Card 6 */}
+          <Link href="/work" className="group cursor-pointer bg-white border border-[#F0EDE6] rounded-xl p-3 soft-shadow hover-gold-glow transition-all duration-300">
+            <div className="aspect-[4/3] bg-[#e4e2e1] rounded-lg overflow-hidden relative">
+              <img
+                className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                src="/images/portfolio/news-paper/N1.png"
+                alt="News Paper Print Ad"
+              />
+            </div>
+            <div className="mt-4 px-2">
+              <h4 className="text-2xl font-serif font-bold text-[#1b1c1c]">News Paper Print Ad</h4>
+              <p className="text-sm text-[#5f5e59] mt-1">News Paper Ad Design</p>
+            </div>
+          </Link>
 
         </div>
 
         <div className="text-center mt-16">
           <Link href="/work" className="px-8 py-3 rounded-full border border-[#c9a96e] text-[#745a27] font-semibold text-sm hover:bg-[#c9a96e]/10 transition-colors inline-block">
-            Explore All Work
+            View All 47 Projects
           </Link>
         </div>
       </section>
