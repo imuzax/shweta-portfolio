@@ -359,16 +359,16 @@ function HeroGraphicStudio() {
   const currentTheme = themes[activeTheme];
 
   return (
-    <div className="relative h-[520px] w-full hidden lg:block">
+    <div className="relative h-[420px] sm:h-[480px] md:h-[520px] w-full mt-8 lg:mt-0">
       <div className={`glass-panel soft-shadow absolute inset-0 rounded-2xl overflow-hidden border ${currentTheme.border} bg-white flex flex-col shadow-2xl transition-colors duration-500`}>
         
         {/* Studio Canvas Header Toolbar */}
-        <div className="h-12 bg-[#f6f3f2] border-b border-[#e4e2e1] px-4 flex items-center justify-between">
+        <div className="h-14 md:h-12 bg-[#f6f3f2] border-b border-[#e4e2e1] px-3 md:px-4 flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-[#c9a96e]" />
             <span className="text-xs font-serif font-bold text-[#1b1c1c]">SJ Design Studio</span>
-            <span className="text-[10px] text-[#5f5e59] bg-white px-2 py-0.5 rounded-full border border-[#e4e2e1]">
-              Live Interactive Studio
+            <span className="hidden sm:inline-block text-[10px] text-[#5f5e59] bg-white px-2 py-0.5 rounded-full border border-[#e4e2e1]">
+              Live Studio
             </span>
           </div>
 
@@ -376,7 +376,7 @@ function HeroGraphicStudio() {
           <div className="flex items-center gap-1 bg-white p-1 rounded-full border border-[#e4e2e1] shadow-sm">
             <button
               onClick={() => setActivePreset("logo")}
-              className={`px-3 py-1 rounded-full text-[11px] font-semibold transition-all ${
+              className={`px-2.5 md:px-3 py-1 rounded-full text-[10px] md:text-[11px] font-semibold transition-all ${
                 activePreset === "logo" ? "bg-[#c9a96e] text-[#543d0c] shadow" : "text-[#5f5e59] hover:text-[#1b1c1c]"
               }`}
             >
@@ -384,7 +384,7 @@ function HeroGraphicStudio() {
             </button>
             <button
               onClick={() => setActivePreset("expo")}
-              className={`px-3 py-1 rounded-full text-[11px] font-semibold transition-all ${
+              className={`px-2.5 md:px-3 py-1 rounded-full text-[10px] md:text-[11px] font-semibold transition-all ${
                 activePreset === "expo" ? "bg-[#c9a96e] text-[#543d0c] shadow" : "text-[#5f5e59] hover:text-[#1b1c1c]"
               }`}
             >
@@ -392,7 +392,7 @@ function HeroGraphicStudio() {
             </button>
             <button
               onClick={() => setActivePreset("typo")}
-              className={`px-3 py-1 rounded-full text-[11px] font-semibold transition-all ${
+              className={`px-2.5 md:px-3 py-1 rounded-full text-[10px] md:text-[11px] font-semibold transition-all ${
                 activePreset === "typo" ? "bg-[#c9a96e] text-[#543d0c] shadow" : "text-[#5f5e59] hover:text-[#1b1c1c]"
               }`}
             >
@@ -401,28 +401,28 @@ function HeroGraphicStudio() {
           </div>
 
           {/* Color Palette Switcher (Clickable!) */}
-          <div className="flex items-center gap-1.5">
+          <div className="hidden sm:flex items-center gap-1.5">
             <span className="text-[10px] uppercase tracking-wider text-[#5f5e59] font-medium mr-1">Palette:</span>
             <button
               onClick={() => setActiveTheme("gold")}
-              className={`w-5 h-5 rounded-full bg-[#c9a96e] border-2 ${activeTheme === "gold" ? "border-[#1b1c1c] scale-110" : "border-transparent"}`}
+              className={`w-4 h-4 md:w-5 md:h-5 rounded-full bg-[#c9a96e] border-2 ${activeTheme === "gold" ? "border-[#1b1c1c] scale-110" : "border-transparent"}`}
               title="Champagne Gold"
             />
             <button
               onClick={() => setActiveTheme("rose")}
-              className={`w-5 h-5 rounded-full bg-[#d48b8b] border-2 ${activeTheme === "rose" ? "border-[#1b1c1c] scale-110" : "border-transparent"}`}
+              className={`w-4 h-4 md:w-5 md:h-5 rounded-full bg-[#d48b8b] border-2 ${activeTheme === "rose" ? "border-[#1b1c1c] scale-110" : "border-transparent"}`}
               title="Rose Velvet"
             />
             <button
               onClick={() => setActiveTheme("emerald")}
-              className={`w-5 h-5 rounded-full bg-[#6fa885] border-2 ${activeTheme === "emerald" ? "border-[#1b1c1c] scale-110" : "border-transparent"}`}
+              className={`w-4 h-4 md:w-5 md:h-5 rounded-full bg-[#6fa885] border-2 ${activeTheme === "emerald" ? "border-[#1b1c1c] scale-110" : "border-transparent"}`}
               title="Royal Emerald"
             />
           </div>
         </div>
 
         {/* Canvas Body */}
-        <div className={`flex-1 relative ${currentTheme.bg} overflow-hidden flex items-center justify-center p-6 transition-colors duration-500`}>
+        <div className={`flex-1 relative ${currentTheme.bg} overflow-hidden flex items-center justify-center p-4 md:p-6 transition-colors duration-500`}>
           
           {/* Subtle Grid Lines (Toggled by Grid Tool) */}
           {activeTool === "grid" && (
@@ -436,33 +436,33 @@ function HeroGraphicStudio() {
           )}
 
           {/* Left Interactive Tool Dock */}
-          <div className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-md p-2 rounded-xl border border-[#e4e2e1] flex flex-col gap-2 shadow-lg z-20">
+          <div className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-md p-1.5 md:p-2 rounded-xl border border-[#e4e2e1] flex flex-col gap-2 shadow-lg z-20">
             <button
               onClick={() => setActiveTool("pen")}
-              className={`p-2 rounded-lg transition-all ${
+              className={`p-1.5 md:p-2 rounded-lg transition-all ${
                 activeTool === "pen" ? currentTheme.badge : "hover:bg-[#f6f3f2] text-[#5f5e59]"
               }`}
               title="Bezier Vector Tool"
             >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
+              <svg className="w-3.5 h-3.5 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
             </button>
             <button
               onClick={() => setActiveTool("grid")}
-              className={`p-2 rounded-lg transition-all ${
+              className={`p-1.5 md:p-2 rounded-lg transition-all ${
                 activeTool === "grid" ? currentTheme.badge : "hover:bg-[#f6f3f2] text-[#5f5e59]"
               }`}
               title="Golden Ratio Grid Overlay"
             >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+              <svg className="w-3.5 h-3.5 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
             </button>
             <button
               onClick={() => setActiveTool("layers")}
-              className={`p-2 rounded-lg transition-all ${
+              className={`p-1.5 md:p-2 rounded-lg transition-all ${
                 activeTool === "layers" ? currentTheme.badge : "hover:bg-[#f6f3f2] text-[#5f5e59]"
               }`}
               title="Layer Inspector Panel"
             >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
+              <svg className="w-3.5 h-3.5 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
             </button>
           </div>
 
@@ -470,19 +470,19 @@ function HeroGraphicStudio() {
           <div className="relative z-10 w-full h-full flex items-center justify-center">
             
             {/* Animated Golden Compass Rings */}
-            <div className="absolute w-72 h-72 rounded-full border border-dashed border-opacity-30 animate-[spin_25s_linear_infinite]" style={{ borderColor: currentTheme.primary }} />
-            <div className="absolute w-52 h-52 rounded-full border border-opacity-40" style={{ borderColor: currentTheme.primary }} />
+            <div className="absolute w-56 h-56 md:w-72 md:h-72 rounded-full border border-dashed border-opacity-30 animate-[spin_25s_linear_infinite]" style={{ borderColor: currentTheme.primary }} />
+            <div className="absolute w-40 h-40 md:w-52 md:h-52 rounded-full border border-opacity-40" style={{ borderColor: currentTheme.primary }} />
 
             {/* ARTWORK PRESET 1: LOGO CREST */}
             {activePreset === "logo" && (
               <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="flex flex-col items-center">
-                <svg className="w-48 h-48 drop-shadow-xl" viewBox="0 0 200 200" fill="none">
+                <svg className="w-36 h-36 md:w-48 md:h-48 drop-shadow-xl" viewBox="0 0 200 200" fill="none">
                   <path d="M100 20 L160 60 L160 140 L100 180 L40 140 L40 60 Z" stroke={currentTheme.primary} strokeWidth="2" strokeDasharray="4 4" />
                   <circle cx="100" cy="100" r="45" stroke={currentTheme.secondary} strokeWidth="3" fill="rgba(201,169,110,0.08)" />
                   <path d="M75 100 C75 70, 125 70, 125 100 C125 130, 75 130, 75 100" stroke={currentTheme.primary} strokeWidth="4" />
                   <circle cx="100" cy="100" r="8" fill={currentTheme.secondary} />
                 </svg>
-                <span className="text-xs font-serif font-bold uppercase tracking-[0.2em] mt-2" style={{ color: currentTheme.dark }}>
+                <span className="text-[10px] md:text-xs font-serif font-bold uppercase tracking-[0.2em] mt-2" style={{ color: currentTheme.dark }}>
                   Shweta Identity Crest
                 </span>
               </motion.div>
@@ -491,8 +491,8 @@ function HeroGraphicStudio() {
             {/* ARTWORK PRESET 2: EXPO STANDEE */}
             {activePreset === "expo" && (
               <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="flex flex-col items-center">
-                <div className="w-44 h-64 rounded-xl bg-white border border-[#c9a96e]/30 shadow-2xl p-4 flex flex-col justify-between items-center text-center">
-                  <div className="w-8 h-8 rounded-full border flex items-center justify-center font-serif font-bold text-xs" style={{ borderColor: currentTheme.primary, color: currentTheme.secondary }}>
+                <div className="w-36 h-52 md:w-44 md:h-64 rounded-xl bg-white border border-[#c9a96e]/30 shadow-2xl p-3 md:p-4 flex flex-col justify-between items-center text-center">
+                  <div className="w-7 h-7 md:w-8 md:h-8 rounded-full border flex items-center justify-center font-serif font-bold text-xs" style={{ borderColor: currentTheme.primary, color: currentTheme.secondary }}>
                     EX
                   </div>
                   <div className="space-y-1">
@@ -511,10 +511,10 @@ function HeroGraphicStudio() {
             {/* ARTWORK PRESET 3: TYPOGRAPHY */}
             {activePreset === "typo" && (
               <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="text-center space-y-2">
-                <span className="text-5xl md:text-6xl font-serif font-bold block italic" style={{ color: currentTheme.secondary }}>
+                <span className="text-4xl md:text-6xl font-serif font-bold block italic" style={{ color: currentTheme.secondary }}>
                   Elegance
                 </span>
-                <span className="text-xs uppercase tracking-[0.3em] font-semibold block text-[#5f5e59]">
+                <span className="text-[10px] md:text-xs uppercase tracking-[0.3em] font-semibold block text-[#5f5e59]">
                   Minimal & Timeless Aesthetics
                 </span>
               </motion.div>
@@ -522,7 +522,7 @@ function HeroGraphicStudio() {
 
             {/* Interactive Pen Tool Handle (Toggled by Pen Tool) */}
             {activeTool === "pen" && (
-              <div className="absolute top-1/4 right-1/4 bg-[#c9a96e] text-[#543d0c] px-3 py-1 rounded-full text-[10px] font-bold shadow-lg flex items-center gap-1.5 animate-bounce">
+              <div className="absolute top-1/4 right-1/4 bg-[#c9a96e] text-[#543d0c] px-2.5 py-1 rounded-full text-[9px] md:text-[10px] font-bold shadow-lg flex items-center gap-1.5 animate-bounce">
                 <span className="w-2 h-2 rounded-full bg-[#543d0c]" />
                 <span>Bezier Vector Active</span>
               </div>
@@ -530,22 +530,22 @@ function HeroGraphicStudio() {
 
             {/* Layer Inspector Panel (Toggled by Layer Tool) */}
             {activeTool === "layers" && (
-              <div className="absolute right-4 top-4 bg-white/95 backdrop-blur-md p-3 rounded-xl border border-[#e4e2e1] shadow-xl text-xs space-y-2 w-44 z-20">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[#745a27] block border-b pb-1">
+              <div className="absolute right-2 md:right-4 top-2 md:top-4 bg-white/95 backdrop-blur-md p-2.5 md:p-3 rounded-xl border border-[#e4e2e1] shadow-xl text-xs space-y-2 w-36 md:w-44 z-20">
+                <span className="text-[9px] md:text-[10px] font-bold uppercase tracking-wider text-[#745a27] block border-b pb-1">
                   Active Artwork Layers
                 </span>
-                <div className="space-y-1 text-[11px] text-[#1b1c1c]">
-                  <div className="flex justify-between items-center bg-[#f6f3f2] p-1.5 rounded">
-                    <span>✦ Logo Crest Vector</span>
-                    <span className="text-[9px] text-[#c9a96e]">Visible</span>
+                <div className="space-y-1 text-[10px] md:text-[11px] text-[#1b1c1c]">
+                  <div className="flex justify-between items-center bg-[#f6f3f2] p-1 rounded">
+                    <span>✦ Logo Crest</span>
+                    <span className="text-[8px] text-[#c9a96e]">Visible</span>
                   </div>
-                  <div className="flex justify-between items-center p-1.5">
-                    <span>✦ Golden Compass</span>
-                    <span className="text-[9px] text-[#5f5e59]">Active</span>
+                  <div className="flex justify-between items-center p-1">
+                    <span>✦ Compass</span>
+                    <span className="text-[8px] text-[#5f5e59]">Active</span>
                   </div>
-                  <div className="flex justify-between items-center p-1.5">
-                    <span>✦ Typography Layer</span>
-                    <span className="text-[9px] text-[#5f5e59]">Locked</span>
+                  <div className="flex justify-between items-center p-1">
+                    <span>✦ Typography</span>
+                    <span className="text-[8px] text-[#5f5e59]">Locked</span>
                   </div>
                 </div>
               </div>
@@ -556,13 +556,13 @@ function HeroGraphicStudio() {
         </div>
 
         {/* Studio Canvas Footer */}
-        <div className="h-9 bg-[#f6f3f2] border-t border-[#e4e2e1] px-4 flex items-center justify-between text-[11px] text-[#5f5e59]">
+        <div className="h-8 md:h-9 bg-[#f6f3f2] border-t border-[#e4e2e1] px-3 md:px-4 flex items-center justify-between text-[10px] md:text-[11px] text-[#5f5e59]">
           <span className="flex items-center gap-1 font-medium">
             <span className="w-2 h-2 rounded-full bg-emerald-500" />
-            Interactive Studio Mode: Active
+            Interactive Studio
           </span>
-          <span className="text-[#745a27] font-semibold">
-            Click Preset Tabs & Color Swatches to Customize Canvas Live
+          <span className="text-[#745a27] font-semibold truncate max-w-[200px] sm:max-w-none">
+            Click Preset Tabs & Palette Swatches Live
           </span>
         </div>
 
