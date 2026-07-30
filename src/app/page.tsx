@@ -319,12 +319,9 @@ export default function Home() {
   );
 }
 
-// ─── LUXURY 3D GRAPHIC DESIGNER STUDIO WATCH (Live Real-Time Clock & Parallax) ───
+// ─── PURE LUXURY 3D GRAPHIC DESIGNER STUDIO WATCH (Live Real-Time Clock) ───
 function GraphicDesigner3DWatch() {
   const [time, setTime] = useState<Date | null>(null);
-  const [rotateX, setRotateX] = useState(0);
-  const [rotateY, setRotateY] = useState(0);
-  const [watchTheme, setWatchTheme] = useState<"gold" | "rose" | "emerald">("gold");
 
   // Real-time ticking clock update
   useEffect(() => {
@@ -334,50 +331,6 @@ function GraphicDesigner3DWatch() {
     }, 1000);
     return () => clearInterval(timer);
   }, []);
-
-  // Theme color definitions
-  const themes = {
-    gold: {
-      bezel: "border-[#c9a96e]",
-      bg: "bg-[#111111]",
-      dialAccent: "#c9a96e",
-      handColor: "#e4c285",
-      secHand: "#d4af37",
-      glow: "shadow-[0_20px_60px_rgba(201,169,110,0.3)]"
-    },
-    rose: {
-      bezel: "border-[#d48b8b]",
-      bg: "bg-[#140d0d]",
-      dialAccent: "#d48b8b",
-      handColor: "#f5c6c6",
-      secHand: "#e0a9a9",
-      glow: "shadow-[0_20px_60px_rgba(212,139,139,0.3)]"
-    },
-    emerald: {
-      bezel: "border-[#6fa885]",
-      bg: "bg-[#0b140f]",
-      dialAccent: "#6fa885",
-      handColor: "#b2dec2",
-      secHand: "#4e936b",
-      glow: "shadow-[0_20px_60px_rgba(111,168,133,0.3)]"
-    }
-  };
-
-  const currentTheme = themes[watchTheme];
-
-  // 3D Parallax Mouse Move Handler
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    setRotateX(-y / 12);
-    setRotateY(x / 12);
-  };
-
-  const handleMouseLeave = () => {
-    setRotateX(0);
-    setRotateY(0);
-  };
 
   // Clock Hand Angle Calculations
   const hours = time ? time.getHours() : 0;
@@ -398,159 +351,114 @@ function GraphicDesigner3DWatch() {
     : "31 JUL 2026";
 
   return (
-    <div className="relative h-[460px] sm:h-[500px] md:h-[540px] w-full mt-8 lg:mt-0 flex flex-col justify-between items-center">
+    <div className="relative h-[440px] sm:h-[480px] md:h-[520px] w-full mt-8 lg:mt-0 flex items-center justify-center">
       
-      {/* Top Header Toolbar */}
-      <div className="w-full flex items-center justify-between px-3 py-2 bg-white/80 backdrop-blur-md rounded-xl border border-[#c9a96e]/30 shadow-sm mb-2">
-        <div className="flex items-center gap-2">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#c9a96e] animate-ping" />
-          <span className="text-xs font-serif font-bold text-[#1b1c1c] tracking-widest uppercase">
-            3D Studio Watch • Live Clock
-          </span>
+      {/* Background Subtle Radial Glow */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-[#c9a96e]/15 via-transparent to-[#745a27]/10 rounded-full blur-3xl pointer-events-none" />
+
+      {/* Main 3D Watch Face */}
+      <div className="relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full border-8 border-[#c9a96e] bg-[#111111] shadow-[0_25px_60px_rgba(201,169,110,0.3)] flex items-center justify-center p-3">
+        
+        {/* Outer Watch Bezel Angle Graduation Lines */}
+        <div className="absolute inset-2 rounded-full border border-white/10 flex items-center justify-center pointer-events-none">
+          {[...Array(12)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-full h-full flex justify-center py-1"
+              style={{ transform: `rotate(${i * 30}deg)` }}
+            >
+              <div className="w-1 h-3 bg-white/30 rounded-full" />
+            </div>
+          ))}
         </div>
 
-        <div className="flex items-center gap-1.5">
-          <button
-            onClick={() => setWatchTheme("gold")}
-            className={`w-4 h-4 rounded-full bg-[#c9a96e] border-2 ${watchTheme === "gold" ? "border-black scale-110" : "border-transparent"}`}
-            title="Champagne Gold"
-          />
-          <button
-            onClick={() => setWatchTheme("rose")}
-            className={`w-4 h-4 rounded-full bg-[#d48b8b] border-2 ${watchTheme === "rose" ? "border-black scale-110" : "border-transparent"}`}
-            title="Rose Gold"
-          />
-          <button
-            onClick={() => setWatchTheme("emerald")}
-            className={`w-4 h-4 rounded-full bg-[#6fa885] border-2 ${watchTheme === "emerald" ? "border-black scale-110" : "border-transparent"}`}
-            title="Emerald Steel"
-          />
-        </div>
-      </div>
-
-      {/* 3D Interactive Parallax Watch Container */}
-      <div 
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-        className="perspective-1000 relative flex-1 w-full flex items-center justify-center cursor-grab active:cursor-grabbing"
-      >
-        <motion.div
-          animate={{ rotateX, rotateY }}
-          transition={{ type: "spring", stiffness: 300, damping: 25 }}
-          className={`relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full border-8 ${currentTheme.bezel} ${currentTheme.bg} ${currentTheme.glow} flex items-center justify-center p-3 shadow-2xl transition-colors duration-500`}
-        >
+        {/* Watch Face Center Dial */}
+        <div className="relative w-full h-full rounded-full border border-white/15 bg-gradient-to-b from-white/5 to-transparent flex items-center justify-center overflow-hidden">
           
-          {/* Outer Watch Bezel Angle Graduation Lines */}
-          <div className="absolute inset-2 rounded-full border border-white/10 flex items-center justify-center">
-            {[...Array(12)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute w-full h-full flex justify-center py-1"
-                style={{ transform: `rotate(${i * 30}deg)` }}
-              >
-                <div className="w-1 h-3 bg-white/30 rounded-full" />
-              </div>
-            ))}
+          {/* Vector Compass Radial Circles */}
+          <div className="absolute w-44 h-44 sm:w-52 sm:h-52 rounded-full border border-dashed border-white/15 animate-[spin_40s_linear_infinite]" />
+          <div className="absolute w-28 h-28 sm:w-36 sm:h-36 rounded-full border border-white/10" />
+
+          {/* 12 O'CLOCK: SJ LOGO MONOGRAM CREST */}
+          <div className="absolute top-6 flex flex-col items-center">
+            <div className="w-8 h-8 rounded-full border border-[#c9a96e] bg-[#c9a96e]/10 flex items-center justify-center font-serif font-bold text-xs text-[#c9a96e]">
+              SJ
+            </div>
+            <span className="text-[8px] font-mono tracking-widest text-white/50 uppercase mt-0.5">
+              STUDIO 2026
+            </span>
           </div>
 
-          {/* Watch Face Center Dial */}
-          <div className="relative w-full h-full rounded-full border border-white/15 bg-gradient-to-b from-white/5 to-transparent flex items-center justify-center overflow-hidden">
-            
-            {/* Vector Compass Radial Circles */}
-            <div className="absolute w-44 h-44 sm:w-52 sm:h-52 rounded-full border border-dashed border-white/15 animate-[spin_40s_linear_infinite]" />
-            <div className="absolute w-28 h-28 sm:w-36 sm:h-36 rounded-full border border-white/10" />
-
-            {/* 12 O'CLOCK: SJ LOGO MONOGRAM CREST */}
-            <div className="absolute top-6 flex flex-col items-center">
-              <div className="w-8 h-8 rounded-full border border-[#c9a96e] bg-[#c9a96e]/10 flex items-center justify-center font-serif font-bold text-xs text-[#c9a96e]">
-                SJ
-              </div>
-              <span className="text-[8px] font-mono tracking-widest text-white/50 uppercase mt-0.5">
-                STUDIO 2026
-              </span>
-            </div>
-
-            {/* 3 O'CLOCK: 300 DPI PRESS MARK */}
-            <div className="absolute right-5 flex flex-col items-center">
-              <span className="text-[10px] font-mono font-bold text-[#c9a96e] bg-white/10 px-2 py-0.5 rounded border border-white/10">
-                300 DPI
-              </span>
-            </div>
-
-            {/* 6 O'CLOCK: CMYK COLOR PALETTE SWATCHES */}
-            <div className="absolute bottom-6 flex flex-col items-center space-y-1">
-              <div className="flex gap-1">
-                <div className="w-2.5 h-2.5 rounded-full bg-cyan-400" title="Cyan" />
-                <div className="w-2.5 h-2.5 rounded-full bg-fuchsia-500" title="Magenta" />
-                <div className="w-2.5 h-2.5 rounded-full bg-yellow-400" title="Yellow" />
-                <div className="w-2.5 h-2.5 rounded-full bg-black border border-white/40" title="Key Black" />
-              </div>
-              <span className="text-[8px] font-mono tracking-widest text-white/40 uppercase">
-                CMYK PRINT
-              </span>
-            </div>
-
-            {/* 9 O'CLOCK: 10+ YRS EXPERIENCE EMBLEM */}
-            <div className="absolute left-5 flex flex-col items-center">
-              <span className="text-[10px] font-serif font-bold text-[#c9a96e]">
-                10+ YRS
-              </span>
-              <span className="text-[7px] font-mono text-white/40 uppercase">
-                MASTERY
-              </span>
-            </div>
-
-            {/* DIGITAL SUB-DIAL (CENTER DISPLAY) */}
-            <div className="absolute bottom-16 bg-black/80 backdrop-blur-md px-3 py-1 rounded-lg border border-white/15 text-center">
-              <span className="text-xs font-mono font-bold tracking-wider text-amber-300 block">
-                {digitalTimeStr}
-              </span>
-              <span className="text-[8px] font-mono text-white/60 tracking-widest block">
-                {dateStr}
-              </span>
-            </div>
-
-            {/* LIVE HOUR HAND */}
-            <div
-              className="absolute w-full h-full flex justify-center items-center pointer-events-none"
-              style={{ transform: `rotate(${hourAngle}deg)` }}
-            >
-              <div className="w-1.5 h-16 sm:h-20 bg-gradient-to-t from-white to-[#c9a96e] rounded-full shadow-lg -translate-y-8 sm:-translate-y-10 border border-black/40" />
-            </div>
-
-            {/* LIVE MINUTE HAND */}
-            <div
-              className="absolute w-full h-full flex justify-center items-center pointer-events-none"
-              style={{ transform: `rotate(${minuteAngle}deg)` }}
-            >
-              <div className="w-1 h-24 sm:h-28 bg-gradient-to-t from-white to-white rounded-full shadow-lg -translate-y-12 sm:-translate-y-14 border border-black/40" />
-            </div>
-
-            {/* LIVE SECOND HAND */}
-            <div
-              className="absolute w-full h-full flex justify-center items-center pointer-events-none"
-              style={{ transform: `rotate(${secondAngle}deg)` }}
-            >
-              <div className="w-0.5 h-28 sm:h-32 bg-[#d4af37] rounded-full shadow-md -translate-y-14 sm:-translate-y-16" />
-              <div className="w-2 h-2 rounded-full bg-[#d4af37] absolute -translate-y-14 sm:-translate-y-16" />
-            </div>
-
-            {/* CENTER WATCH CROWN PIN */}
-            <div className="w-4 h-4 rounded-full bg-[#c9a96e] border-2 border-white shadow-xl z-20" />
-
+          {/* 3 O'CLOCK: 300 DPI PRESS MARK */}
+          <div className="absolute right-5 flex flex-col items-center">
+            <span className="text-[10px] font-mono font-bold text-[#c9a96e] bg-white/10 px-2 py-0.5 rounded border border-white/10">
+              300 DPI
+            </span>
           </div>
 
-        </motion.div>
-      </div>
+          {/* 6 O'CLOCK: CMYK COLOR PALETTE SWATCHES */}
+          <div className="absolute bottom-6 flex flex-col items-center space-y-1">
+            <div className="flex gap-1">
+              <div className="w-2.5 h-2.5 rounded-full bg-cyan-400" title="Cyan" />
+              <div className="w-2.5 h-2.5 rounded-full bg-fuchsia-500" title="Magenta" />
+              <div className="w-2.5 h-2.5 rounded-full bg-yellow-400" title="Yellow" />
+              <div className="w-2.5 h-2.5 rounded-full bg-black border border-white/40" title="Key Black" />
+            </div>
+            <span className="text-[8px] font-mono tracking-widest text-white/40 uppercase">
+              CMYK PRINT
+            </span>
+          </div>
 
-      {/* Bottom Live Status Bar */}
-      <div className="w-full flex items-center justify-between text-[11px] font-mono text-[#5f5e59] pt-2 border-t border-[#e4e2e1]">
-        <span className="text-[#745a27] font-semibold">
-          ✦ Real-Time Live Ticking Clock
-        </span>
-        <span className="hidden sm:inline">
-          Move Mouse to Parallax Tilt 3D Watch
-        </span>
+          {/* 9 O'CLOCK: 10+ YRS EXPERIENCE EMBLEM */}
+          <div className="absolute left-5 flex flex-col items-center">
+            <span className="text-[10px] font-serif font-bold text-[#c9a96e]">
+              10+ YRS
+            </span>
+            <span className="text-[7px] font-mono text-white/40 uppercase">
+              MASTERY
+            </span>
+          </div>
+
+          {/* DIGITAL SUB-DIAL (CENTER DISPLAY) */}
+          <div className="absolute bottom-16 bg-black/80 backdrop-blur-md px-3 py-1 rounded-lg border border-white/15 text-center">
+            <span className="text-xs font-mono font-bold tracking-wider text-amber-300 block">
+              {digitalTimeStr}
+            </span>
+            <span className="text-[8px] font-mono text-white/60 tracking-widest block">
+              {dateStr}
+            </span>
+          </div>
+
+          {/* LIVE HOUR HAND */}
+          <div
+            className="absolute w-full h-full flex justify-center items-center pointer-events-none"
+            style={{ transform: `rotate(${hourAngle}deg)` }}
+          >
+            <div className="w-1.5 h-16 sm:h-20 bg-gradient-to-t from-white to-[#c9a96e] rounded-full shadow-lg -translate-y-8 sm:-translate-y-10 border border-black/40" />
+          </div>
+
+          {/* LIVE MINUTE HAND */}
+          <div
+            className="absolute w-full h-full flex justify-center items-center pointer-events-none"
+            style={{ transform: `rotate(${minuteAngle}deg)` }}
+          >
+            <div className="w-1 h-24 sm:h-28 bg-gradient-to-t from-white to-white rounded-full shadow-lg -translate-y-12 sm:-translate-y-14 border border-black/40" />
+          </div>
+
+          {/* LIVE SECOND HAND */}
+          <div
+            className="absolute w-full h-full flex justify-center items-center pointer-events-none"
+            style={{ transform: `rotate(${secondAngle}deg)` }}
+          >
+            <div className="w-0.5 h-28 sm:h-32 bg-[#d4af37] rounded-full shadow-md -translate-y-14 sm:-translate-y-16" />
+            <div className="w-2 h-2 rounded-full bg-[#d4af37] absolute -translate-y-14 sm:-translate-y-16" />
+          </div>
+
+          {/* CENTER WATCH CROWN PIN */}
+          <div className="w-4 h-4 rounded-full bg-[#c9a96e] border-2 border-white shadow-xl z-20" />
+
+        </div>
+
       </div>
 
     </div>
