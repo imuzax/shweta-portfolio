@@ -113,35 +113,36 @@ h1, h2, h3, h4 {
   color: var(--gold);
 }
 
-/* ─── Luxury Button Styles ─── */
+/* ─── Luxury Metallic Golden Button Styles ─── */
 .btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-  padding: 0.8rem 2.2rem;
-  background: linear-gradient(135deg, #1b1c1c 0%, #2a2824 100%);
-  color: #c9a96e;
+  padding: 0.85rem 2.2rem;
+  background: linear-gradient(135deg, #d4af37 0%, #c9a96e 50%, #9e7a36 100%);
+  color: #111111;
   font-family: 'Inter', sans-serif;
   font-size: 0.8rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  border: 1px solid rgba(201, 169, 110, 0.4);
+  border: 1px solid #e2c46c;
   border-radius: 9999px;
   cursor: pointer;
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
-  box-shadow: 0 4px 15px rgba(27, 28, 28, 0.12);
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.28);
   position: relative;
+  overflow: hidden;
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, #c9a96e 0%, #a38243 100%);
-  color: #ffffff;
-  border-color: #c9a96e;
+  background: linear-gradient(135deg, #f3d77b 0%, #d4af37 50%, #b8913b 100%);
+  color: #000000;
+  border-color: #ffffff;
   transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 10px 30px rgba(201, 169, 110, 0.35);
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.45);
 }
 
 .btn-outline {
@@ -149,28 +150,29 @@ h1, h2, h3, h4 {
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-  padding: 0.8rem 2.2rem;
-  background: rgba(255, 255, 255, 0.85);
+  padding: 0.85rem 2.2rem;
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(10px);
-  color: #1b1c1c;
+  color: #745a27;
   font-family: 'Inter', sans-serif;
   font-size: 0.8rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  border: 1px solid rgba(27, 28, 28, 0.2);
+  border: 1.5px solid #c9a96e;
   border-radius: 9999px;
   cursor: pointer;
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
+  box-shadow: 0 2px 10px rgba(201, 169, 110, 0.15);
 }
 
 .btn-outline:hover {
-  background: #1b1c1c;
-  color: #c9a96e;
-  border-color: #1b1c1c;
+  background: linear-gradient(135deg, #d4af37 0%, #c9a96e 100%);
+  color: #111111;
+  border-color: #d4af37;
   transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 10px 25px rgba(27, 28, 28, 0.2);
+  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.35);
 }
 
 /* ─── Scrollbar ─── */

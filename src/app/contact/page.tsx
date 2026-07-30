@@ -195,12 +195,18 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Studio Map Image */}
-            <div className="rounded-2xl overflow-hidden shadow-lg border border-[rgba(201,169,110,0.3)] h-44">
-              <img
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2yXiNyGmO8_rXhs9NXggrRvEqXCLpV5pTLrNUHuaJJvWU10jFkByW9zj9a0TdCrAMVYIPO2nCvKWZKQXWV0b1D7ag8S-C0KZZErDgXK7kDB6U8RqqsWUACXY9QlbGobyWW8XS-fgb2E_DPVXm0TXnb4HLl4qlQypXXgpyvgcG2_RrxwPNP_oDy0JLs9i174o295T9Uh2VftnvWx77EKg1FZbkftlBM_dDec_IH_bDxUB8dQeF9Kk3"
-                alt="Pune Studio Map"
-                className="w-full h-full object-cover grayscale opacity-90"
+            {/* Real Interactive Google Maps Embed for Pune */}
+            <div className="rounded-2xl overflow-hidden shadow-lg border border-[rgba(201,169,110,0.4)] h-56 relative">
+              <iframe
+                title="Pune Maharashtra Location Map"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15131.932822453582!2d73.8567437!3d18.5204303!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf2e67461101%3A0x828d43bf9d9ee343!2sPune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={false}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full h-full border-0"
               />
             </div>
           </div>
