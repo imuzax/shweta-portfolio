@@ -32,8 +32,8 @@ export default function Home() {
             </div>
           </div>
 
-          {/* ─── INTERACTIVE 3D CARD STACK CAROUSEL SHOWCASE (Shweta's 6 Top Real Projects) ─── */}
-          <InteractiveCardStackHero />
+          {/* ─── LUXURY 3D GRAPHIC DESIGNER STUDIO WATCH (Live Real-Time Clock & Parallax) ─── */}
+          <GraphicDesigner3DWatch />
         </div>
       </section>
 
@@ -319,200 +319,238 @@ export default function Home() {
   );
 }
 
-// ─── INTERACTIVE 3D CARD STACK CAROUSEL SHOWCASE (Shweta's 6 Top Real Projects) ───
-function InteractiveCardStackHero() {
-  const [cards, setCards] = useState([
-    {
-      id: 1,
-      title: "Slack Visual Brand Refresh",
-      category: "Brand Identity",
-      image: "/images/portfolio/2019-01_BrandRefresh_slack-brand-refresh_header-1.png",
-      tag: "Branding System"
-    },
-    {
-      id: 2,
-      title: "Custom Premium Logo Identity",
-      category: "Logo Design",
-      image: "/images/portfolio/Logos/L1.jpg",
-      tag: "Logo Design"
-    },
-    {
-      id: 3,
-      title: "Grand Expo Event Invitation",
-      category: "Expo Invite",
-      image: "/images/portfolio/expo-invite/expo1.jpg",
-      tag: "Expo Card"
-    },
-    {
-      id: 4,
-      title: "Promotional Rollup Standee",
-      category: "Standee Design",
-      image: "/images/portfolio/standee-designs/standee1.jpg",
-      tag: "Standee Graphics"
-    },
-    {
-      id: 5,
-      title: "Campaign Banners & Flex",
-      category: "Banners & Flex",
-      image: "/images/portfolio/banners/B2.jpg",
-      tag: "Outdoor Banners"
-    },
-    {
-      id: 6,
-      title: "News Paper Publication Ad",
-      category: "News Paper Ad",
-      image: "/images/portfolio/news-paper/N1.png",
-      tag: "Press Print Ad"
-    }
-  ]);
+// ─── LUXURY 3D GRAPHIC DESIGNER STUDIO WATCH (Live Real-Time Clock & Parallax) ───
+function GraphicDesigner3DWatch() {
+  const [time, setTime] = useState<Date | null>(null);
+  const [rotateX, setRotateX] = useState(0);
+  const [rotateY, setRotateY] = useState(0);
+  const [watchTheme, setWatchTheme] = useState<"gold" | "rose" | "emerald">("gold");
 
-  const [activeIdx, setActiveIdx] = useState(0);
-
-  // Auto-rotate card stack every 3.5 seconds
+  // Real-time ticking clock update
   useEffect(() => {
-    const interval = setInterval(() => {
-      handleNext();
-    }, 3500);
-    return () => clearInterval(interval);
+    setTime(new Date());
+    const timer = setInterval(() => {
+      setTime(new Date());
+    }, 1000);
+    return () => clearInterval(timer);
   }, []);
 
-  const handleNext = () => {
-    setCards((prevCards) => {
-      const newArray = [...prevCards];
-      const first = newArray.shift()!;
-      newArray.push(first);
-      return newArray;
-    });
-    setActiveIdx((prev) => (prev + 1) % 6);
+  // Theme color definitions
+  const themes = {
+    gold: {
+      bezel: "border-[#c9a96e]",
+      bg: "bg-[#111111]",
+      dialAccent: "#c9a96e",
+      handColor: "#e4c285",
+      secHand: "#d4af37",
+      glow: "shadow-[0_20px_60px_rgba(201,169,110,0.3)]"
+    },
+    rose: {
+      bezel: "border-[#d48b8b]",
+      bg: "bg-[#140d0d]",
+      dialAccent: "#d48b8b",
+      handColor: "#f5c6c6",
+      secHand: "#e0a9a9",
+      glow: "shadow-[0_20px_60px_rgba(212,139,139,0.3)]"
+    },
+    emerald: {
+      bezel: "border-[#6fa885]",
+      bg: "bg-[#0b140f]",
+      dialAccent: "#6fa885",
+      handColor: "#b2dec2",
+      secHand: "#4e936b",
+      glow: "shadow-[0_20px_60px_rgba(111,168,133,0.3)]"
+    }
   };
 
-  const handlePrev = () => {
-    setCards((prevCards) => {
-      const newArray = [...prevCards];
-      const last = newArray.pop()!;
-      newArray.unshift(last);
-      return newArray;
-    });
-    setActiveIdx((prev) => (prev - 1 + 6) % 6);
+  const currentTheme = themes[watchTheme];
+
+  // 3D Parallax Mouse Move Handler
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    setRotateX(-y / 12);
+    setRotateY(x / 12);
   };
+
+  const handleMouseLeave = () => {
+    setRotateX(0);
+    setRotateY(0);
+  };
+
+  // Clock Hand Angle Calculations
+  const hours = time ? time.getHours() : 0;
+  const minutes = time ? time.getMinutes() : 0;
+  const seconds = time ? time.getSeconds() : 0;
+
+  const hourAngle = (hours % 12 + minutes / 60) * 30;
+  const minuteAngle = (minutes + seconds / 60) * 6;
+  const secondAngle = seconds * 6;
+
+  // Format digital string
+  const digitalTimeStr = time
+    ? time.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", second: "2-digit" })
+    : "12:00:00 AM";
+
+  const dateStr = time
+    ? time.toLocaleDateString("en-US", { day: "2-digit", month: "short", year: "numeric" }).toUpperCase()
+    : "31 JUL 2026";
 
   return (
-    <div className="relative h-[440px] sm:h-[480px] md:h-[520px] w-full mt-8 lg:mt-0 flex flex-col justify-between">
+    <div className="relative h-[460px] sm:h-[500px] md:h-[540px] w-full mt-8 lg:mt-0 flex flex-col justify-between items-center">
       
-      {/* Top Controls Header Bar */}
-      <div className="flex items-center justify-between px-2 mb-2">
+      {/* Top Header Toolbar */}
+      <div className="w-full flex items-center justify-between px-3 py-2 bg-white/80 backdrop-blur-md rounded-xl border border-[#c9a96e]/30 shadow-sm mb-2">
         <div className="flex items-center gap-2">
           <span className="w-2.5 h-2.5 rounded-full bg-[#c9a96e] animate-ping" />
           <span className="text-xs font-serif font-bold text-[#1b1c1c] tracking-widest uppercase">
-            3D Card Stack Showcase ({activeIdx + 1} / 6)
+            3D Studio Watch • Live Clock
           </span>
         </div>
 
-        {/* Prev / Next Navigation Arrows */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5">
           <button
-            onClick={handlePrev}
-            className="w-8 h-8 rounded-full bg-white border border-[#c9a96e]/30 shadow hover:bg-[#c9a96e] hover:text-[#543d0c] transition-colors flex items-center justify-center text-[#745a27] font-bold text-xs"
-            title="Previous Project"
-          >
-            ←
-          </button>
-          <button
-            onClick={handleNext}
-            className="w-8 h-8 rounded-full bg-white border border-[#c9a96e]/30 shadow hover:bg-[#c9a96e] hover:text-[#543d0c] transition-colors flex items-center justify-center text-[#745a27] font-bold text-xs"
-            title="Next Project"
-          >
-            →
-          </button>
-        </div>
-      </div>
-
-      {/* 3D Stacked Cards Canvas */}
-      <div className="relative flex-1 w-full flex items-center justify-center">
-        <div className="relative w-full max-w-md h-[88%] flex items-center justify-center">
-          <AnimatePresence mode="popLayout">
-            {cards.slice(0, 3).map((card, index) => {
-              // Calculate 3D stacking & fan-out rotations
-              const scale = 1 - index * 0.05;
-              const translateY = index * 14;
-              const rotate = index === 0 ? 0 : index === 1 ? -4 : 4;
-              const opacity = 1 - index * 0.2;
-              const zIndex = 30 - index;
-
-              return (
-                <motion.div
-                  key={card.id}
-                  layout
-                  onClick={index === 0 ? handleNext : undefined}
-                  initial={{ scale: 0.85, opacity: 0, y: 40, rotate: index % 2 === 0 ? 6 : -6 }}
-                  animate={{ scale, opacity, y: translateY, rotate }}
-                  exit={{ scale: 0.95, opacity: 0, x: 120, rotate: 12 }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 240,
-                    damping: 22,
-                    mass: 0.8
-                  }}
-                  style={{ zIndex }}
-                  className={`absolute inset-0 rounded-2xl overflow-hidden shadow-2xl border transition-all duration-300 ${
-                    index === 0
-                      ? "border-[#c9a96e] shadow-[0_20px_50px_rgba(201,169,110,0.25)] cursor-pointer bg-white"
-                      : "border-[#c9a96e]/20 bg-white/95 pointer-events-none"
-                  }`}
-                >
-                  {/* Image Container */}
-                  <div className="w-full h-full relative overflow-hidden bg-[#121212]">
-                    <img
-                      src={card.image}
-                      alt={card.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-
-                    {/* Top Glass Category Tag */}
-                    <div className="absolute top-4 left-4 bg-black/80 backdrop-blur-md text-[#c9a96e] text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-white/20 shadow-md flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#c9a96e]" />
-                      <span>{card.tag}</span>
-                    </div>
-
-                    {/* Bottom Glass Project Details */}
-                    <div className="absolute bottom-4 left-4 right-4 bg-gradient-to-r from-black/95 via-black/85 to-black/40 backdrop-blur-md p-3.5 rounded-xl border border-white/15 text-white flex items-center justify-between shadow-2xl">
-                      <div>
-                        <span className="text-[9px] font-mono text-[#c9a96e] uppercase tracking-wider block">
-                          {card.category}
-                        </span>
-                        <h3 className="text-sm md:text-base font-serif font-bold text-white mt-0.5 truncate max-w-[200px] sm:max-w-none">
-                          {card.title}
-                        </h3>
-                      </div>
-                      {index === 0 && (
-                        <span className="text-[10px] font-semibold text-[#543d0c] bg-[#c9a96e] px-3 py-1 rounded-full shadow-md font-serif">
-                          Next →
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </AnimatePresence>
-        </div>
-      </div>
-
-      {/* Bottom Pagination Dots */}
-      <div className="flex items-center justify-center gap-2 pt-3 border-t border-[#e4e2e1]">
-        {[0, 1, 2, 3, 4, 5].map((i) => (
-          <button
-            key={i}
-            onClick={() => {
-              setActiveIdx(i);
-              handleNext();
-            }}
-            className={`h-2 rounded-full transition-all duration-300 ${
-              activeIdx === i ? "w-6 bg-[#c9a96e]" : "w-2 bg-[#e4e2e1] hover:bg-[#c9a96e]/50"
-            }`}
-            title={`Go to project ${i + 1}`}
+            onClick={() => setWatchTheme("gold")}
+            className={`w-4 h-4 rounded-full bg-[#c9a96e] border-2 ${watchTheme === "gold" ? "border-black scale-110" : "border-transparent"}`}
+            title="Champagne Gold"
           />
-        ))}
+          <button
+            onClick={() => setWatchTheme("rose")}
+            className={`w-4 h-4 rounded-full bg-[#d48b8b] border-2 ${watchTheme === "rose" ? "border-black scale-110" : "border-transparent"}`}
+            title="Rose Gold"
+          />
+          <button
+            onClick={() => setWatchTheme("emerald")}
+            className={`w-4 h-4 rounded-full bg-[#6fa885] border-2 ${watchTheme === "emerald" ? "border-black scale-110" : "border-transparent"}`}
+            title="Emerald Steel"
+          />
+        </div>
+      </div>
+
+      {/* 3D Interactive Parallax Watch Container */}
+      <div 
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        className="perspective-1000 relative flex-1 w-full flex items-center justify-center cursor-grab active:cursor-grabbing"
+      >
+        <motion.div
+          animate={{ rotateX, rotateY }}
+          transition={{ type: "spring", stiffness: 300, damping: 25 }}
+          className={`relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full border-8 ${currentTheme.bezel} ${currentTheme.bg} ${currentTheme.glow} flex items-center justify-center p-3 shadow-2xl transition-colors duration-500`}
+        >
+          
+          {/* Outer Watch Bezel Angle Graduation Lines */}
+          <div className="absolute inset-2 rounded-full border border-white/10 flex items-center justify-center">
+            {[...Array(12)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute w-full h-full flex justify-center py-1"
+                style={{ transform: `rotate(${i * 30}deg)` }}
+              >
+                <div className="w-1 h-3 bg-white/30 rounded-full" />
+              </div>
+            ))}
+          </div>
+
+          {/* Watch Face Center Dial */}
+          <div className="relative w-full h-full rounded-full border border-white/15 bg-gradient-to-b from-white/5 to-transparent flex items-center justify-center overflow-hidden">
+            
+            {/* Vector Compass Radial Circles */}
+            <div className="absolute w-44 h-44 sm:w-52 sm:h-52 rounded-full border border-dashed border-white/15 animate-[spin_40s_linear_infinite]" />
+            <div className="absolute w-28 h-28 sm:w-36 sm:h-36 rounded-full border border-white/10" />
+
+            {/* 12 O'CLOCK: SJ LOGO MONOGRAM CREST */}
+            <div className="absolute top-6 flex flex-col items-center">
+              <div className="w-8 h-8 rounded-full border border-[#c9a96e] bg-[#c9a96e]/10 flex items-center justify-center font-serif font-bold text-xs text-[#c9a96e]">
+                SJ
+              </div>
+              <span className="text-[8px] font-mono tracking-widest text-white/50 uppercase mt-0.5">
+                STUDIO 2026
+              </span>
+            </div>
+
+            {/* 3 O'CLOCK: 300 DPI PRESS MARK */}
+            <div className="absolute right-5 flex flex-col items-center">
+              <span className="text-[10px] font-mono font-bold text-[#c9a96e] bg-white/10 px-2 py-0.5 rounded border border-white/10">
+                300 DPI
+              </span>
+            </div>
+
+            {/* 6 O'CLOCK: CMYK COLOR PALETTE SWATCHES */}
+            <div className="absolute bottom-6 flex flex-col items-center space-y-1">
+              <div className="flex gap-1">
+                <div className="w-2.5 h-2.5 rounded-full bg-cyan-400" title="Cyan" />
+                <div className="w-2.5 h-2.5 rounded-full bg-fuchsia-500" title="Magenta" />
+                <div className="w-2.5 h-2.5 rounded-full bg-yellow-400" title="Yellow" />
+                <div className="w-2.5 h-2.5 rounded-full bg-black border border-white/40" title="Key Black" />
+              </div>
+              <span className="text-[8px] font-mono tracking-widest text-white/40 uppercase">
+                CMYK PRINT
+              </span>
+            </div>
+
+            {/* 9 O'CLOCK: 10+ YRS EXPERIENCE EMBLEM */}
+            <div className="absolute left-5 flex flex-col items-center">
+              <span className="text-[10px] font-serif font-bold text-[#c9a96e]">
+                10+ YRS
+              </span>
+              <span className="text-[7px] font-mono text-white/40 uppercase">
+                MASTERY
+              </span>
+            </div>
+
+            {/* DIGITAL SUB-DIAL (CENTER DISPLAY) */}
+            <div className="absolute bottom-16 bg-black/80 backdrop-blur-md px-3 py-1 rounded-lg border border-white/15 text-center">
+              <span className="text-xs font-mono font-bold tracking-wider text-amber-300 block">
+                {digitalTimeStr}
+              </span>
+              <span className="text-[8px] font-mono text-white/60 tracking-widest block">
+                {dateStr}
+              </span>
+            </div>
+
+            {/* LIVE HOUR HAND */}
+            <div
+              className="absolute w-full h-full flex justify-center items-center pointer-events-none"
+              style={{ transform: `rotate(${hourAngle}deg)` }}
+            >
+              <div className="w-1.5 h-16 sm:h-20 bg-gradient-to-t from-white to-[#c9a96e] rounded-full shadow-lg -translate-y-8 sm:-translate-y-10 border border-black/40" />
+            </div>
+
+            {/* LIVE MINUTE HAND */}
+            <div
+              className="absolute w-full h-full flex justify-center items-center pointer-events-none"
+              style={{ transform: `rotate(${minuteAngle}deg)` }}
+            >
+              <div className="w-1 h-24 sm:h-28 bg-gradient-to-t from-white to-white rounded-full shadow-lg -translate-y-12 sm:-translate-y-14 border border-black/40" />
+            </div>
+
+            {/* LIVE SECOND HAND */}
+            <div
+              className="absolute w-full h-full flex justify-center items-center pointer-events-none"
+              style={{ transform: `rotate(${secondAngle}deg)` }}
+            >
+              <div className="w-0.5 h-28 sm:h-32 bg-[#d4af37] rounded-full shadow-md -translate-y-14 sm:-translate-y-16" />
+              <div className="w-2 h-2 rounded-full bg-[#d4af37] absolute -translate-y-14 sm:-translate-y-16" />
+            </div>
+
+            {/* CENTER WATCH CROWN PIN */}
+            <div className="w-4 h-4 rounded-full bg-[#c9a96e] border-2 border-white shadow-xl z-20" />
+
+          </div>
+
+        </motion.div>
+      </div>
+
+      {/* Bottom Live Status Bar */}
+      <div className="w-full flex items-center justify-between text-[11px] font-mono text-[#5f5e59] pt-2 border-t border-[#e4e2e1]">
+        <span className="text-[#745a27] font-semibold">
+          ✦ Real-Time Live Ticking Clock
+        </span>
+        <span className="hidden sm:inline">
+          Move Mouse to Parallax Tilt 3D Watch
+        </span>
       </div>
 
     </div>
