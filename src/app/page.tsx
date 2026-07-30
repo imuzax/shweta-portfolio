@@ -137,12 +137,13 @@ export default function Home() {
             About Me
           </span>
           
-          {/* Creative Graphic Designer Artist Badge */}
-          <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-[#c9a96e] p-2 mt-2 mb-2 shadow-xl bg-gradient-to-br from-[#1b1c1c] to-[#303030] flex items-center justify-center text-[#c9a96e] group hover:scale-105 transition-transform">
-            <div className="w-full h-full rounded-full border border-dashed border-[#c9a96e]/50 flex flex-col items-center justify-center p-2 text-center">
-              <span className="text-2xl md:text-3xl font-serif font-bold tracking-wider text-[#c9a96e]">SJ</span>
-              <span className="text-[9px] uppercase tracking-widest text-white/70 mt-0.5">Design Studio</span>
-            </div>
+          {/* Restore Shweta's Portrait Photo */}
+          <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-[#c9a96e] p-1 mt-2 mb-2 shadow-lg overflow-hidden group hover:scale-105 transition-transform duration-300">
+            <img
+              src="/images/home/shweta-about-image.png"
+              alt="Shweta Jadhav - Graphic Designer"
+              className="w-full h-full rounded-full object-cover"
+            />
           </div>
           <p className="text-lg text-[#5f5e59] leading-relaxed font-light">
             With years of professional design experience navigating art and strategy, I specialize in translating brand essence into visual masterpieces. Based in Pune, India, my design approach blends modern minimalism with refined details, ensuring every project—from logo branding to large-scale expo graphics—performs flawlessly.
