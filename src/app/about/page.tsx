@@ -88,30 +88,47 @@ export default function About() {
             <h2 className="text-2xl md:text-3xl font-serif text-[var(--gold-dark)] mb-8">Journey</h2>
             <div className="relative border-l-2 border-[rgba(201,169,110,0.3)] ml-3 space-y-10 py-2">
               
+              {/* 1. Present: Company + Freelance Dual Track */}
               <div className="relative pl-8 group">
                 <div className="absolute left-[-9px] top-1.5 w-4 h-4 rounded-full border-2 border-[var(--gold)] bg-white group-hover:bg-[var(--gold)] transition-colors duration-300" />
-                <span className="text-xs font-semibold text-[var(--gold-dark)] tracking-widest uppercase">2023 - Present</span>
-                <h3 className="text-xl font-bold text-[var(--charcoal)] mt-1">Independent Art Director</h3>
+                <span className="text-xs font-semibold text-[var(--gold-dark)] tracking-widest uppercase">2024 - Present</span>
+                <h3 className="text-xl font-bold text-[var(--charcoal)] mt-1">Company Designer & Freelance Art Director</h3>
+                <p className="text-xs font-mono text-[var(--gold-dark)] font-semibold mt-0.5">Dual-Track Design Practice</p>
                 <p className="text-sm text-[var(--charcoal-soft)] mt-2 leading-relaxed">
-                  Consulting for premium lifestyle and wellness brands, focusing on comprehensive visual identity systems, logos, standees, and packaging design.
+                  Currently balancing full-time corporate design responsibilities for a company while actively leading selective high-value freelance brand identity and visual design projects.
                 </p>
               </div>
 
+              {/* 2. Company Designer Era */}
               <div className="relative pl-8 group">
                 <div className="absolute left-[-9px] top-1.5 w-4 h-4 rounded-full border-2 border-[var(--gold)] bg-white group-hover:bg-[var(--gold)] transition-colors duration-300" />
-                <span className="text-xs font-semibold text-[var(--gold-dark)] tracking-widest uppercase">2021 - 2023</span>
-                <h3 className="text-xl font-bold text-[var(--charcoal)] mt-1">Senior Graphic Designer</h3>
+                <span className="text-xs font-semibold text-[var(--gold-dark)] tracking-widest uppercase">2023 - 2024</span>
+                <h3 className="text-xl font-bold text-[var(--charcoal)] mt-1">Corporate Graphic Designer</h3>
+                <p className="text-xs font-mono text-[var(--gold-dark)] font-semibold mt-0.5">Company In-House Designer</p>
                 <p className="text-sm text-[var(--charcoal-soft)] mt-2 leading-relaxed">
-                  Crafting award-winning editorial layouts, expo invites, standee graphics, and luxury print brand campaigns.
+                  Joined an established corporate team, executing large-scale marketing campaigns, expo graphics, product brochures, and brand guidelines.
                 </p>
               </div>
 
+              {/* 3. Freelancing Era */}
               <div className="relative pl-8 group">
                 <div className="absolute left-[-9px] top-1.5 w-4 h-4 rounded-full border-2 border-[var(--gold)] bg-white group-hover:bg-[var(--gold)] transition-colors duration-300" />
-                <span className="text-xs font-semibold text-[var(--gold-dark)] tracking-widest uppercase">2020 - 2021</span>
-                <h3 className="text-xl font-bold text-[var(--charcoal)] mt-1">Design Fellow</h3>
+                <span className="text-xs font-semibold text-[var(--gold-dark)] tracking-widest uppercase">2022 - 2023</span>
+                <h3 className="text-xl font-bold text-[var(--charcoal)] mt-1">Independent Freelance Designer</h3>
+                <p className="text-xs font-mono text-[var(--gold-dark)] font-semibold mt-0.5">Client Consulting & Branding</p>
                 <p className="text-sm text-[var(--charcoal-soft)] mt-2 leading-relaxed">
-                  Immersive study in typography and print production, refining skills in tactile design execution.
+                  Expanded into independent freelancing, collaborating directly with small & medium businesses to deliver bespoke logo designs, standee banners, and marketing collaterals.
+                </p>
+              </div>
+
+              {/* 4. Self-Initiated Foundations */}
+              <div className="relative pl-8 group">
+                <div className="absolute left-[-9px] top-1.5 w-4 h-4 rounded-full border-2 border-[var(--gold)] bg-white group-hover:bg-[var(--gold)] transition-colors duration-300" />
+                <span className="text-xs font-semibold text-[var(--gold-dark)] tracking-widest uppercase">2021 - 2022</span>
+                <h3 className="text-xl font-bold text-[var(--charcoal)] mt-1">Self-Initiated Graphic Designer</h3>
+                <p className="text-xs font-mono text-[var(--gold-dark)] font-semibold mt-0.5">Career Foundations & Exploration</p>
+                <p className="text-sm text-[var(--charcoal-soft)] mt-2 leading-relaxed">
+                  Started the creative journey as an independent self-taught designer, mastering Adobe Suite, layout aesthetics, print techniques, and typography fundamentals.
                 </p>
               </div>
 

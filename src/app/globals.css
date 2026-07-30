@@ -113,54 +113,64 @@ h1, h2, h3, h4 {
   color: var(--gold);
 }
 
-/* ─── Button Styles ─── */
+/* ─── Luxury Button Styles ─── */
 .btn-primary {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.85rem 2.2rem;
-  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
-  color: var(--ivory);
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.8rem 2.2rem;
+  background: linear-gradient(135deg, #1b1c1c 0%, #2a2824 100%);
+  color: #c9a96e;
   font-family: 'Inter', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  border: none;
+  border: 1px solid rgba(201, 169, 110, 0.4);
+  border-radius: 9999px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
+  box-shadow: 0 4px 15px rgba(27, 28, 28, 0.12);
+  position: relative;
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(201, 169, 110, 0.35);
-  color: var(--ivory);
+  background: linear-gradient(135deg, #c9a96e 0%, #a38243 100%);
+  color: #ffffff;
+  border-color: #c9a96e;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(201, 169, 110, 0.35);
 }
 
 .btn-outline {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.85rem 2.2rem;
-  background: transparent;
-  color: var(--gold-dark);
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.8rem 2.2rem;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  color: #1b1c1c;
   font-family: 'Inter', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  border: 1px solid var(--gold);
+  border: 1px solid rgba(27, 28, 28, 0.2);
+  border-radius: 9999px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
 }
 
 .btn-outline:hover {
-  background: var(--gold);
-  color: var(--ivory);
-  transform: translateY(-2px);
+  background: #1b1c1c;
+  color: #c9a96e;
+  border-color: #1b1c1c;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(27, 28, 28, 0.2);
 }
 
 /* ─── Scrollbar ─── */
