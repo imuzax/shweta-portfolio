@@ -32,8 +32,8 @@ export default function Home() {
             </div>
           </div>
 
-          {/* ─── LIVE DYNAMIC PRODUCT DESIGN SHOWCASE (Poster -> Chips Packaging -> Standee -> Newspaper) ─── */}
-          <LiveProductDesignShowcase />
+          {/* ─── LIVE CHIPS PACKET GRAPHIC DESIGN CREATION STUDIO ─── */}
+          <LiveChipsPackagingStudio />
         </div>
       </section>
 
@@ -319,184 +319,249 @@ export default function Home() {
   );
 }
 
-// ─── LIVE DYNAMIC PRODUCT DESIGN SHOWCASE (Poster -> Chips Packaging -> Standee -> Newspaper) ───
-function LiveProductDesignShowcase() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
+// ─── LIVE CHIPS PACKET GRAPHIC DESIGN CREATION STUDIO ───
+function LiveChipsPackagingStudio() {
+  const [currentStep, setCurrentStep] = useState(0); // 0: Base Pouch, 1: Typography, 2: Color Filters, 3: Badges
+  const [flavorMode, setFlavorMode] = useState<"spicy" | "masala" | "sour">("spicy");
+  const [isFoilSheen, setIsFoilSheen] = useState(true);
+  const [isAutoPlay, setIsAutoPlay] = useState(true);
 
-  const designProducts = [
-    {
-      id: 1,
-      tag: "POSTER & BANNER DESIGN",
-      title: "Luxury Event Poster Artwork",
-      type: "Commercial Event Poster",
-      image: "/images/portfolio/banners/B2.jpg",
-      stepText: "Step 1/4 • Vector Layer Construction",
-      swatches: ["#c9a96e", "#1b1c1c", "#745a27", "#fcf9f8"],
-      details: ["300 DPI Press Ready", "Golden Ratio Guides", "Typography Alignment"]
+  // Flavor Color Specs
+  const flavors = {
+    spicy: {
+      name: "Fiery Chilli Flavor",
+      bgGradient: "from-[#d32f2f] via-[#b71c1c] to-[#1b1c1c]",
+      pouchColor: "#b71c1c",
+      accentColor: "#ffeb3b",
+      textColor: "#ffffff",
+      badgeText: "🔥 EXTRA SPICY"
     },
-    {
-      id: 2,
-      tag: "FOOD & CHIPS PACKAGING DESIGN",
-      title: "Gourmet Snack & Chips Pouch",
-      type: "Packaging & Label Design",
-      image: "/images/portfolio/Logos/L1.jpg",
-      stepText: "Step 2/4 • Pouch Die-Cut & Metallic Foil",
-      swatches: ["#e25822", "#f4c430", "#1b1c1c", "#ffffff"],
-      details: ["CMYK Die-Cut Line", "Metallic Foil Accent", "FDA Nutrition Grid"]
+    masala: {
+      name: "Royal Masala Crunch",
+      bgGradient: "from-[#e65100] via-[#f57c00] to-[#3e2723]",
+      pouchColor: "#f57c00",
+      accentColor: "#fff176",
+      textColor: "#ffffff",
+      badgeText: "🌶️ MASALA MAGIC"
     },
-    {
-      id: 3,
-      tag: "EXHIBITION STANDEE GRAPHICS",
-      title: "Rollup Venue Banner Standee",
-      type: "Exhibition Rollup Standee",
-      image: "/images/portfolio/standee-designs/standee1.jpg",
-      stepText: "Step 3/4 • Large Format Vector Print",
-      swatches: ["#1e3d59", "#ff6e40", "#ffc13b", "#f5f5f5"],
-      details: ["6ft x 3ft Rollup Canvas", "High-Contrast Sponsors", "Venue Lighting Specs"]
-    },
-    {
-      id: 4,
-      tag: "NEWS PAPER PRESS ADVERTISEMENT",
-      title: "Daily Press Publication Ad",
-      type: "News Paper Print Ad",
-      image: "/images/portfolio/news-paper/N1.png",
-      stepText: "Step 4/4 • Editorial Press Formatting",
-      swatches: ["#2c3e50", "#bdc3c7", "#e74c3c", "#ffffff"],
-      details: ["Newsprint Column Grid", "Mono & Halftone Ink", "Editorial Headline"]
+    sour: {
+      name: "Sour Cream & Herb",
+      bgGradient: "from-[#2e7d32] via-[#388e3c] to-[#1b1c1c]",
+      pouchColor: "#388e3c",
+      accentColor: "#e8f5e9",
+      textColor: "#ffffff",
+      badgeText: "🌿 SOUR CREAM & HERB"
     }
+  };
+
+  const currentFlavor = flavors[flavorMode];
+
+  // Auto-play creation steps: 0 -> 1 -> 2 -> 3
+  useEffect(() => {
+    if (!isAutoPlay) return;
+    const timer = setInterval(() => {
+      setCurrentStep((prev) => (prev + 1) % 4);
+    }, 3200);
+    return () => clearInterval(timer);
+  }, [isAutoPlay]);
+
+  const stepTitles = [
+    "Step 1: Pouch Die-Cut & Base Foil",
+    "Step 2: Adding Typography & Branding",
+    "Step 3: Color Mode & Filter Tuning",
+    "Step 4: Vector Graphics & Quality Badges"
   ];
 
-  // Auto-loop product design animation every 4 seconds
-  useEffect(() => {
-    if (!isPlaying) return;
-    const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % designProducts.length);
-    }, 4000);
-    return () => clearInterval(timer);
-  }, [isPlaying, designProducts.length]);
-
-  const currentProduct = designProducts[currentIndex];
-
   return (
-    <div className="relative h-[440px] sm:h-[490px] md:h-[530px] w-full mt-8 lg:mt-0">
+    <div className="relative h-[460px] sm:h-[510px] md:h-[540px] w-full mt-8 lg:mt-0">
       <div className="glass-panel soft-shadow absolute inset-0 rounded-2xl overflow-hidden border border-[#c9a96e]/30 bg-white flex flex-col shadow-2xl">
         
-        {/* Top Studio Live Progress Bar */}
+        {/* Header Toolbar */}
         <div className="h-14 bg-[#1b1c1c] text-white px-4 flex items-center justify-between border-b border-[#c9a96e]/30">
           <div className="flex items-center gap-2.5">
             <span className="w-2.5 h-2.5 rounded-full bg-[#c9a96e] animate-ping" />
             <div>
               <span className="text-[10px] font-mono uppercase tracking-widest text-[#c9a96e] block">
-                LIVE DESIGN ENGINE
+                LIVE PACKAGING DESIGNER ENGINE
               </span>
-              <span className="text-xs font-serif font-bold tracking-wide text-white truncate max-w-[180px] sm:max-w-none block">
-                {currentProduct.tag}
+              <span className="text-xs font-serif font-bold tracking-wide text-white truncate block">
+                {stepTitles[currentStep]}
               </span>
             </div>
           </div>
 
           <div className="flex items-center gap-2">
-            <span className="text-[10px] font-mono text-white/60 bg-white/10 px-2.5 py-1 rounded-full border border-white/10 hidden sm:inline-block">
-              {currentProduct.stepText}
-            </span>
             <button
-              onClick={() => setIsPlaying(!isPlaying)}
+              onClick={() => setIsAutoPlay(!isAutoPlay)}
               className="text-[10px] font-mono bg-[#c9a96e] text-[#543d0c] font-bold px-3 py-1 rounded-full hover:bg-white transition-colors"
             >
-              {isPlaying ? "PAUSE LIVE LOOP" : "PLAY LIVE LOOP"}
+              {isAutoPlay ? "PAUSE WORKFLOW" : "PLAY WORKFLOW"}
             </button>
           </div>
         </div>
 
-        {/* Dynamic Animated Canvas Window */}
-        <div className="flex-1 relative bg-[#fcf9f8] overflow-hidden flex items-center justify-center p-4 md:p-6">
+        {/* Live Chips Packet Design Canvas Workspace */}
+        <div className="flex-1 relative bg-[#121212] overflow-hidden flex items-center justify-center p-4 md:p-6">
           
-          {/* Subtle Vector Radial Grid */}
+          {/* Background Vector Grid */}
           <div 
-            className="absolute inset-0 opacity-15 pointer-events-none"
+            className="absolute inset-0 opacity-20 pointer-events-none"
             style={{
               backgroundImage: "radial-gradient(#c9a96e 1.5px, transparent 1.5px)",
               backgroundSize: "22px 22px"
             }}
           />
 
-          {/* Animated Product Transition Container */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentProduct.id}
-              initial={{ opacity: 0, scale: 0.92, y: 15 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.92, y: -15 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-              className="relative w-full h-full flex items-center justify-center"
+          {/* Center 3D Pouch Packaging Mockup Canvas */}
+          <div className="relative z-10 w-full h-full flex items-center justify-center">
+            
+            {/* Real-time Chips Pouch Outer Container */}
+            <motion.div 
+              layout
+              className={`relative w-48 sm:w-56 md:w-64 h-[88%] rounded-2xl p-4 shadow-2xl border-2 border-white/20 bg-gradient-to-b ${currentFlavor.bgGradient} flex flex-col justify-between items-center overflow-hidden transition-all duration-700`}
             >
               
-              {/* Product Artwork Preview Frame */}
-              <div className="relative max-w-sm md:max-w-md w-full h-[82%] bg-white rounded-xl overflow-hidden shadow-2xl border border-[#c9a96e]/30 flex flex-col group">
-                
-                {/* Artwork Top Spec Bar */}
-                <div className="h-7 bg-[#f6f3f2] px-3 border-b border-[#e4e2e1] flex items-center justify-between text-[9px] text-[#5f5e59] font-mono">
-                  <span>✦ {currentProduct.type}</span>
-                  <span className="text-[#745a27] font-bold">Rendering 100% Vector</span>
+              {/* Metallic Foil Sheen Overlay */}
+              {isFoilSheen && (
+                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent pointer-events-none animate-pulse" />
+              )}
+
+              {/* Die-cut Seal Ridges Top */}
+              <div className="w-full h-3 bg-black/30 border-b border-white/20 flex justify-between items-center px-1">
+                {[...Array(12)].map((_, i) => (
+                  <div key={i} className="w-1.5 h-full bg-white/20 rounded-xs" />
+                ))}
+              </div>
+
+              {/* STEP 1+: BRAND LOGO CREST */}
+              <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ opacity: 1, scale: 1 }} className="text-center mt-2 z-10">
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-white/40 bg-white/10 backdrop-blur-md flex items-center justify-center mx-auto shadow-lg">
+                  <span className="font-serif font-bold text-base md:text-lg text-white">SJ</span>
                 </div>
+                <span className="text-[9px] font-mono tracking-widest uppercase text-white/80 block mt-1">
+                  SNACK FOODS
+                </span>
+              </motion.div>
 
-                {/* Main Product Image Mockup View */}
-                <div className="flex-1 relative overflow-hidden bg-[#121212]">
-                  <img
-                    src={currentProduct.image}
-                    alt={currentProduct.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  
-                  {/* Vector Pen Tool Handle Overlay Simulation */}
-                  <div className="absolute top-4 left-4 bg-[#c9a96e] text-[#543d0c] px-2.5 py-1 rounded-full text-[9px] font-bold shadow-lg flex items-center gap-1.5 animate-bounce">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#543d0c]" />
-                    <span>Active Product Layer</span>
-                  </div>
-
-                  {/* Product Details Tag Overlay */}
-                  <div className="absolute bottom-3 left-3 right-3 bg-black/85 backdrop-blur-md text-white p-2.5 rounded-lg border border-white/10 flex items-center justify-between">
-                    <div>
-                      <h4 className="text-xs font-serif font-bold text-[#c9a96e]">{currentProduct.title}</h4>
-                      <p className="text-[9px] text-white/70">{currentProduct.details[0]}</p>
-                    </div>
-                    <div className="flex gap-1">
-                      {currentProduct.swatches.map((color, i) => (
-                        <div key={i} className="w-3.5 h-3.5 rounded-full border border-white/30" style={{ backgroundColor: color }} />
-                      ))}
-                    </div>
-                  </div>
+              {/* STEP 2+: TYPOGRAPHY & BRANDING TEXT */}
+              {currentStep >= 1 ? (
+                <motion.div 
+                  initial={{ y: 20, opacity: 0 }} 
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.4 }}
+                  className="text-center space-y-1 z-10"
+                >
+                  <span className="text-2xl md:text-3xl font-serif font-extrabold block text-white drop-shadow-[0_4px_10px_rgba(0,0,0,0.6)] tracking-wide">
+                    CRUNCHY
+                  </span>
+                  <span className="text-xs md:text-sm font-bold uppercase tracking-widest block px-3 py-0.5 rounded-full bg-black/40 text-amber-300 border border-amber-300/30">
+                    {currentFlavor.name}
+                  </span>
+                </motion.div>
+              ) : (
+                <div className="text-[10px] text-white/40 font-mono italic border border-dashed border-white/30 px-3 py-1 rounded">
+                  [Typography Wireframe]
                 </div>
+              )}
 
+              {/* STEP 3+: COLOR FILTER & METALLIC SHINE HIGHLIGHT */}
+              {currentStep >= 2 && (
+                <motion.div 
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="w-full flex items-center justify-center gap-2 z-10"
+                >
+                  <div className="px-2.5 py-1 rounded-full bg-amber-400 text-black text-[9px] font-extrabold shadow-lg uppercase tracking-wider flex items-center gap-1">
+                    <span>100% REAL POTATO</span>
+                  </div>
+                </motion.div>
+              )}
+
+              {/* STEP 4+: QUALITY BADGES & NET WEIGHT */}
+              {currentStep >= 3 ? (
+                <motion.div 
+                  initial={{ scale: 0, opacity: 0 }} 
+                  animate={{ scale: 1, opacity: 1 }}
+                  className="w-full flex justify-between items-center text-[9px] text-white/90 font-mono border-t border-white/20 pt-2 z-10"
+                >
+                  <span className="bg-black/50 px-2 py-0.5 rounded">{currentFlavor.badgeText}</span>
+                  <span className="font-bold">NET WT. 100g</span>
+                </motion.div>
+              ) : (
+                <div className="text-[9px] text-white/40 font-mono">
+                  [Die-Cut Seal Active]
+                </div>
+              )}
+
+              {/* Vector Pen Tool Handle Overlay */}
+              <div className="absolute top-1/3 right-2 bg-[#c9a96e] text-[#543d0c] px-2 py-0.5 rounded-full text-[8px] font-bold shadow-lg flex items-center gap-1 animate-bounce">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#543d0c]" />
+                <span>Vector Anchor ({currentStep + 1}/4)</span>
+              </div>
+
+              {/* Die-cut Seal Ridges Bottom */}
+              <div className="w-full h-3 bg-black/30 border-t border-white/20 flex justify-between items-center px-1">
+                {[...Array(12)].map((_, i) => (
+                  <div key={i} className="w-1.5 h-full bg-white/20 rounded-xs" />
+                ))}
               </div>
 
             </motion.div>
-          </AnimatePresence>
+
+          </div>
 
         </div>
 
-        {/* Bottom Interactive Product Switcher Bar (Clickable Dots) */}
-        <div className="h-12 bg-[#f6f3f2] border-t border-[#e4e2e1] px-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            {designProducts.map((prod, idx) => (
+        {/* Bottom Interactive Controls (Working Buttons!) */}
+        <div className="h-14 bg-[#f6f3f2] border-t border-[#e4e2e1] px-3 md:px-4 flex flex-wrap items-center justify-between gap-2">
+          
+          {/* Step Selector Buttons */}
+          <div className="flex items-center gap-1">
+            {[0, 1, 2, 3].map((step) => (
               <button
-                key={prod.id}
-                onClick={() => setCurrentIndex(idx)}
-                className={`px-3 py-1 rounded-full text-[10px] font-semibold transition-all ${
-                  currentIndex === idx
+                key={step}
+                onClick={() => setCurrentStep(step)}
+                className={`px-2.5 py-1 rounded-full text-[10px] font-semibold transition-all ${
+                  currentStep === step
                     ? "bg-[#c9a96e] text-[#543d0c] shadow scale-105"
                     : "bg-white text-[#5f5e59] hover:bg-[#c9a96e]/20 border border-[#e4e2e1]"
                 }`}
               >
-                {prod.id}. {prod.type.split(" ")[0]}
+                Step {step + 1}
               </button>
             ))}
           </div>
 
-          <span className="text-[10px] text-[#745a27] font-semibold hidden md:inline-block">
-            Auto-Looping Live Designs • Click to Switch
-          </span>
+          {/* Flavor Color Mode Switcher */}
+          <div className="flex items-center gap-1.5">
+            <span className="text-[10px] font-medium text-[#5f5e59] uppercase tracking-wider hidden sm:inline-block">
+              Flavor Mode:
+            </span>
+            <button
+              onClick={() => setFlavorMode("spicy")}
+              className={`w-5 h-5 rounded-full bg-[#d32f2f] border-2 ${flavorMode === "spicy" ? "border-black scale-110" : "border-transparent"}`}
+              title="Fiery Chilli"
+            />
+            <button
+              onClick={() => setFlavorMode("masala")}
+              className={`w-5 h-5 rounded-full bg-[#f57c00] border-2 ${flavorMode === "masala" ? "border-black scale-110" : "border-transparent"}`}
+              title="Royal Masala"
+            />
+            <button
+              onClick={() => setFlavorMode("sour")}
+              className={`w-5 h-5 rounded-full bg-[#388e3c] border-2 ${flavorMode === "sour" ? "border-black scale-110" : "border-transparent"}`}
+              title="Sour Cream & Herb"
+            />
+            <button
+              onClick={() => setIsFoilSheen(!isFoilSheen)}
+              className={`text-[9px] font-semibold px-2 py-0.5 rounded border transition-colors ${
+                isFoilSheen ? "bg-[#c9a96e] text-[#543d0c] border-transparent" : "bg-white text-[#5f5e59]"
+              }`}
+            >
+              Foil Sheen
+            </button>
+          </div>
+
         </div>
 
       </div>
